@@ -44,7 +44,7 @@ const Base: FC<{ children: ReactElement }> = ({ children }) => {
 
 export default Base
 
-const GradientTitle = styled('h1', {
+export const GradientTitle = styled('h1', {
   backgroundSize: '100%',
   backgroundClip: 'text',
   WebkitBackgroundClip: 'text',

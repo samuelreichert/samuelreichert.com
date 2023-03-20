@@ -3,30 +3,19 @@ import Head from 'next/head'
 import Image from 'next/image'
 import React from 'react'
 // import { ButtonPrimary } from '../components/ButtonPrimary'
-// import Pronunciation from '../components/Pronunciation'
-// import Toast from '../components/Toast'
-import items from '../data/about'
+import { Toast } from '../components/Toast'
 import Base from '../layouts/Base'
-import { stripHtml } from '../lib/stripHtml'
-import copyBioIcon from '../public/static/icons/copy-bio.json'
-import downloadIcon from '../public/static/icons/download.json'
+// import stripHtml from '../lib/strip-html'
 import { styled } from '../stitches.config'
-// import Lottie from 'lottie-react'
-
-type AboutProps = {
-  title: string
-  description: string
-  primaryColor: string
-  secondaryColor: string
-}
+// import items from '../data/about'
 
 export async function getStaticProps() {
-  const meta: AboutProps = {
+  const meta = {
     title: 'About | Samuel Reichert',
-    description: '',
-    // Zeno Rocha is a Brazilian creator and programmer. He currently lives in San Francisco, California, where he's the Founder & CEO at Resend. His lifelong appreciation for building software and sharing knowledge led him to speak in over 110 conferences worldwide. His passion for open source put him on the top 20 most active users on GitHub at age 22. Before moving to the US, Zeno developed multiple applications, mentored startups, and worked at major companies in Latin America, such as Globo and Petrobras.
-    // tagline: 'Create. Share. Repeat.',
-    // image: '/static/images/about-bw.jpg',
+    description:
+      "Zeno Rocha is a Brazilian creator and programmer. He currently lives in San Francisco, California, where he's the Founder & CEO at Resend. His lifelong appreciation for building software and sharing knowledge led him to speak in over 110 conferences worldwide. His passion for open source put him on the top 20 most active users on GitHub at age 22. Before moving to the US, Zeno developed multiple applications, mentored startups, and worked at major companies in Latin America, such as Globo and Petrobras.",
+    tagline: 'Create. Share. Repeat.',
+    image: '/static/images/about.jpg',
     primaryColor: 'pink',
     secondaryColor: 'purple',
   }
@@ -34,8 +23,8 @@ export async function getStaticProps() {
   return { props: meta }
 }
 
-const About = (props: AboutProps) => {
-  const { title, description } = props
+function About(props) {
+  const { title, description, image } = props
   const [toastTitle, setToastTitle] = React.useState('')
   const [toastDescription, setToastDescription] = React.useState('')
   const [showToast, setShowToast] = React.useState(false)
@@ -47,7 +36,7 @@ const About = (props: AboutProps) => {
       <Container>
         <Section>
           <Image
-            alt="Samuel"
+            alt="Zeno"
             src="/static/images/zeno-bw.jpg"
             width="336"
             height="336"
