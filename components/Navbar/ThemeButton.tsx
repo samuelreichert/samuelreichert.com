@@ -8,11 +8,13 @@ import {
   DropdownMenuItem,
   RightSlot,
 } from './ThemeButton.styles'
+import { useHasMounted } from '../../hooks/useHasMounted'
 
 export const ThemeButton: FC = () => {
   const { setTheme, resolvedTheme } = useTheme()
+  const hasMounted = useHasMounted()
 
-  const ResolvedIcon = resolvedTheme === 'dark' ? Moon : Sun
+  const ResolvedIcon = hasMounted && resolvedTheme === 'dark' ? Moon : Sun
 
   return (
     <DropdownMenu.Root>
