@@ -1,5 +1,22 @@
 import { createStitches } from '@stitches/react'
 
+const baseTheme = {
+  fonts: {
+    body: 'Biotif, sans-serif',
+    heading: 'Neuzeit Grotesk Bold, sans-serif',
+  },
+  space: {
+    navHeightDesktop: '60px',
+    navHeightMobile: '110px',
+  },
+  transitions: {
+    duration: '0.2s',
+  },
+  radii: {
+    borderRadius: '8px',
+  },
+}
+
 const baseColors = {
   yellow: '#ffff80',
   pink: '#ff80bf',
@@ -16,7 +33,7 @@ const baseColors = {
 const lightColors = {
   primary: baseColors.black,
   background: baseColors.white,
-  hover: baseColors.grey,
+  hover: '#eaeaea',
   dropdownBackground: baseColors.white,
   dropdownColor: baseColors.purple,
   command: 'rgba(0, 0, 0, 0.2)',
@@ -49,20 +66,7 @@ export const {
       ...baseColors,
       ...darkColors,
     },
-    fonts: {
-      body: 'Biotif, sans-serif',
-      heading: 'Neuzeit Grotesk Bold, sans-serif',
-    },
-    space: {
-      navHeightDesktop: '60px',
-      navHeightMobile: '110px',
-    },
-    transitions: {
-      duration: '0.2s',
-    },
-    radii: {
-      borderRadius: '8px',
-    },
+    ...baseTheme,
   },
   media: {
     bp1: '(min-width: 425px)',
@@ -78,20 +82,7 @@ export const lightTheme = createTheme({
     ...baseColors,
     ...lightColors,
   },
-  fonts: {
-    body: 'Biotif, sans-serif',
-    heading: 'Neuzeit Grotesk Bold, sans-serif',
-  },
-  space: {
-    navHeightDesktop: '60px',
-    navHeightMobile: '110px',
-  },
-  transitions: {
-    duration: '0.2s',
-  },
-  radii: {
-    borderRadius: '8px',
-  },
+  ...baseTheme,
 })
 
 const globalStyles = globalCss({

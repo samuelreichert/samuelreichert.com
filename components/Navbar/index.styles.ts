@@ -19,7 +19,7 @@ export const ButtonHeader = styled('div', {
   height: '34px',
   padding: '0 10px',
   transition: 'background $duration ease-in-out',
-  '&:hover': { background: '$grey', color: '$background' },
+  '&:hover': { background: '$hover', color: '$primary' },
 })
 
 export const ButtonLogo = styled(ButtonHeader, {

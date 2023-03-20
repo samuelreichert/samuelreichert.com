@@ -19,7 +19,7 @@ export const NavContainer = styled(motion.span, {
   textTransform: 'uppercase',
   transition: 'color $duration ease-in-out',
   '&:hover': {
-    color: '$background',
+    color: '$primary',
   },
   '&::after': {
     content: '""',
@@ -41,7 +41,7 @@ export const NavHovered = styled(motion.span, {
   top: '-15px',
   left: '0',
   right: '0',
-  background: '$grey',
+  background: '$hover',
   padding: 20,
   borderRadius: '$borderRadius',
   zIndex: -1,
