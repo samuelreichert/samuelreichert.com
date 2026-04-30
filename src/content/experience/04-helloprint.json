@@ -1,0 +1,15 @@
+{
+  "company": "Helloprint",
+  "companyUrl": "https://www.helloprint.com/jobs/",
+  "title": "Frontend Developer",
+  "startDate": "2021-04",
+  "endDate": "2022-02",
+  "order": 4,
+  "description": "E-commerce platform for printed products. Worked across the next-generation storefront and the SEO team.",
+  "bullets": [
+    "Built features for a more robust, modular, and dynamic storefront.",
+    "Improved Lighthouse scores and site performance on the SEO team.",
+    "Reduced bug count and fixed broken layouts across the platform."
+  ],
+  "skills": ["Vue", "Nuxt", "Node.js"]
+}

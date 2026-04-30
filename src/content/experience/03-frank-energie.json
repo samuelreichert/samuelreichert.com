@@ -1,0 +1,15 @@
+{
+  "company": "Frank Energie",
+  "companyUrl": "https://www.frankenergie.nl/over-frank",
+  "title": "Full-Stack Developer",
+  "startDate": "2022-03",
+  "endDate": "2022-10",
+  "order": 3,
+  "description": "Disruptive consumer energy company. Built features for the customer mobile app and internal admin tooling.",
+  "bullets": [
+    "Built an invoice predictor estimating monthly energy and gas costs.",
+    "Integrated a digital authorization payment platform into the signup flow.",
+    "Created an internal admin tool to visualize and update customer data, removing manual work for operations."
+  ],
+  "skills": ["React", "TypeScript", "Node.js", "GraphQL"]
+}

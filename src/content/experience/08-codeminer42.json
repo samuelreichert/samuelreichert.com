@@ -1,0 +1,11 @@
+{
+  "company": "Codeminer42",
+  "companyUrl": "https://www.codeminer42.com/",
+  "title": "Frontend Developer",
+  "startDate": "2015-05",
+  "endDate": "2016-07",
+  "order": 8,
+  "description": "Ruby on Rails consultancy with a focus on code quality and clean code. First exposure to international projects and Scrum.",
+  "bullets": [],
+  "skills": ["Ruby on Rails", "JavaScript", "Scrum"]
+}

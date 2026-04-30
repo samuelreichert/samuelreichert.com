@@ -1,0 +1,14 @@
+{
+  "company": "Avenue Code",
+  "companyUrl": "https://www.avenuecode.com",
+  "title": "Frontend Developer",
+  "startDate": "2020-12",
+  "endDate": "2021-04",
+  "order": 5,
+  "description": "Software consultancy with American and European clients. Allocated to Good Eggs, building a fresh-grocery delivery app for the SF area.",
+  "bullets": [
+    "Delivered a new app settings page.",
+    "Built a new product item component."
+  ],
+  "skills": ["TypeScript", "React Native", "Node.js", "GraphQL"]
+}

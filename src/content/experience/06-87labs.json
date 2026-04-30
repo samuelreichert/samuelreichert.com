@@ -1,0 +1,15 @@
+{
+  "company": "87 Labs",
+  "companyUrl": "https://www.87labs.com/",
+  "title": "Frontend Developer",
+  "startDate": "2017-04",
+  "endDate": "2020-12",
+  "order": 6,
+  "description": "Consultancy where I worked across multiple client projects, including Pipefy, GoDaddy, Consulta Remédios, and Leroy Merlin.",
+  "bullets": [
+    "Leroy Merlin — built the new cart flow and layout, added unit tests, and contributed to a hybrid React Native app.",
+    "Consulta Remédios — implemented marketplace launch features, including full-screen mobile/desktop search.",
+    "GoDaddy — built blog editor features (post statuses, API integrations, website-builder integration) and refactored pages to the design system."
+  ],
+  "skills": ["React", "Redux", "Vue", "Node.js", "Styled Components", "React Native"]
+}

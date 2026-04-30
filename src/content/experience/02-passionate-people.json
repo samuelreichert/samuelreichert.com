@@ -1,0 +1,11 @@
+{
+  "company": "Passionate People",
+  "companyUrl": "https://passionatepeople.io/",
+  "title": "Software Engineer",
+  "startDate": "2022-11",
+  "endDate": "2023-03",
+  "order": 2,
+  "description": "JavaScript-focused consultancy. Provided technical capacity to clients on React, Vue, and Angular projects across the Netherlands.",
+  "bullets": [],
+  "skills": ["React", "TypeScript", "Vue", "Angular"]
+}
