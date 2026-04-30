@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CopyEmailButton from '../components/CopyEmailButton';
+import { siteConfig } from '../data/site';
+---
+
+<BaseLayout
+  title="Contact"
+  description="Contact Samuel Reichert"
+  path="/contact"
+>
+  <h1>Contact</h1>
+  <p>Reach out by email or via the links below.</p>
+  <p>
+    Email: <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>{' '}
+    <CopyEmailButton client:load email={siteConfig.email} />
+  </p>
+  <ul class="bullets">
+    <li><a href={siteConfig.linkedin} rel="noopener" target="_blank">LinkedIn</a></li>
+    <li><a href={siteConfig.github} rel="noopener" target="_blank">GitHub</a></li>
+  </ul>
+</BaseLayout>
