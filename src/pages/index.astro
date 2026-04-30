@@ -1,17 +1,19 @@
 ---
-
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { siteConfig } from '../data/site';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout path="/">
+  <section>
+    <h1>{siteConfig.name}</h1>
+    <p>
+      Frontend engineer focused on React, with experience in React Native and
+      Node.js. 8+ years of experience, working with JavaScript since 2014.
+    </p>
+    <p>
+      <a href="/projects">See projects</a> ·
+      <a href="/experience">See experience</a> ·
+      <a href={`mailto:${siteConfig.email}`}>Get in touch</a>
+    </p>
+  </section>
+</BaseLayout>
