@@ -1,0 +1,7 @@
+{
+  "name": "GitHub Search",
+  "description": "Search GitHub repositories with React, Redux, and Bootstrap.",
+  "repo": "https://github.com/samuelreichert/github-search",
+  "tags": ["JavaScript", "React", "Redux"],
+  "order": 4
+}
