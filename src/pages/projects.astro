@@ -1,0 +1,18 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+
+const entries = (await getCollection('projects')).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+---
+
+<BaseLayout
+  title="Projects"
+  description="Featured side projects by Samuel Reichert"
+  path="/projects"
+>
+  <h1>Projects</h1>
+  {entries.map((entry) => <ProjectCard entry={entry} />)}
+</BaseLayout>

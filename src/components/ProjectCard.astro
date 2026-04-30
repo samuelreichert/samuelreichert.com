@@ -1,0 +1,24 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  entry: CollectionEntry<'projects'>;
+}
+
+const { entry } = Astro.props;
+const { name, description, repo, demo, tags } = entry.data;
+---
+
+<article>
+  <h2>{name}</h2>
+  <p>{description}</p>
+  <p>
+    <a href={repo} rel="noopener" target="_blank">Repository</a>
+    {demo && <> · <a href={demo} rel="noopener" target="_blank">Demo</a></>}
+  </p>
+  {
+    tags.length > 0 && (
+      <p><small>{tags.join(' · ')}</small></p>
+    )
+  }
+</article>

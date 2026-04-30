@@ -1,0 +1,39 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  entry: CollectionEntry<'experience'>;
+}
+
+const { entry } = Astro.props;
+const { company, companyUrl, title, startDate, endDate, description, bullets, skills } = entry.data;
+---
+
+<article>
+  <header>
+    <h2>
+      {title} ·{' '}
+      {
+        companyUrl ? (
+          <a href={companyUrl} rel="noopener" target="_blank">{company}</a>
+        ) : (
+          company
+        )
+      }
+    </h2>
+    <p><time>{startDate}</time> – <time>{endDate}</time></p>
+  </header>
+  <p>{description}</p>
+  {
+    bullets.length > 0 && (
+      <ul class="bullets">
+        {bullets.map((b) => <li>{b}</li>)}
+      </ul>
+    )
+  }
+  {
+    skills.length > 0 && (
+      <p><small>Skills: {skills.join(', ')}</small></p>
+    )
+  }
+</article>

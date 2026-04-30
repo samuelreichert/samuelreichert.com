@@ -1,0 +1,18 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ExperienceCard from '../components/ExperienceCard.astro';
+
+const entries = (await getCollection('experience')).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+---
+
+<BaseLayout
+  title="Experience"
+  description="Professional experience of Samuel Reichert"
+  path="/experience"
+>
+  <h1>Experience</h1>
+  {entries.map((entry) => <ExperienceCard entry={entry} />)}
+</BaseLayout>
