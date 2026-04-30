@@ -1,0 +1,13 @@
+---
+import { siteConfig } from '../data/site';
+
+const year = new Date().getFullYear();
+---
+
+<footer>
+  <small>
+    &copy; {year} {siteConfig.name} ·
+    <a href={siteConfig.github} rel="me noopener" target="_blank">GitHub</a> ·
+    <a href={siteConfig.linkedin} rel="me noopener" target="_blank">LinkedIn</a>
+  </small>
+</footer>

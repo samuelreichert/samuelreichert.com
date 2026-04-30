@@ -1,0 +1,28 @@
+---
+import { siteConfig } from '../data/site';
+
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+---
+
+<header>
+  <a href="/" rel="home"><strong>{siteConfig.name}</strong></a>
+  <nav aria-label="Primary">
+    <ul>
+      {
+        siteConfig.nav.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              aria-current={currentPath === item.href ? 'page' : undefined}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))
+      }
+      <li>
+        <a href={siteConfig.resumePath} download>Resume (PDF)</a>
+      </li>
+    </ul>
+  </nav>
+</header>
