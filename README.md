@@ -26,7 +26,7 @@ pnpm build        # static + Vercel output
 - Experience entries: `src/content/experience/*.json`
 - Project entries: `src/content/projects/*.json`
 - Site metadata + nav: `src/data/site.ts`
-- Resume PDF: drop the file at `public/resume.pdf` (replaces the empty placeholder)
+- Resume PDF: served live from Google Docs via `siteConfig.resumeUrl` — update the doc, the link always serves the latest export
 
 ## Deploy
 

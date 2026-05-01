@@ -21,7 +21,9 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
         ))
       }
       <li>
-        <a href={siteConfig.resumePath} download>Resume (PDF)</a>
+        <a href={siteConfig.resumeUrl} rel="noopener" target="_blank">
+          Resume (PDF)
+        </a>
       </li>
     </ul>
   </nav>

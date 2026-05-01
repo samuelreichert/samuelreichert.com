@@ -7,7 +7,8 @@ export const siteConfig = {
   email: 'samuelreichertt@gmail.com',
   github: 'https://github.com/samuelreichert',
   linkedin: 'https://www.linkedin.com/in/samuelreichert',
-  resumePath: '/resume.pdf',
+  resumeUrl:
+    'https://docs.google.com/document/d/1hEMCGXnCpBwDHi2ZeiyWFHiCd9eKm7nkOpoBeCLR94E/export?format=pdf',
   nav: [
     { href: '/', label: 'Home' },
     { href: '/about', label: 'About' },
