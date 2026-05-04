@@ -5,7 +5,10 @@
   "startDate": "2022-11",
   "endDate": "2023-03",
   "order": 2,
-  "description": "JavaScript-focused consultancy. Provided technical capacity to clients on React, Vue, and Angular projects across the Netherlands.",
-  "bullets": [],
-  "skills": ["React", "TypeScript", "Vue", "Angular"]
+  "description": "JavaScript-focused consultancy. Embedded with client teams across multiple industries, delivering React-based features and improving frontend architecture.",
+  "bullets": [
+    "Worked as a JavaScript consultant embedded with client teams across multiple industries, delivering React-based features and improving frontend architecture.",
+    "Collaborated within cross-functional, internationally distributed engineering teams following agile methodologies."
+  ],
+  "skills": ["React", "TypeScript", "JavaScript"]
 }

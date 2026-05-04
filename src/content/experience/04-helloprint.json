@@ -5,11 +5,10 @@
   "startDate": "2021-04",
   "endDate": "2022-02",
   "order": 4,
-  "description": "E-commerce platform for printed products. Worked across the next-generation storefront and the SEO team.",
+  "description": "Contributed to Helloprint's next-generation e-commerce platform using Vue.js, Nuxt.js, and Node.js, focused on modularity and performance.",
   "bullets": [
-    "Built features for a more robust, modular, and dynamic storefront.",
-    "Improved Lighthouse scores and site performance on the SEO team.",
-    "Reduced bug count and fixed broken layouts across the platform."
+    "Joined the SEO team to drive Lighthouse score improvements and fix widespread layout bugs, measurably increasing page performance across the platform.",
+    "Contributed to building a more modular and dynamic next-generation storefront."
   ],
-  "skills": ["Vue", "Nuxt", "Node.js"]
+  "skills": ["Vue.js", "Nuxt.js", "Node.js"]
 }

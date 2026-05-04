@@ -7,8 +7,7 @@
   "order": 5,
   "description": "Software consultancy with American and European clients. Allocated to Good Eggs, building a fresh-grocery delivery app for the SF area.",
   "bullets": [
-    "Delivered a new app settings page.",
-    "Built a new product item component."
+    "Built new app settings page and product item component for Good Eggs' grocery delivery platform using TypeScript, React Native, Node.js, and GraphQL."
   ],
   "skills": ["TypeScript", "React Native", "Node.js", "GraphQL"]
 }

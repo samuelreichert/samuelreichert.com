@@ -1,11 +1,18 @@
 {
-  "company": "Mendix",
+  "company": "Mendix (acquired by Siemens)",
   "companyUrl": "https://www.mendix.com",
-  "title": "Software Engineer",
-  "startDate": "2023",
+  "title": "Senior Frontend Engineer",
+  "startDate": "2023-04",
   "endDate": "Present",
   "order": 1,
-  "description": "TBD — update with current role details.",
-  "bullets": [],
-  "skills": []
+  "description": "Mendix is a leading low-code platform used by enterprises worldwide to build and deploy web applications at scale. As part of the Web Content team, I develop and maintain the React-based widget ecosystem — the building blocks customers use to compose their application UIs inside the Mendix Studio platform.",
+  "bullets": [
+    "Led the platform-wide migration from React 16 to React 18 and subsequently to React 19, ensuring zero regressions across dozens of production widgets used by thousands of developers.",
+    "Designed and delivered new widgets from scratch including Calendar, Rich Text Editor, and PDF Document Generator, driving expanded platform capabilities for enterprise customers.",
+    "Managed the technical transition and ownership of the PDF Document Generator project from another internal team, providing continuity of support and ongoing feature development.",
+    "Provided customer-facing technical support for widget-related issues, diagnosing root causes and shipping fixes with measurable reduction in open support tickets.",
+    "Contributed improvements across 20+ widgets in the library, focusing on React performance, accessibility, and cross-browser compatibility.",
+    "Kept the widget ecosystem up to date with regular dependency upgrades and security patches."
+  ],
+  "skills": ["TypeScript", "React", "Next.js", "Tailwind CSS"]
 }

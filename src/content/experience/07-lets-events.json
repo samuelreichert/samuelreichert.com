@@ -7,7 +7,8 @@
   "order": 7,
   "description": "Event ticketing platform. Worked fully remotely across frontend and backend.",
   "bullets": [
-    "Implemented GraphQL across frontend and backend, materially improving performance on a critical page."
+    "Implemented GraphQL on both frontend and backend, significantly reducing load times on a critical product page.",
+    "Stack: Ruby on Rails, Backbone.js, GraphQL, Docker. Worked fully remote."
   ],
   "skills": ["Ruby on Rails", "Backbone.js", "GraphQL", "Docker"]
 }

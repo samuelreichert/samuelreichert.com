@@ -5,11 +5,11 @@
   "startDate": "2017-04",
   "endDate": "2020-12",
   "order": 6,
-  "description": "Consultancy where I worked across multiple client projects, including Pipefy, GoDaddy, Consulta Remédios, and Leroy Merlin.",
+  "description": "Consultancy embedded with clients across multiple industries. Key client engagements include Leroy Merlin, GoDaddy, and Consulta Remédios.",
   "bullets": [
-    "Leroy Merlin — built the new cart flow and layout, added unit tests, and contributed to a hybrid React Native app.",
-    "Consulta Remédios — implemented marketplace launch features, including full-screen mobile/desktop search.",
-    "GoDaddy — built blog editor features (post statuses, API integrations, website-builder integration) and refactored pages to the design system."
+    "Leroy Merlin (Apr 2019 – Dec 2020): Delivered the critical cart flow redesign in React with hooks and Styled Components, significantly improving load time. Added unit test coverage to React components and contributed to the company's hybrid React Native app.",
+    "GoDaddy (Jun – Nov 2018): Developed API integrations and new blog post status workflows for the GoDaddy Blog Editor using React, Redux, and Redux-Saga. Integrated the editor with the broader website builder platform.",
+    "Consulta Remédios (Dec 2018 – Mar 2019): Implemented marketplace launch features including a full-screen responsive search in Vue.js, improving search UX for mobile and desktop users."
   ],
-  "skills": ["React", "Redux", "Vue", "Node.js", "Styled Components", "React Native"]
+  "skills": ["React", "Redux", "Vue.js", "Node.js", "Styled Components", "React Native"]
 }
