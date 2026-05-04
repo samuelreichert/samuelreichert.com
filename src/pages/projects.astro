@@ -105,6 +105,11 @@ const allTags = [...new Set(entries.flatMap((e) => e.data.tags))];
       color: var(--color-gold);
       background: color-mix(in oklab, var(--color-gold) 10%, transparent);
     }
+    :global(.repo-card .card-links) {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
 
     /* React Native section */
     .rn-section { margin-top: var(--space-7); }
