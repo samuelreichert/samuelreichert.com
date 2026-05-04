@@ -3,37 +3,43 @@ import type { CollectionEntry } from 'astro:content';
 
 interface Props {
   entry: CollectionEntry<'experience'>;
+  index: number;
 }
 
-const { entry } = Astro.props;
-const { company, companyUrl, title, startDate, endDate, description, bullets, skills } = entry.data;
+const { entry, index } = Astro.props;
+const { company, companyUrl, title, startDate, endDate, description, skills } = entry.data;
+const isCurrent = endDate === 'Present';
+
+const startYear = startDate.split('-')[0];
+const endLabel = isCurrent ? 'Now' : endDate.split('-')[0];
+const period = `${startYear} — ${endLabel}`;
+const logo = company.charAt(0).toUpperCase();
+const delay = index * 80;
 ---
 
-<article>
-  <header>
-    <h2>
-      {title} ·{' '}
-      {
-        companyUrl ? (
-          <a href={companyUrl} rel="noopener" target="_blank">{company}</a>
-        ) : (
-          company
-        )
-      }
-    </h2>
-    <p><time>{startDate}</time> – <time>{endDate}</time></p>
-  </header>
-  <p>{description}</p>
-  {
-    bullets.length > 0 && (
-      <ul class="bullets">
-        {bullets.map((b) => <li>{b}</li>)}
-      </ul>
-    )
-  }
-  {
-    skills.length > 0 && (
-      <p><small>Skills: {skills.join(', ')}</small></p>
-    )
-  }
-</article>
+<div class:list={['tl-item reveal', { 'is-current': isCurrent }]} style={`--reveal-delay:${delay}ms;`}>
+  <span class="tl-dot"></span>
+  <div class="lux-card tl-card">
+    <div class="tl-logo">{logo}</div>
+    <div class="tl-body">
+      <h3>
+        {title}
+        <span class="role">
+          {companyUrl
+            ? <a href={companyUrl} rel="noopener" target="_blank">{company}</a>
+            : company}
+        </span>
+      </h3>
+      <p>{description}</p>
+      {skills.length > 0 && (
+        <div class="stack">
+          {skills.map((s) => <span>{s}</span>)}
+        </div>
+      )}
+    </div>
+    <div class="tl-period">
+      {period}
+      {isCurrent && <span class="badge">Present</span>}
+    </div>
+  </div>
+</div>

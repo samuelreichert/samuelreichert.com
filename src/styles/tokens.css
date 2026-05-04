@@ -1,0 +1,104 @@
+/* ============================================================
+   Luxury Digital — Design Tokens
+   ============================================================ */
+
+:root {
+  /* ---------- Color (Dark — default) ---------- */
+  --color-bg:           #000000;
+  --color-bg-elev:      #0A0A0A;
+  --color-card:         #111111;
+  --color-card-hover:   #1A1A1A;
+  --color-border:       rgba(201, 168, 76, 0.18);
+  --color-border-soft:  rgba(255, 255, 255, 0.06);
+  --color-rule:         rgba(255, 255, 255, 0.08);
+
+  --color-text:         #F5F2EA;
+  --color-text-muted:   #9A958A;
+  --color-text-faint:   #5C584F;
+
+  --color-gold:         #C9A84C;
+  --color-gold-soft:    #E2C97A;
+  --color-gold-deep:    #8E7430;
+  --gold-gradient:      linear-gradient(135deg, #8E7430 0%, #C9A84C 35%, #F2DC95 55%, #C9A84C 75%, #8E7430 100%);
+
+  --noise-opacity:      0.05;
+  --grain-blend:        soft-light;
+
+  /* ---------- Type ---------- */
+  --font-display:  "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  --font-serif:    "Cormorant Garamond", Georgia, serif;
+  --font-sans:     "Jost", "DM Sans", "Sora", -apple-system, sans-serif;
+  --font-mono:     "JetBrains Mono", ui-monospace, monospace;
+
+  --fs-hero:       clamp(3.5rem, 9vw, 8.5rem);
+  --fs-display:    clamp(2.75rem, 6vw, 5.25rem);
+  --fs-h1:         clamp(2.25rem, 4.2vw, 3.75rem);
+  --fs-h2:         clamp(1.75rem, 2.8vw, 2.5rem);
+  --fs-h3:         1.5rem;
+  --fs-body:       1.0625rem;
+  --fs-small:      0.9375rem;
+  --fs-eyebrow:    0.75rem;
+
+  --lh-tight:      1.02;
+  --lh-snug:       1.18;
+  --lh-body:       1.65;
+
+  --tracking-display:  -0.02em;
+  --tracking-eyebrow:  0.32em;
+  --tracking-nav:      0.14em;
+
+  /* ---------- Space / radius / shadow ---------- */
+  --r-sm: 10px;
+  --r-md: 14px;
+  --r-lg: 20px;
+  --r-xl: 28px;
+  --r-pill: 999px;
+
+  --space-1: 0.5rem;
+  --space-2: 0.875rem;
+  --space-3: 1.25rem;
+  --space-4: 1.75rem;
+  --space-5: 2.5rem;
+  --space-6: 3.5rem;
+  --space-7: 5rem;
+  --space-8: 7rem;
+  --space-9: 10rem;
+
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.4);
+  --shadow-md: 0 8px 24px rgba(0,0,0,0.45), 0 2px 6px rgba(0,0,0,0.3);
+  --shadow-lg: 0 24px 60px rgba(0,0,0,0.55), 0 4px 12px rgba(0,0,0,0.35);
+  --shadow-gold: 0 14px 40px rgba(201,168,76,0.18), 0 0 0 1px rgba(201,168,76,0.28);
+
+  --container-w: 1240px;
+  --container-px: clamp(1.25rem, 4vw, 2.5rem);
+
+  --ease-out: cubic-bezier(.2,.7,.2,1);
+  --ease-in-out: cubic-bezier(.65,.05,.25,1);
+}
+
+/* ---------- Light Mode ---------- */
+html.light-mode {
+  --color-bg:           #F8F7F4;
+  --color-bg-elev:      #F1EFEA;
+  --color-card:         #FFFFFF;
+  --color-card-hover:   #FBF9F4;
+  --color-border:       rgba(142, 116, 48, 0.22);
+  --color-border-soft:  rgba(20, 16, 8, 0.07);
+  --color-rule:         rgba(20, 16, 8, 0.10);
+
+  --color-text:         #14110A;
+  --color-text-muted:   #5C5648;
+  --color-text-faint:   #9A9382;
+
+  --color-gold:         #8E7430;
+  --color-gold-soft:    #C9A84C;
+  --color-gold-deep:    #6A561F;
+
+  --noise-opacity:      0.045;
+  --grain-blend:        multiply;
+
+  --shadow-sm: 0 1px 2px rgba(20,16,8,0.06);
+  --shadow-md: 0 10px 30px rgba(20,16,8,0.08), 0 2px 6px rgba(20,16,8,0.04);
+  --shadow-lg: 0 24px 60px rgba(20,16,8,0.10), 0 4px 12px rgba(20,16,8,0.06);
+  --shadow-gold: 0 14px 40px rgba(142,116,48,0.16), 0 0 0 1px rgba(142,116,48,0.25);
+}

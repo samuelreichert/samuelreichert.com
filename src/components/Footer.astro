@@ -1,13 +1,16 @@
 ---
-import { siteConfig } from '../data/site';
-
 const year = new Date().getFullYear();
 ---
 
-<footer>
-  <small>
-    &copy; {year} {siteConfig.name} ·
-    <a href={siteConfig.github} rel="me noopener" target="_blank">GitHub</a> ·
-    <a href={siteConfig.linkedin} rel="me noopener" target="_blank">LinkedIn</a>
-  </small>
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="brand" style="font-size:1.15rem;">Samuel<span class="dot"></span></div>
+    <div class="footer-meta">
+      <span>© {year} Samuel Reichert</span>
+      <span class="sep"></span>
+      <span>Crafted with care</span>
+      <span class="sep"></span>
+      <span>Amsterdam · CET</span>
+    </div>
+  </div>
 </footer>

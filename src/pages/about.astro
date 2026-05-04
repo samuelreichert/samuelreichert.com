@@ -2,32 +2,304 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="About" description="About Samuel Reichert" path="/about">
-  <section>
-    <h1>About</h1>
-    <p>
-      I'm a frontend developer focused on React, also interested in React
-      Native and backend with Node.js. I have 8+ years of experience and have
-      been working with JavaScript since 2014. I keep working to improve my
-      knowledge and deliver better solutions.
-    </p>
+<BaseLayout
+  title="About — Samuel Reichert"
+  description="Senior Frontend Engineer. React Native developer. Lover of travel, books, investing, and fitness."
+  path="/about"
+>
+  <style>
+    .about-hero { padding: clamp(3rem, 8vh, 6rem) 0 clamp(2rem, 4vh, 3rem); }
+    .about-hero h1 { font-size: var(--fs-display); line-height: 1; max-width: 16ch; }
+    .about-hero h1 .it { font-style: italic; font-weight: 400; color: var(--color-gold); }
+    .about-hero p.lede { margin-top: 1.5rem; color: var(--color-text-muted); font-size: 1.15rem; max-width: 56ch; }
 
-    <h2>Skills</h2>
-    <ul class="bullets">
-      <li>TypeScript, React, Node.js</li>
-      <li>GraphQL, Prisma, react-query</li>
-      <li>React Native</li>
-      <li>Styled Components, ES6</li>
-      <li>Testing: Jest, React Testing Library, Cypress</li>
-    </ul>
+    .about-split {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 3.5rem;
+      align-items: start;
+      margin-top: 2rem;
+    }
 
-    <h2>Education</h2>
-    <p>
-      Degree in Technology in Internet Systems —
-      <a href="https://www.feevale.br/en/" rel="noopener" target="_blank">
-        Universidade Feevale
-      </a>
-      (2013 – 2016).
-    </p>
+    .portrait {
+      position: sticky;
+      top: 100px;
+      aspect-ratio: 4 / 5;
+      border-radius: var(--r-xl);
+      overflow: hidden;
+      border: 1px solid var(--color-border);
+      background:
+        linear-gradient(135deg, rgba(201,168,76,0.18) 0%, transparent 50%, rgba(201,168,76,0.08) 100%),
+        var(--color-card);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-lg);
+    }
+    .portrait::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.7 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+      opacity: .12;
+      mix-blend-mode: var(--grain-blend);
+    }
+    .portrait .monogram {
+      position: relative;
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: clamp(8rem, 18vw, 14rem);
+      line-height: 1;
+      background: var(--gold-gradient);
+      -webkit-background-clip: text;
+              background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -0.04em;
+    }
+    .portrait .frame-corner {
+      position: absolute;
+      width: 22px; height: 22px;
+      border: 1px solid var(--color-gold);
+      opacity: .8;
+    }
+    .portrait .fc-tl { top: 14px; left: 14px; border-right: 0; border-bottom: 0; }
+    .portrait .fc-tr { top: 14px; right: 14px; border-left: 0; border-bottom: 0; }
+    .portrait .fc-bl { bottom: 14px; left: 14px; border-right: 0; border-top: 0; }
+    .portrait .fc-br { bottom: 14px; right: 14px; border-left: 0; border-top: 0; }
+    .portrait .caption {
+      position: absolute;
+      bottom: 18px; left: 0; right: 0;
+      text-align: center;
+      font-size: .68rem;
+      letter-spacing: .32em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+    }
+
+    .about-text { display: flex; flex-direction: column; gap: 2.5rem; }
+    .about-text h2 { font-size: 2.4rem; line-height: 1.05; }
+    .about-text h2 .it { font-style: italic; color: var(--color-gold); font-weight: 400; }
+    .about-text p { color: var(--color-text-muted); font-size: 1.075rem; line-height: 1.7; max-width: 60ch; }
+    .about-text .pull {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.6rem;
+      line-height: 1.35;
+      color: var(--color-text);
+      border-left: 1px solid var(--color-gold);
+      padding: 0.25rem 0 0.25rem 1.5rem;
+      max-width: 38ch;
+    }
+
+    .interests { margin-top: var(--space-7); }
+    .interests-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+      margin-top: 2rem;
+    }
+    .interest {
+      padding: 2rem 1.75rem 1.75rem;
+      min-height: 280px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .interest .ic {
+      width: 48px; height: 48px;
+      border-radius: 14px;
+      border: 1px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-gold);
+      background: color-mix(in oklab, var(--color-gold) 6%, transparent);
+      font-size: 1.4rem;
+    }
+    .interest h3 { margin-top: 1.5rem; font-family: var(--font-display); font-size: 1.7rem; font-weight: 500; line-height: 1; }
+    .interest .body { margin-top: 0.6rem; color: var(--color-text-muted); font-size: 0.95rem; line-height: 1.55; }
+    .interest .num {
+      position: absolute;
+      top: 1.25rem; right: 1.5rem;
+      font-family: var(--font-display);
+      font-style: italic;
+      color: var(--color-gold);
+      font-size: 0.95rem;
+      opacity: .8;
+    }
+
+    .closing {
+      margin-top: var(--space-7);
+      padding: 4rem 2.5rem;
+      border-radius: var(--r-xl);
+      background: var(--color-card);
+      border: 1px solid var(--color-border);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .closing::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,0.12), transparent 60%);
+    }
+    html.light-mode .closing::before {
+      background: radial-gradient(ellipse at 50% 0%, rgba(142,116,48,0.10), transparent 60%);
+    }
+    .closing .quote-mark { font-family: var(--font-display); font-style: italic; color: var(--color-gold); font-size: 4rem; line-height: 1; margin-bottom: 0.5rem; }
+    .closing .closing-text {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 3.5vw, 2.6rem);
+      font-weight: 400;
+      line-height: 1.25;
+      max-width: 22ch;
+      margin: 0 auto;
+      position: relative;
+    }
+    .closing .sig { margin-top: 2rem; font-size: .7rem; letter-spacing: .32em; text-transform: uppercase; color: var(--color-text-muted); position: relative; }
+
+    @media (max-width: 980px) {
+      .about-split { grid-template-columns: 1fr; gap: 2.5rem; }
+      .portrait { position: static; max-width: 360px; }
+      .interests-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 520px) {
+      .interests-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+
+  <section class="about-hero">
+    <div class="container">
+      <span class="eyebrow reveal-eager">About</span>
+      <h1 class="reveal-eager" style="margin-top:1rem;">
+        A frontend engineer<br/>
+        <span class="it">with a long-term thesis.</span>
+      </h1>
+      <p class="lede reveal-eager">
+        I'm Samuel — a Senior Frontend Engineer based in Amsterdam. I build for the web,
+        love what React Native is becoming, and treat every interface as a small piece of
+        writing.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="about-split">
+        <figure class="portrait reveal" style="margin:0;">
+          <div class="frame-corner fc-tl"></div>
+          <div class="frame-corner fc-tr"></div>
+          <div class="frame-corner fc-bl"></div>
+          <div class="frame-corner fc-br"></div>
+          <span class="monogram">SR</span>
+          <div class="caption">— Samuel Reichert · MMXXVI —</div>
+        </figure>
+
+        <div class="about-text">
+          <div class="reveal" style="--reveal-delay:80ms;">
+            <span class="eyebrow">The work</span>
+            <h2 style="margin-top:1rem;">
+              Crafting interfaces that<br/>
+              <span class="it">feel inevitable.</span>
+            </h2>
+            <p style="margin-top:1.25rem;">
+              For over a decade I've shipped products in React, TypeScript and the
+              half-dozen tools that orbit them. The titles changed — engineer, lead,
+              senior — but the obsession didn't: how a screen feels when you reach for it,
+              how typography breathes at every breakpoint, how a click can feel like a
+              decision instead of a step.
+            </p>
+            <p style="margin-top:1rem;">
+              React Native pulled me back into the mobile world. There's something honest
+              about a phone in the hand — no clever pointer states, no excuses. Just
+              motion, weight, and intent.
+            </p>
+          </div>
+
+          <div class="reveal" style="--reveal-delay:160ms;">
+            <p class="pull">
+              Good software, like good tailoring, hides its seams. The user shouldn't
+              notice the work — only feel that they're in capable hands.
+            </p>
+          </div>
+
+          <div class="reveal" style="--reveal-delay:200ms;">
+            <span class="eyebrow">The person</span>
+            <h2 style="margin-top:1rem;">
+              More than a <span class="it">developer.</span>
+            </h2>
+            <p style="margin-top:1.25rem;">
+              Outside the editor I travel — slowly, when I can. I read across genres
+              (high fantasy on Sundays, Buffett's letters on Mondays). I treat investing
+              as a long game and the gym as my daily reset. The thread that ties it all
+              together is the same thing I look for in code: a pursuit of compounding
+              returns.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section interests">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Off the clock</span>
+        <h2>The four pillars <span class="serif" style="font-style:italic;color:var(--color-gold);">that keep me sharp.</span></h2>
+      </div>
+
+      <div class="interests-grid">
+        <div class="lux-card interest reveal" style="--reveal-delay:60ms;position:relative;">
+          <span class="num">— 01</span>
+          <div class="ic">✈</div>
+          <div>
+            <h3>Travel</h3>
+            <p class="body">Explorer of the world — from canal cities to mountain villages, I collect places the way some collect books.</p>
+          </div>
+        </div>
+
+        <div class="lux-card interest reveal" style="--reveal-delay:140ms;position:relative;">
+          <span class="num">— 02</span>
+          <div class="ic">◈</div>
+          <div>
+            <h3>Investing</h3>
+            <p class="body">Equities, FIIs, ETFs and Fixed Income — patiently building my own path to financial freedom.</p>
+          </div>
+        </div>
+
+        <div class="lux-card interest reveal" style="--reveal-delay:220ms;position:relative;">
+          <span class="num">— 03</span>
+          <div class="ic">❦</div>
+          <div>
+            <h3>Reading</h3>
+            <p class="body">From fantasy to finance — always learning, always taking notes in the margins.</p>
+          </div>
+        </div>
+
+        <div class="lux-card interest reveal" style="--reveal-delay:300ms;position:relative;">
+          <span class="num">— 04</span>
+          <div class="ic">⟁</div>
+          <div>
+            <h3>Fitness</h3>
+            <p class="body">The gym is my daily reset — discipline that quietly underwrites everything else.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="closing reveal">
+        <div class="quote-mark">"</div>
+        <div class="closing-text">
+          The aim is simple — <span class="gold">freedom</span>.<br/>
+          The means is patience, code, and compounding.
+        </div>
+        <div class="sig">— Long-term plan · Always shipping —</div>
+      </div>
+    </div>
   </section>
 </BaseLayout>

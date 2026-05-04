@@ -1,23 +1,231 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import CopyEmailButton from '../components/CopyEmailButton';
 import { siteConfig } from '../data/site';
 ---
 
 <BaseLayout
-  title="Contact"
-  description="Contact Samuel Reichert"
+  title="Contact — Samuel Reichert"
+  description="Let's build something great together."
   path="/contact"
 >
-  <h1>Contact</h1>
-  <p>Reach out by email or via the links below.</p>
-  <p>
-    Email: <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>{' '}
-    <CopyEmailButton client:load email={siteConfig.email} />
-  </p>
-  <ul class="bullets">
-    <li><a href={siteConfig.linkedin} rel="noopener" target="_blank">LinkedIn</a></li>
-    <li><a href={siteConfig.github} rel="noopener" target="_blank">GitHub</a></li>
-    <li><a href={siteConfig.resumeUrl} rel="noopener" target="_blank">Resume (PDF)</a></li>
-  </ul>
+  <style>
+    .ct-hero {
+      padding: clamp(4rem, 12vh, 8rem) 0 clamp(2rem, 6vh, 4rem);
+      text-align: center;
+    }
+    .ct-hero h1 {
+      font-size: clamp(3rem, 7vw, 6rem);
+      line-height: 1;
+      letter-spacing: -0.035em;
+      max-width: 16ch;
+      margin: 1.25rem auto 0;
+    }
+    .ct-hero h1 .it { font-style: italic; color: var(--color-gold); font-weight: 400; }
+    .ct-hero p.lede { margin: 1.75rem auto 0; color: var(--color-text-muted); font-size: 1.125rem; max-width: 50ch; }
+
+    .links { margin-top: 4rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .link-card {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      min-height: 240px;
+      text-align: left;
+    }
+    .link-card .top { display: flex; align-items: center; justify-content: space-between; }
+    .link-card .ic {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      border: 1px solid var(--color-border);
+      background: color-mix(in oklab, var(--color-gold) 6%, transparent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-gold);
+      transition: all .35s var(--ease-out);
+    }
+    .link-card:hover .ic {
+      background: var(--gold-gradient);
+      color: #0A0A0A;
+      border-color: transparent;
+      transform: rotate(-4deg) scale(1.05);
+    }
+    .link-card .arrow-out {
+      width: 36px; height: 36px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      border: 1px solid var(--color-border);
+      color: var(--color-text-muted);
+      transition: all .35s var(--ease-out);
+    }
+    .link-card:hover .arrow-out { border-color: var(--color-gold); color: var(--color-gold); background: color-mix(in oklab, var(--color-gold) 10%, transparent); }
+    .link-card .arrow-out svg { transition: transform .35s var(--ease-out); }
+    .link-card:hover .arrow-out svg { transform: translate(2px, -2px); }
+    .link-card .label { font-size: 0.7rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--color-text-muted); }
+    .link-card .name { font-family: var(--font-display); font-size: 2rem; font-weight: 500; line-height: 1; letter-spacing: -0.02em; }
+    .link-card .name .it { font-style: italic; }
+    .link-card .handle { color: var(--color-text-muted); font-size: 0.95rem; margin-top: -0.25rem; }
+
+    .location {
+      margin-top: 4rem;
+      padding: 2rem 2.5rem;
+      border-radius: var(--r-xl);
+      border: 1px solid var(--color-border-soft);
+      background: var(--color-card);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .loc-block { display: flex; align-items: center; gap: 1rem; }
+    .loc-ic {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      background: color-mix(in oklab, var(--color-gold) 8%, transparent);
+      border: 1px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-gold);
+    }
+    .loc-text .label { font-size: 0.68rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--color-text-muted); }
+    .loc-text .value { font-family: var(--font-display); font-style: italic; font-size: 1.4rem; color: var(--color-text); line-height: 1.1; margin-top: 0.2rem; }
+    .clock { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--color-text-muted); font-size: 0.85rem; letter-spacing: 0.06em; }
+    .clock .dot {
+      width: 6px; height: 6px;
+      border-radius: 999px;
+      background: var(--color-gold);
+      animation: pulse 2s var(--ease-in-out) infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: .4; transform: scale(.7); }
+    }
+
+    .flourish { margin-top: 5rem; text-align: center; color: var(--color-text-faint); font-size: 0.7rem; letter-spacing: 0.4em; text-transform: uppercase; }
+    .flourish .ornament { display: inline-block; color: var(--color-gold); margin: 0 0.75rem; }
+
+    @media (max-width: 880px) {
+      .links { grid-template-columns: 1fr; }
+      .location { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+
+  <section class="ct-hero">
+    <div class="container">
+      <span class="eyebrow reveal-eager" style="justify-content:center;">Contact</span>
+      <h1 class="reveal-eager">
+        Let's build something<br/>
+        <span class="it">great together.</span>
+      </h1>
+      <p class="lede reveal-eager">
+        I read every message. Whether it's a product to ship, an idea to interrogate, or
+        simply hello — pick a door below and walk through.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="links">
+        <a class="lux-card link-card reveal" href={siteConfig.linkedin} target="_blank" rel="noopener" style="--reveal-delay:60ms;">
+          <div class="top">
+            <div class="ic">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+            </div>
+            <span class="arrow-out"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+          </div>
+          <div>
+            <span class="label">Connect</span>
+            <div class="name" style="margin-top:0.5rem;">LinkedIn</div>
+            <div class="handle" style="margin-top:0.5rem;">/in/samuelreichert</div>
+          </div>
+        </a>
+
+        <a class="lux-card link-card reveal" href={siteConfig.github} target="_blank" rel="noopener" style="--reveal-delay:140ms;">
+          <div class="top">
+            <div class="ic">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.55v-2.13c-3.2.7-3.87-1.34-3.87-1.34-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.76 2.69 1.25 3.34.96.1-.74.4-1.25.72-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.15 1.18.91-.25 1.89-.38 2.86-.38.97 0 1.95.13 2.86.38 2.18-1.49 3.14-1.18 3.14-1.18.62 1.58.23 2.75.11 3.04.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.4-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.66.8.55 4.56-1.52 7.85-5.83 7.85-10.91C23.5 5.65 18.35.5 12 .5z"/></svg>
+            </div>
+            <span class="arrow-out"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+          </div>
+          <div>
+            <span class="label">Open Source</span>
+            <div class="name" style="margin-top:0.5rem;">GitHub</div>
+            <div class="handle" style="margin-top:0.5rem;">@samuelreichert</div>
+          </div>
+        </a>
+
+        <a class="lux-card link-card reveal" href={`mailto:${siteConfig.email}`} style="--reveal-delay:220ms;">
+          <div class="top">
+            <div class="ic">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+            </div>
+            <span class="arrow-out"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+          </div>
+          <div>
+            <span class="label">Direct</span>
+            <div class="name" style="margin-top:0.5rem;"><span class="it">Email</span></div>
+            <div class="handle" style="margin-top:0.5rem;">{siteConfig.email}</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="location reveal">
+        <div class="loc-block">
+          <div class="loc-ic">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-7-7.58-7-13a7 7 0 0 1 14 0c0 5.42-7 13-7 13z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          </div>
+          <div class="loc-text">
+            <div class="label">Based in</div>
+            <div class="value">Amsterdam, NL</div>
+          </div>
+        </div>
+
+        <div class="loc-block">
+          <div class="loc-ic">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          </div>
+          <div class="loc-text">
+            <div class="label">Working on</div>
+            <div class="value">CET · Central European Time</div>
+          </div>
+        </div>
+
+        <div class="clock">
+          <span class="dot"></span>
+          <span id="local-time">--:--</span>
+        </div>
+      </div>
+
+      <div class="flourish reveal">
+        <span class="ornament">✦</span>
+        Replies usually within a day
+        <span class="ornament">✦</span>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    (function () {
+      const el = document.getElementById("local-time");
+      if (!el) return;
+      function tick() {
+        try {
+          const t = new Date().toLocaleTimeString("en-GB", {
+            timeZone: "Europe/Amsterdam",
+            hour: "2-digit", minute: "2-digit"
+          });
+          el!.textContent = t + " local";
+        } catch {
+          el!.textContent = "Amsterdam local";
+        }
+      }
+      tick();
+      setInterval(tick, 30 * 1000);
+    })();
+  </script>
 </BaseLayout>
