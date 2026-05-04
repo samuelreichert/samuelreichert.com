@@ -23,7 +23,7 @@ import { siteConfig } from '../data/site';
     .ct-hero h1 .it { font-style: italic; color: var(--color-gold); font-weight: 400; }
     .ct-hero p.lede { margin: 1.75rem auto 0; color: var(--color-text-muted); font-size: 1.125rem; max-width: 50ch; }
 
-    .links { margin-top: 4rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .links { margin-top: 4rem; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
     .link-card {
       padding: 2rem;
       display: flex;
@@ -108,7 +108,7 @@ import { siteConfig } from '../data/site';
     .flourish { margin-top: 5rem; text-align: center; color: var(--color-text-faint); font-size: 0.7rem; letter-spacing: 0.4em; text-transform: uppercase; }
     .flourish .ornament { display: inline-block; color: var(--color-gold); margin: 0 0.75rem; }
 
-    @media (max-width: 880px) {
+    @media (max-width: 640px) {
       .links { grid-template-columns: 1fr; }
       .location { flex-direction: column; align-items: flex-start; }
     }
@@ -170,6 +170,20 @@ import { siteConfig } from '../data/site';
             <span class="label">Direct</span>
             <div class="name" style="margin-top:0.5rem;"><span class="it">Email</span></div>
             <div class="handle" style="margin-top:0.5rem;">{siteConfig.email}</div>
+          </div>
+        </a>
+
+        <a class="lux-card link-card reveal" href={siteConfig.resumeUrl} target="_blank" rel="noopener" style="--reveal-delay:300ms;">
+          <div class="top">
+            <div class="ic">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+            </div>
+            <span class="arrow-out"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+          </div>
+          <div>
+            <span class="label">Download</span>
+            <div class="name" style="margin-top:0.5rem;"><span class="it">Résumé</span></div>
+            <div class="handle" style="margin-top:0.5rem;">PDF · Google Docs</div>
           </div>
         </a>
       </div>
