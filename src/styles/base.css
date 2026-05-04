@@ -231,10 +231,15 @@ a { color: inherit; text-decoration: none; }
   background: color-mix(in oklab, var(--color-gold) 8%, transparent);
 }
 .theme-toggle svg { width: 18px; height: 18px; }
-.theme-toggle .icon-sun  { display: none; }
-.theme-toggle .icon-moon { display: block; }
-html.light-mode .theme-toggle .icon-sun  { display: block; }
-html.light-mode .theme-toggle .icon-moon { display: none; }
+.theme-toggle .icon-sun    { display: none; }
+.theme-toggle .icon-system { display: none; }
+.theme-toggle .icon-moon   { display: block; }
+html[data-theme="light"] .theme-toggle .icon-moon   { display: none; }
+html[data-theme="light"] .theme-toggle .icon-system { display: none; }
+html[data-theme="light"] .theme-toggle .icon-sun    { display: block; }
+html[data-theme="system"] .theme-toggle .icon-moon   { display: none; }
+html[data-theme="system"] .theme-toggle .icon-sun    { display: none; }
+html[data-theme="system"] .theme-toggle .icon-system { display: block; }
 
 /* Mobile nav */
 .nav-toggle {

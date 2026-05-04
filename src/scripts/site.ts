@@ -1,17 +1,40 @@
 (function () {
   const root = document.documentElement;
 
-  // ---------- Theme ----------
+  // ---------- Theme (dark → light → system → dark) ----------
+  function applyTheme(theme: string) {
+    if (theme === "light") {
+      root.classList.add("light-mode");
+    } else if (theme === "system") {
+      root.classList.toggle("light-mode", window.matchMedia("(prefers-color-scheme: light)").matches);
+    } else {
+      root.classList.remove("light-mode");
+    }
+    root.setAttribute("data-theme", theme);
+  }
+
   const toggle = document.querySelector(".theme-toggle");
   if (toggle) {
     toggle.addEventListener("click", () => {
-      root.classList.toggle("light-mode");
-      const mode = root.classList.contains("light-mode") ? "light" : "dark";
-      localStorage.setItem("sr-theme", mode);
-      toggle.setAttribute("aria-label",
-        mode === "light" ? "Switch to dark mode" : "Switch to light mode");
+      const current = root.getAttribute("data-theme") || "system";
+      const next = current === "dark" ? "light" : current === "light" ? "system" : "dark";
+      applyTheme(next);
+      localStorage.setItem("sr-theme", next);
+      const labels: Record<string, string> = {
+        dark: "Switch to light mode",
+        light: "Switch to system mode",
+        system: "Switch to dark mode",
+      };
+      toggle.setAttribute("aria-label", labels[next]);
     });
   }
+
+  // Update system theme when OS preference changes
+  window.matchMedia("(prefers-color-scheme: light)").addEventListener("change", (e) => {
+    if ((localStorage.getItem("sr-theme") || "system") === "system") {
+      root.classList.toggle("light-mode", e.matches);
+    }
+  });
 
   // ---------- Header opacity on scroll ----------
   const header = document.querySelector(".site-header");
