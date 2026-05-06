@@ -1,0 +1,7 @@
+{
+  "name": "GitHub Organization Page",
+  "description": "App showcasing GitHub organization details and repositories, built with React.",
+  "repo": "https://github.com/samuelreichert/gh-organization-page",
+"tags": ["TypeScript", "React", "Next.js", "React Query"],
+  "order": 4
+}

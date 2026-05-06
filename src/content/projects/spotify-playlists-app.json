@@ -1,0 +1,7 @@
+{
+  "name": "Spotify Playlists App",
+  "description": "React app for showing playlists and tracks from the Spotify API.",
+  "repo": "https://github.com/samuelreichert/spotify-playlists-app",
+  "tags": ["TypeScript", "React", "Vite", "Playwright"],
+  "order": 1
+}
