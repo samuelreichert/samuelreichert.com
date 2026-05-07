@@ -230,6 +230,10 @@ const allTags = [...new Set(entries.flatMap((e) => e.data.tags))];
     }
     @media (max-width: 640px) {
       .repo-grid { grid-template-columns: 1fr; }
+      .filters {
+        border-radius: var(--r-lg);
+        padding: 0.85rem 1rem;
+      }
     }
   </style>
 
