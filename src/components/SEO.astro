@@ -8,7 +8,7 @@ interface Props {
 }
 
 const { title, description, path = '' } = Astro.props;
-const pageTitle = title ? `${title} — ${siteConfig.name}` : siteConfig.title;
+const pageTitle = title ?? siteConfig.title;
 const pageDescription = description ?? siteConfig.description;
 const canonical = new URL(path, siteConfig.url).toString();
 ---
