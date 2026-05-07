@@ -1,8 +1,0 @@
-{
-  "name": "SWAPI Home",
-  "description": "Star Wars API explorer built with React.",
-  "repo": "https://github.com/samuelreichert/swapi-home",
-  "demo": "https://star-wars-search-api.vercel.app/",
-  "tags": ["TypeScript", "React"],
-  "order": 2
-}

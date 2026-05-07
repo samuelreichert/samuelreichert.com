@@ -14,5 +14,5 @@
     "Contributed improvements across 20+ widgets in the library, focusing on React performance, accessibility, and cross-browser compatibility.",
     "Kept the widget ecosystem up to date with regular dependency upgrades and security patches."
   ],
-  "skills": ["TypeScript", "React", "Next.js", "Tailwind CSS"]
+  "skills": ["TypeScript", "React", "MobX", "Node.js", "Jest", "Playwright"]
 }

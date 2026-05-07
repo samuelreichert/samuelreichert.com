@@ -1,7 +1,0 @@
-{
-  "name": "Blogr — Next.js + Prisma",
-  "description": "Blog platform built with Next.js, Prisma, and TypeScript.",
-  "repo": "https://github.com/samuelreichert/samuel-reichert-blogr-nextjs-prisma",
-  "tags": ["TypeScript", "Next.js", "Prisma"],
-  "order": 5
-}

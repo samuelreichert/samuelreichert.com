@@ -2,7 +2,7 @@ export const siteConfig = {
   name: 'Samuel Reichert',
   title: 'Samuel Reichert — Frontend Engineer',
   description:
-    'Frontend engineer focused on React, React Native, and Node.js with 8+ years of experience.',
+    'Frontend engineer focused on React, React Native, and Node.js with 10+ years of experience.',
   url: 'https://samuelreichert.com',
   email: 'samuelreichertt@gmail.com',
   github: 'https://github.com/samuelreichert',

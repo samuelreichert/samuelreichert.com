@@ -1,0 +1,8 @@
+{
+  "name": "Star Wars Search",
+  "description": "React app for searching Star Wars characters via the SWAPI public API.",
+  "repo": "https://github.com/samuelreichert/swapi-home",
+  "demo": "https://star-wars-search-api.vercel.app/",
+  "tags": ["TypeScript", "React", "Vite", "React Query"],
+  "order": 2
+}

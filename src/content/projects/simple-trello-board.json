@@ -3,5 +3,5 @@
   "description": "Trello-style board built with React, persisting data via LocalStorage.",
   "repo": "https://github.com/samuelreichert/simple-trello-board",
   "tags": ["JavaScript", "React"],
-  "order": 6
+  "order": 5
 }

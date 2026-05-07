@@ -11,5 +11,5 @@
     "Integrated a digital authorization payment platform into the signup flow, improving payment security and conversion rates.",
     "Developed an internal admin tool enabling the operations team to view and edit customer data, eliminating significant volumes of manual work."
   ],
-  "skills": ["React", "TypeScript", "Node.js", "GraphQL"]
+  "skills": ["React", "TypeScript", "Node.js", "GraphQL", "React Native", "Next.js"]
 }
