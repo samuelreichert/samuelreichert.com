@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#0A0A0A"/>
+  <ellipse cx="600" cy="180" rx="520" ry="220" fill="rgba(201,168,76,0.07)"/>
+  <line x1="64" y1="210" x2="200" y2="210" stroke="#C9A84C" stroke-width="1"/>
+  <text x="64" y="302" font-family="Georgia, serif" font-size="70" font-weight="500" fill="#F5F2EA" letter-spacing="-1">Samuel Reichert</text>
+  <text x="64" y="358" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#8A7A5A" letter-spacing="5">SENIOR FRONTEND ENGINEER</text>
+  <line x1="64" y1="406" x2="1136" y2="406" stroke="#1E1E1E" stroke-width="1"/>
+  <text x="64" y="448" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#4A4030" letter-spacing="4">REACT  ·  TYPESCRIPT  ·  REACT NATIVE  ·  ASTRO</text>
+  <text x="64" y="578" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#3A3028" letter-spacing="3">samuelreichert.com</text>
+  <circle cx="1136" cy="578" r="7" fill="#C9A84C"/>
+</svg>
