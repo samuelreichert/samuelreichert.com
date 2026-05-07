@@ -30,6 +30,32 @@ const { title, description, path } = Astro.props;
     />
     <SEO title={title} description={description} path={path} />
     <ClientRouter />
+    <style is:global>
+      @keyframes vt-exit {
+        from { opacity: 1; transform: translateY(0); }
+        to   { opacity: 0; transform: translateY(-12px); }
+      }
+
+      @keyframes vt-enter {
+        from { opacity: 0; transform: translateY(12px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+
+      ::view-transition-old(root) {
+        animation: vt-exit 400ms cubic-bezier(.65,.05,.25,1) both;
+      }
+
+      ::view-transition-new(root) {
+        animation: vt-enter 550ms cubic-bezier(.2,.7,.2,1) 380ms both;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        ::view-transition-old(root),
+        ::view-transition-new(root) {
+          animation: none !important;
+        }
+      }
+    </style>
     <script is:inline>
       (function () {
         const t = localStorage.getItem("sr-theme") || "system";
@@ -54,23 +80,5 @@ const { title, description, path } = Astro.props;
       import "../scripts/site.ts";
     </script>
   </body>
-  <style is:global>
-    @keyframes vt-exit {
-      from { opacity: 1; transform: translateY(0); }
-      to   { opacity: 0; transform: translateY(-12px); }
-    }
 
-    @keyframes vt-enter {
-      from { opacity: 0; transform: translateY(12px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    ::view-transition-old(root) {
-      animation: vt-exit 400ms cubic-bezier(.65,.05,.25,1) both;
-    }
-
-    ::view-transition-new(root) {
-      animation: vt-enter 550ms cubic-bezier(.2,.7,.2,1) 380ms both;
-    }
-  </style>
 </html>

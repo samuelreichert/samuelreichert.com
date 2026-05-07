@@ -73,6 +73,17 @@ function initSite() {
   if (navEl) navEl.classList.remove("open");
   if (navToggleEl) navToggleEl.setAttribute("aria-expanded", "false");
 
+  // Update active nav link (header persists, aria-current won't update automatically)
+  const currentPath = window.location.pathname.replace(/\/$/, '') || '/';
+  document.querySelectorAll('.nav-links a').forEach((link) => {
+    const href = (link.getAttribute('href') ?? '').replace(/\/$/, '') || '/';
+    if (href === currentPath) {
+      link.setAttribute('aria-current', 'page');
+    } else {
+      link.removeAttribute('aria-current');
+    }
+  });
+
   // Disconnect previous reveal observer before re-attaching
   if (revealObserver) {
     revealObserver.disconnect();
