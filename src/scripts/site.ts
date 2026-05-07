@@ -1,4 +1,5 @@
 let siteInitialized = false;
+let revealObserver: IntersectionObserver | null = null;
 
 function initSite() {
   const root = document.documentElement;
@@ -67,23 +68,29 @@ function initSite() {
   // ---------- Per-navigation setup ----------
 
   // Close mobile nav on each navigation (header persists, state could be stale)
-  const nav = document.querySelector(".nav");
-  const navToggle = document.querySelector(".nav-toggle");
-  if (nav) nav.classList.remove("open");
-  if (navToggle) navToggle.setAttribute("aria-expanded", "false");
+  const navEl = document.querySelector(".nav");
+  const navToggleEl = document.querySelector(".nav-toggle");
+  if (navEl) navEl.classList.remove("open");
+  if (navToggleEl) navToggleEl.setAttribute("aria-expanded", "false");
+
+  // Disconnect previous reveal observer before re-attaching
+  if (revealObserver) {
+    revealObserver.disconnect();
+    revealObserver = null;
+  }
 
   // Staggered reveal on scroll
   const reveals = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window) {
-    const io = new IntersectionObserver((entries) => {
+    revealObserver = new IntersectionObserver((entries) => {
       entries.forEach((e) => {
         if (e.isIntersecting) {
           e.target.classList.add("is-in");
-          io.unobserve(e.target);
+          revealObserver?.unobserve(e.target);
         }
       });
     }, { threshold: 0.08, rootMargin: "0px 0px -8% 0px" });
-    reveals.forEach((el) => io.observe(el));
+    reveals.forEach((el) => revealObserver!.observe(el));
   } else {
     reveals.forEach((el) => el.classList.add("is-in"));
   }
