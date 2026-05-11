@@ -7,7 +7,7 @@ interface Props {
 }
 
 const { entry, index } = Astro.props;
-const { company, companyUrl, title, startDate, endDate, description, skills } = entry.data;
+const { company, companyUrl, title, startDate, endDate, description, bullets, skills } = entry.data;
 const isCurrent = endDate === 'Present';
 
 const startYear = startDate.split('-')[0];
@@ -23,7 +23,10 @@ const delay = index * 80;
     <div class="tl-logo">{logo}</div>
     <div class="tl-body">
       <h3>
-        {title}
+        <span class="title-line">
+          {title}
+          {isCurrent && <span class="current-badge">Present</span>}
+        </span>
         <span class="role">
           {companyUrl
             ? <a href={companyUrl} rel="noopener" target="_blank">{company}</a>
@@ -31,6 +34,17 @@ const delay = index * 80;
         </span>
       </h3>
       <p>{description}</p>
+      {bullets.length > 0 && (
+        <details class="tl-more">
+          <summary>
+            <span>Highlights</span>
+            <span class="count">{bullets.length}</span>
+          </summary>
+          <ul>
+            {bullets.map((bullet) => <li>{bullet}</li>)}
+          </ul>
+        </details>
+      )}
       {skills.length > 0 && (
         <div class="stack">
           {skills.map((s) => <span>{s}</span>)}
@@ -39,7 +53,6 @@ const delay = index * 80;
     </div>
     <div class="tl-period">
       {period}
-      {isCurrent && <span class="badge">Present</span>}
     </div>
   </div>
 </div>

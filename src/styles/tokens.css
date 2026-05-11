@@ -25,7 +25,7 @@
   --grain-blend:        soft-light;
 
   /* ---------- Type ---------- */
-  --font-display:  "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  --font-display:  "Cormorant Garamond", Georgia, serif;
   --font-serif:    "Cormorant Garamond", Georgia, serif;
   --font-sans:     "Jost", "DM Sans", "Sora", -apple-system, sans-serif;
   --font-mono:     "JetBrains Mono", ui-monospace, monospace;

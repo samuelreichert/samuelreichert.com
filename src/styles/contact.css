@@ -1,0 +1,196 @@
+.ct-hero {
+  padding: clamp(4rem, 12vh, 8rem) 0 clamp(2rem, 6vh, 4rem);
+  text-align: center;
+}
+.ct-hero h1 {
+  font-size: clamp(3rem, 7vw, 6rem);
+  line-height: 1;
+  letter-spacing: -0.035em;
+  max-width: 16ch;
+  margin: 1.25rem auto 0;
+}
+.ct-hero h1 .it {
+  font-style: italic;
+  color: var(--color-gold);
+  font-weight: 400;
+}
+.ct-hero p.lede {
+  margin: 1.75rem auto 0;
+  color: var(--color-text-muted);
+  font-size: 1.125rem;
+  max-width: 50ch;
+}
+
+.links {
+  margin-top: 4rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+.link-card {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  min-height: 240px;
+  text-align: left;
+}
+.link-card .top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.link-card .ic {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  border: 1px solid var(--color-border);
+  background: color-mix(in oklab, var(--color-gold) 6%, transparent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-gold);
+  transition: all 0.35s var(--ease-out);
+}
+.link-card:hover .ic {
+  background: var(--gold-gradient);
+  color: #0a0a0a;
+  border-color: transparent;
+  transform: rotate(-4deg) scale(1.05);
+}
+.link-card .arrow-out {
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  transition: all 0.35s var(--ease-out);
+}
+.link-card:hover .arrow-out {
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+  background: color-mix(in oklab, var(--color-gold) 10%, transparent);
+}
+.link-card .arrow-out svg {
+  transition: transform 0.35s var(--ease-out);
+}
+.link-card:hover .arrow-out svg {
+  transform: translate(2px, -2px);
+}
+.link-card .label {
+  font-size: 0.7rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+.link-card .name {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.link-card .name .it {
+  font-style: italic;
+}
+.link-card .handle {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  margin-top: -0.25rem;
+}
+
+.location {
+  margin-top: 4rem;
+  padding: 2rem 2.5rem;
+  border-radius: var(--r-xl);
+  border: 1px solid var(--color-border-soft);
+  background: var(--color-card);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.loc-block {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.loc-ic {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: color-mix(in oklab, var(--color-gold) 8%, transparent);
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-gold);
+}
+.loc-text .label {
+  font-size: 0.68rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+.loc-text .value {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.4rem;
+  color: var(--color-text);
+  line-height: 1.1;
+  margin-top: 0.2rem;
+}
+.clock {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+}
+.clock .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--color-gold);
+  animation: pulse 2s var(--ease-in-out) infinite;
+}
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(0.7);
+  }
+}
+
+.flourish {
+  margin-top: 5rem;
+  text-align: center;
+  color: var(--color-text-faint);
+  font-size: 0.7rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+}
+.flourish .ornament {
+  display: inline-block;
+  color: var(--color-gold);
+  margin: 0 0.75rem;
+}
+
+@media (max-width: 640px) {
+  .links {
+    grid-template-columns: 1fr;
+  }
+  .location {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

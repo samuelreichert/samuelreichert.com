@@ -38,12 +38,43 @@ const jsonLd = {
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <script is:inline src="/theme-init.js"></script>
+    <script is:inline>
+      (function () {
+        var theme = "system";
+
+        try {
+          var storedTheme = localStorage.getItem("sr-theme");
+          if (
+            storedTheme === "dark" ||
+            storedTheme === "light" ||
+            storedTheme === "system"
+          ) {
+            theme = storedTheme;
+          }
+        } catch (error) {
+          theme = "system";
+        }
+
+        document.documentElement.setAttribute("data-theme", theme);
+
+        if (theme === "light") {
+          document.documentElement.classList.add("light-mode");
+        } else if (
+          theme === "system" &&
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: light)").matches
+        ) {
+          document.documentElement.classList.add("light-mode");
+        } else {
+          document.documentElement.classList.remove("light-mode");
+        }
+      })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <SEO title={title} description={description} path={path} />
-    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
     <ClientRouter />
     <style is:global>
       @keyframes vt-exit {

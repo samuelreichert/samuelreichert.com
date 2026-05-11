@@ -1,77 +1,185 @@
 let siteInitialized = false;
 let revealObserver: IntersectionObserver | null = null;
+let localTimeInterval: number | null = null;
+let prefersLightQuery: MediaQueryList | null = null;
+
+type ThemeMode = "dark" | "light" | "system";
+
+const THEME_STORAGE_KEY = "sr-theme";
+const THEME_LABELS: Record<ThemeMode, string> = {
+  dark: "Switch to light mode",
+  light: "Switch to system mode",
+  system: "Switch to dark mode",
+};
+
+function isThemeMode(value: string | null): value is ThemeMode {
+  return value === "dark" || value === "light" || value === "system";
+}
+
+function getStoredTheme(): ThemeMode {
+  try {
+    const storedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+    return isThemeMode(storedTheme) ? storedTheme : "system";
+  } catch {
+    return "system";
+  }
+}
+
+function getSystemPrefersLight(): boolean {
+  return window.matchMedia("(prefers-color-scheme: light)").matches;
+}
+
+function applyTheme(theme: ThemeMode) {
+  const root = document.documentElement;
+
+  if (theme === "light") {
+    root.classList.add("light-mode");
+  } else if (theme === "system") {
+    root.classList.toggle("light-mode", getSystemPrefersLight());
+  } else {
+    root.classList.remove("light-mode");
+  }
+
+  root.setAttribute("data-theme", theme);
+}
+
+function syncThemeToggle(theme: ThemeMode) {
+  document.querySelectorAll(".theme-toggle").forEach((toggle) => {
+    toggle.setAttribute("aria-label", THEME_LABELS[theme]);
+  });
+}
+
+function getNextTheme(theme: ThemeMode): ThemeMode {
+  if (theme === "dark") return "light";
+  if (theme === "light") return "system";
+  return "dark";
+}
+
+function storeTheme(theme: ThemeMode) {
+  try {
+    localStorage.setItem(THEME_STORAGE_KEY, theme);
+  } catch {
+    // Keep the visual theme working even if storage is unavailable.
+  }
+}
+
+function syncLocalTime() {
+  const localTime = document.getElementById("local-time");
+  if (!localTime) return;
+  const localTimeEl = localTime;
+
+  function tick() {
+    try {
+      const time = new Date().toLocaleTimeString("en-GB", {
+        timeZone: "Europe/Amsterdam",
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+      localTimeEl.textContent = `${time} local`;
+    } catch {
+      localTimeEl.textContent = "Amsterdam local";
+    }
+  }
+
+  tick();
+  localTimeInterval = window.setInterval(tick, 30 * 1000);
+}
+
+function setMobileNavOpen(open: boolean) {
+  const nav = document.querySelector(".nav");
+  const navToggle = document.querySelector(".nav-toggle");
+
+  nav?.classList.toggle("open", open);
+  navToggle?.setAttribute("aria-expanded", open ? "true" : "false");
+  navToggle?.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+}
+
+function onDocumentClick(event: MouseEvent) {
+  const target = event.target;
+  if (!(target instanceof Element)) return;
+
+  const themeToggle = target.closest(".theme-toggle");
+  if (themeToggle) {
+    const next = getNextTheme(getStoredTheme());
+    applyTheme(next);
+    storeTheme(next);
+    syncThemeToggle(next);
+    return;
+  }
+
+  const navToggle = target.closest(".nav-toggle");
+  if (navToggle) {
+    const nav = document.querySelector(".nav");
+    setMobileNavOpen(!nav?.classList.contains("open"));
+    return;
+  }
+
+  if (target.closest(".nav-links a")) {
+    setMobileNavOpen(false);
+  }
+}
+
+function onDocumentKeydown(event: KeyboardEvent) {
+  if (event.key === "Escape") {
+    setMobileNavOpen(false);
+  }
+}
+
+function onScroll() {
+  const header = document.querySelector(".site-header");
+  if (!header) return;
+
+  if (window.scrollY > 12) header.classList.add("scrolled");
+  else header.classList.remove("scrolled");
+}
+
+function onBeforeSwap(event: Event) {
+  const newDocument = (event as Event & { newDocument?: Document }).newDocument;
+  if (!newDocument) return;
+
+  const root = document.documentElement;
+  const nextRoot = newDocument.documentElement;
+  const theme = root.getAttribute("data-theme") ?? "system";
+
+  nextRoot.setAttribute("data-theme", theme);
+  nextRoot.classList.toggle("light-mode", root.classList.contains("light-mode"));
+}
 
 function initSite() {
-  const root = document.documentElement;
+  const selectedTheme = getStoredTheme();
+  applyTheme(selectedTheme);
+  syncThemeToggle(selectedTheme);
 
   // ---------- One-time setup (header persists across navigations) ----------
   if (!siteInitialized) {
     siteInitialized = true;
 
-    // Theme (dark → light → system → dark)
-    function applyTheme(theme: string) {
-      if (theme === "light") {
-        root.classList.add("light-mode");
-      } else if (theme === "system") {
-        root.classList.toggle("light-mode", window.matchMedia("(prefers-color-scheme: light)").matches);
-      } else {
-        root.classList.remove("light-mode");
-      }
-      root.setAttribute("data-theme", theme);
-    }
+    document.addEventListener("click", onDocumentClick);
+    document.addEventListener("keydown", onDocumentKeydown);
+    document.addEventListener("astro:before-swap", onBeforeSwap);
 
-    const toggle = document.querySelector(".theme-toggle");
-    if (toggle) {
-      toggle.addEventListener("click", () => {
-        const current = root.getAttribute("data-theme") || "system";
-        const next = current === "dark" ? "light" : current === "light" ? "system" : "dark";
-        applyTheme(next);
-        localStorage.setItem("sr-theme", next);
-        const labels: Record<string, string> = {
-          dark: "Switch to light mode",
-          light: "Switch to system mode",
-          system: "Switch to dark mode",
-        };
-        toggle.setAttribute("aria-label", labels[next]);
-      });
-    }
-
-    window.matchMedia("(prefers-color-scheme: light)").addEventListener("change", (e) => {
-      if ((localStorage.getItem("sr-theme") || "system") === "system") {
-        root.classList.toggle("light-mode", e.matches);
+    prefersLightQuery = window.matchMedia("(prefers-color-scheme: light)");
+    prefersLightQuery.addEventListener("change", (e) => {
+      if (getStoredTheme() === "system") {
+        document.documentElement.classList.toggle("light-mode", e.matches);
+        document.documentElement.setAttribute("data-theme", "system");
+        syncThemeToggle("system");
       }
     });
 
-    // Header scroll opacity
-    const header = document.querySelector(".site-header");
-    if (header) {
-      const onScroll = () => {
-        if (window.scrollY > 12) header.classList.add("scrolled");
-        else header.classList.remove("scrolled");
-      };
-      onScroll();
-      window.addEventListener("scroll", onScroll, { passive: true });
-    }
-
-    // Mobile nav toggle
-    const navToggle = document.querySelector(".nav-toggle");
-    const nav = document.querySelector(".nav");
-    if (navToggle && nav) {
-      navToggle.addEventListener("click", () => {
-        nav.classList.toggle("open");
-        const open = nav.classList.contains("open");
-        navToggle.setAttribute("aria-expanded", open ? "true" : "false");
-      });
-    }
+    window.addEventListener("scroll", onScroll, { passive: true });
   }
 
   // ---------- Per-navigation setup ----------
+  onScroll();
+
+  if (localTimeInterval) {
+    window.clearInterval(localTimeInterval);
+    localTimeInterval = null;
+  }
 
   // Close mobile nav on each navigation (header persists, state could be stale)
-  const navEl = document.querySelector(".nav");
-  const navToggleEl = document.querySelector(".nav-toggle");
-  if (navEl) navEl.classList.remove("open");
-  if (navToggleEl) navToggleEl.setAttribute("aria-expanded", "false");
+  setMobileNavOpen(false);
 
   // Update active nav link (header persists, aria-current won't update automatically)
   const currentPath = window.location.pathname.replace(/\/$/, '') || '/';
@@ -111,6 +219,8 @@ function initSite() {
     (el as HTMLElement).style.setProperty("--reveal-delay", `${i * 90}ms`);
     requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add("is-in")));
   });
+
+  syncLocalTime();
 }
 
 document.addEventListener("astro:page-load", initSite);
