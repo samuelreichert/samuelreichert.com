@@ -8,9 +8,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
 <header class="site-header">
   <div class="container">
     <nav class="nav" aria-label="Primary">
-      <a href="/" class="brand" aria-label="Samuel Reichert — home">
-        Samuel<span class="dot"></span>
-      </a>
+      <a href="/" class="brand" aria-label="Samuel Reichert — home">Samuel</a>
       <ul class="nav-links">
         {
           siteConfig.nav.map((item) => (
