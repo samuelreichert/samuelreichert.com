@@ -3,5 +3,5 @@
   "description": "Next.js app for Chuck Norris jokes with starring feature",
   "repo": "https://github.com/samuelreichert/chuck-norris-jokes",
   "tags": ["TypeScript", "React", "Next.js", "React Query"],
-  "order": 3
+  "order": 9
 }
