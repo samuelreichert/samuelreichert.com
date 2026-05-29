@@ -1,4 +1,4 @@
-import { useState, type CSSProperties } from 'react';
+import { useState } from 'react';
 
 export interface ProjectFilterItem {
   id: string;
@@ -8,7 +8,6 @@ export interface ProjectFilterItem {
   demo?: string;
   tags: string[];
   lang: string;
-  dotColor: string;
   delay: number;
 }
 
@@ -105,11 +104,10 @@ export default function ProjectFilter({ tags, projects }: ProjectFilterProps) {
 
           return (
             <div
-              className="lux-card repo-card reveal is-in"
+              className={`lux-card repo-card reveal is-in reveal-delay-${project.delay}`}
               data-tags={project.tags.join(',')}
               hidden={!isVisible}
               key={project.id}
-              style={{ '--reveal-delay': `${project.delay}ms` } as CSSProperties}
             >
               <div className="top">
                 <span className="name">
@@ -140,19 +138,16 @@ export default function ProjectFilter({ tags, projects }: ProjectFilterProps) {
                 </div>
               </div>
               <p className="desc">{project.description}</p>
-              <div className="meta">
-                <span className="lang">
-                  <span
-                    className="lang-dot"
-                    style={{ background: project.dotColor }}
-                  />
-                  {project.lang}
-                </span>
-                {project.tags.length > 1 && (
-                  <span className="tags-extra muted">
-                    {project.tags.slice(1).join(' \u00b7 ')}
+              <div
+                className="tag-list"
+                data-count={project.tags.length}
+                aria-label={`${project.name} tags`}
+              >
+                {project.tags.map((tag) => (
+                  <span className="project-tag" key={tag}>
+                    {tag}
                   </span>
-                )}
+                ))}
               </div>
             </div>
           );

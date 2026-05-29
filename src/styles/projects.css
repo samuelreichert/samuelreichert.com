@@ -1,8 +1,3 @@
-.proj-hero { padding: clamp(3rem, 8vh, 6rem) 0 clamp(2rem, 4vh, 3rem); }
-.proj-hero h1 { font-size: var(--fs-display); line-height: 1; max-width: 14ch; }
-.proj-hero h1 .it { font-style: italic; color: var(--color-gold); font-weight: 400; }
-.proj-hero p.lede { margin-top: 1.5rem; color: var(--color-text-muted); font-size: 1.125rem; max-width: 56ch; }
-
 .filters {
   margin-top: 2.5rem;
   display: flex;
@@ -62,33 +57,39 @@
 }
 .repo-card .name svg { color: var(--color-gold); }
 .repo-card .desc { color: var(--color-text-muted); font-size: 0.95rem; line-height: 1.55; flex: 1; }
-.repo-card .meta {
-  display: flex;
-  align-items: center;
-  gap: 1.25rem;
+.repo-card .tag-list {
+  display: grid;
+  gap: 0.5rem;
   padding-top: 1rem;
   border-top: 1px solid var(--color-rule);
-  font-size: 0.82rem;
-  color: var(--color-text-muted);
-  flex-wrap: wrap;
 }
-.repo-card .meta .lang { display: inline-flex; align-items: center; gap: 0.4rem; }
-.repo-card .meta .lang-dot { width: 9px; height: 9px; border-radius: 999px; display: inline-block; }
-.repo-card .arrow-out {
-  width: 36px; height: 36px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 999px;
-  border: 1px solid var(--color-border);
-  color: var(--color-text-muted);
-  transition: all .3s var(--ease-out);
-  flex-shrink: 0;
+.repo-card .tag-list[data-count="1"] {
+  grid-template-columns: 1fr;
 }
-.repo-card:hover .arrow-out {
-  border-color: var(--color-gold);
-  color: var(--color-gold);
-  background: color-mix(in oklab, var(--color-gold) 10%, transparent);
+.repo-card .tag-list[data-count="2"] {
+  grid-template-columns: repeat(2, 1fr);
+}
+.repo-card .tag-list[data-count="3"] {
+  grid-template-columns: repeat(3, 1fr);
+}
+.repo-card .tag-list[data-count="4"] {
+  grid-template-columns: repeat(2, 1fr);
+}
+.repo-card .project-tag {
+  min-width: 0;
+  padding: 0.42rem 0.65rem;
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--r-pill);
+  color: var(--color-text-muted);
+  background: color-mix(in oklab, var(--color-bg-elev) 50%, transparent);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .repo-card .card-links {
   display: flex;
@@ -181,9 +182,12 @@ html.light-mode .phone {
 .phone-screen .ps-title { margin-top: 0.5rem; font-family: var(--font-display); font-size: 1.3rem; font-style: italic; color: var(--color-text); line-height: 1.2; position: relative; }
 
 .rn-text { position: relative; z-index: 1; }
-.rn-text h2 { font-size: clamp(2rem, 4vw, 3.25rem); line-height: 1; }
+.rn-text h2 { font-size: var(--fs-h2); line-height: 1; }
 .rn-text h2 .it { font-style: italic; color: var(--color-gold); font-weight: 400; }
 .rn-text p { margin-top: 1.25rem; color: var(--color-text-muted); font-size: 1.05rem; line-height: 1.65; max-width: 48ch; }
+#projects-next {
+  max-width: 24ch;
+}
 .rn-text .tease {
   margin-top: 2rem;
   display: inline-flex;

@@ -1,7 +1,7 @@
-.about-hero { padding: clamp(3rem, 8vh, 6rem) 0 clamp(2rem, 4vh, 3rem); }
-.about-hero h1 { font-size: var(--fs-display); line-height: 1; max-width: 16ch; }
-.about-hero h1 .it { font-style: italic; font-weight: 400; color: var(--color-gold); }
-.about-hero p.lede { margin-top: 1.5rem; color: var(--color-text-muted); font-size: 1.15rem; max-width: 56ch; }
+.about-hero {
+  --page-hero-title-width: 16ch;
+  --page-hero-lede-size: 1.15rem;
+}
 
 .about-split {
   display: grid;
@@ -14,6 +14,7 @@
 .portrait {
   position: sticky;
   top: 100px;
+  margin: 0;
   aspect-ratio: 4 / 5;
   border-radius: var(--r-xl);
   overflow: hidden;
@@ -68,9 +69,10 @@
 }
 
 .about-text { display: flex; flex-direction: column; gap: 2.5rem; }
-.about-text h2 { font-size: 2.4rem; line-height: 1.05; }
-.about-text h2 .it { font-style: italic; color: var(--color-gold); font-weight: 400; }
-.about-text p { color: var(--color-text-muted); font-size: 1.075rem; line-height: 1.7; max-width: 60ch; }
+.about-text h2 { margin-top: 1rem; }
+.about-text h2 { font-size: var(--fs-h2); line-height: 1.05; }
+.about-text p { margin-top: 1.25rem; color: var(--color-text-muted); font-size: 1.075rem; line-height: 1.7; max-width: 60ch; }
+.about-text p + p { margin-top: 1rem; }
 .about-text .pull {
   font-family: var(--font-display);
   font-style: italic;
@@ -90,6 +92,7 @@
   margin-top: 2rem;
 }
 .interest {
+  position: relative;
   padding: 2rem 1.75rem 1.75rem;
   min-height: 280px;
   display: flex;
@@ -107,7 +110,7 @@
   background: color-mix(in oklab, var(--color-gold) 6%, transparent);
   font-size: 1.4rem;
 }
-.interest h3 { margin-top: 1.5rem; font-family: var(--font-display); font-size: 1.7rem; font-weight: 500; line-height: 1; }
+.interest h3 { margin-top: 1.5rem; font-family: var(--font-display); font-size: var(--fs-h3); font-weight: 500; line-height: 1; }
 .interest .body { margin-top: 0.6rem; color: var(--color-text-muted); font-size: 0.95rem; line-height: 1.55; }
 .interest .num {
   position: absolute;
@@ -144,7 +147,7 @@ html.light-mode .closing::before {
   font-size: clamp(1.75rem, 3.5vw, 2.6rem);
   font-weight: 400;
   line-height: 1.25;
-  max-width: 22ch;
+  max-width: 42ch;
   margin: 0 auto;
   position: relative;
 }
@@ -155,6 +158,6 @@ html.light-mode .closing::before {
   .portrait { position: static; max-width: 360px; }
   .interests-grid { grid-template-columns: repeat(2, 1fr); }
 }
-@media (max-width: 520px) {
+@media (max-width: 640px) {
   .interests-grid { grid-template-columns: 1fr; }
 }

@@ -11,9 +11,9 @@ export const siteConfig = {
     'https://docs.google.com/document/d/1hEMCGXnCpBwDHi2ZeiyWFHiCd9eKm7nkOpoBeCLR94E/export?format=pdf',
   nav: [
     { href: '/', label: 'Home' },
-    { href: '/about', label: 'About' },
-    { href: '/experience', label: 'Experience' },
     { href: '/projects', label: 'Projects' },
+    { href: '/experience', label: 'Experience' },
+    { href: '/about', label: 'About' },
     { href: '/contact', label: 'Contact' },
   ],
 } as const;

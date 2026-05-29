@@ -10,11 +10,9 @@ import "../styles/contact.css";
   description="Let's build something great together."
   path="/contact"
 >
-  <section class="ct-hero">
+  <section class="page-hero page-hero--center ct-hero">
     <div class="container">
-      <span class="eyebrow reveal-eager" style="justify-content:center;"
-        >Contact</span
-      >
+      <span class="eyebrow eyebrow-center reveal-eager">Contact</span>
       <h1 class="reveal-eager">
         Let's build something<br />
         <span class="it">great together.</span>
@@ -26,94 +24,94 @@ import "../styles/contact.css";
     </div>
   </section>
 
-  <section class="section" style="padding-top:0;">
+  <section class="section section-flush">
     <div class="container">
       <div class="links">
         <a
-          class="lux-card link-card reveal"
+          class="lux-card link-card reveal reveal-delay-60"
           href={siteConfig.linkedin}
           target="_blank"
           rel="noopener"
-          style="--reveal-delay:60ms;"
         >
           <div class="top">
             <div class="ic">
               <Icon name="linkedin" size={22} />
             </div>
-            <span class="arrow-out"><Icon name="external-link" size={14} /></span>
+            <span class="arrow-out"
+              ><Icon name="external-link" size={14} /></span
+            >
           </div>
           <div>
             <span class="label">Connect</span>
-            <div class="name" style="margin-top:0.5rem;">LinkedIn</div>
-            <div class="handle" style="margin-top:0.5rem;">
-              /in/samuelreichert
-            </div>
+            <div class="name">LinkedIn</div>
+            <div class="handle">/in/samuelreichert</div>
           </div>
         </a>
 
         <a
-          class="lux-card link-card reveal"
+          class="lux-card link-card reveal reveal-delay-140"
           href={siteConfig.github}
           target="_blank"
           rel="noopener"
-          style="--reveal-delay:140ms;"
         >
           <div class="top">
             <div class="ic">
               <Icon name="github" size={22} />
             </div>
-            <span class="arrow-out"><Icon name="external-link" size={14} /></span>
+            <span class="arrow-out"
+              ><Icon name="external-link" size={14} /></span
+            >
           </div>
           <div>
             <span class="label">Open Source</span>
-            <div class="name" style="margin-top:0.5rem;">GitHub</div>
-            <div class="handle" style="margin-top:0.5rem;">@samuelreichert</div>
+            <div class="name">GitHub</div>
+            <div class="handle">@samuelreichert</div>
           </div>
         </a>
 
         <a
-          class="lux-card link-card reveal"
+          class="lux-card link-card reveal reveal-delay-220"
           href={`mailto:${siteConfig.email}`}
-          style="--reveal-delay:220ms;"
         >
           <div class="top">
             <div class="ic">
               <Icon name="mail" size={22} />
             </div>
-            <span class="arrow-out"><Icon name="external-link" size={14} /></span>
+            <span class="arrow-out"
+              ><Icon name="external-link" size={14} /></span
+            >
           </div>
           <div>
             <span class="label">Direct</span>
-            <div class="name" style="margin-top:0.5rem;">
+            <div class="name">
               <span class="it">Email</span>
             </div>
-            <div class="handle" style="margin-top:0.5rem;">
+            <div class="handle">
               {siteConfig.email}
             </div>
           </div>
         </a>
 
         <a
-          class="lux-card link-card reveal"
+          class="lux-card link-card reveal reveal-delay-300"
           href={siteConfig.resumeUrl}
           target="_blank"
           rel="noopener"
-          style="--reveal-delay:300ms;"
         >
           <div class="top">
             <div class="ic">
               <Icon name="file" size={22} />
             </div>
-            <span class="arrow-out"><Icon name="external-link" size={14} /></span>
+            <span class="arrow-out"
+              ><Icon name="external-link" size={14} /></span
+            >
           </div>
           <div>
             <span class="label">Download</span>
-            <div class="name" style="margin-top:0.5rem;">
-              <span class="it">Résumé</span>
+            <div class="name">
+              <span class="it">CV</span>
             </div>
-            <div class="handle" style="margin-top:0.5rem;">
-              PDF · Google Docs
-            </div>
+            <div class="handle">PDF · Google Docs</div>
           </div>
         </a>
       </div>
@@ -146,5 +144,4 @@ import "../styles/contact.css";
       </div>
     </div>
   </section>
-
 </BaseLayout>

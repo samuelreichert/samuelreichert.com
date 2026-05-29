@@ -10,7 +10,6 @@ const projects: ProjectFilterItem[] = [
     repo: 'https://github.com/example/one',
     tags: ['TypeScript', 'React'],
     lang: 'TypeScript',
-    dotColor: '#3178c6',
     delay: 60,
   },
   {
@@ -20,7 +19,6 @@ const projects: ProjectFilterItem[] = [
     repo: 'https://github.com/example/two',
     tags: ['JavaScript', 'React'],
     lang: 'JavaScript',
-    dotColor: '#f1e05a',
     delay: 120,
   },
   {
@@ -30,7 +28,6 @@ const projects: ProjectFilterItem[] = [
     repo: 'https://github.com/example/three',
     tags: ['Astro'],
     lang: 'Astro',
-    dotColor: '#ff5d01',
     delay: 180,
   },
 ];

@@ -1,7 +1,57 @@
 ---
 import "../styles/home.css";
+import { getCollection } from "astro:content";
 import Icon from "../components/icons/Icon.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+const featuredProjectIds = [
+  "spotify-playlists-app",
+  "star-wars-search",
+  "simple-trello-board",
+];
+
+const projectsById = new Map(
+  (await getCollection("projects")).map((project) => [project.id, project]),
+);
+
+const projectEntries = featuredProjectIds
+  .map((id) => projectsById.get(id))
+  .filter((project) => project !== undefined);
+
+const capabilities = [
+  {
+    label: "React platforms",
+    text: "Modern React and TypeScript work for product teams that need reliable UI foundations.",
+  },
+  {
+    label: "Product flows",
+    text: "Interfaces, states, and journeys shaped around real user intent and business context.",
+  },
+  {
+    label: "React Native",
+    text: "Mobile features built with the same care for performance, polish, and maintainability.",
+  },
+  {
+    label: "Frontend quality",
+    text: "Accessibility, performance, testing, and component decisions teams can keep building on.",
+  },
+];
+
+const stats = [
+  { value: "10+", label: "Years across product and consultancy teams" },
+  {
+    value: "React",
+    label: "Senior frontend work in production platforms",
+  },
+  {
+    value: "Mobile",
+    label: "React Native apps for commerce, energy, and grocery",
+  },
+  {
+    value: "Quality",
+    label: "Performance, accessibility, testing, and UX polish",
+  },
+];
 ---
 
 <BaseLayout
@@ -9,178 +59,204 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   description="The personal site of Samuel Reichert. Senior Frontend Engineer, React Native developer, builder."
   path="/"
 >
+  <div class="home-page">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container">
+        <h1 class="reveal-eager">
+          <span class="hero-name">Samuel Reichert</span>
+          <span class="hero-role">Senior Frontend Engineer</span>
+        </h1>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="container">
-      <span class="hero-eyebrow reveal-eager">
-        <span class="dot"></span>
-        <span class="label">Focused on current work</span>
-      </span>
+        <div
+          class="hero-sub reveal-eager"
+          aria-label="10 plus years, mobile apps, performance, accessibility"
+        >
+          <span>10+ Years</span>
+          <span class="sep">·</span>
+          <span>Mobile Apps</span>
+          <span class="sep">·</span>
+          <span>Performance</span>
+          <span class="sep">·</span>
+          <span>Accessibility</span>
+        </div>
 
-      <h1 class="reveal-eager">
-        Samuel <span class="ampersand">&amp;</span> the<br />
-        <span class="italic">craft</span> of interfaces.
-      </h1>
-
-      <div
-        class="hero-sub reveal-eager"
-        aria-label="Senior Frontend Engineer, React Native, Builder"
-      >
-        <span>Senior</span>
-        <span>Frontend</span>
-        <span class="sep">·</span>
-        <span>React Native</span>
-        <span class="sep">·</span>
-        <span>Builder</span>
-      </div>
-
-      <p class="hero-tag reveal-eager">
-        I design and engineer products where every pixel earns its place —
-        modern web, mobile, and the quiet details that make software feel
-        inevitable.
-      </p>
-
-      <div class="hero-cta reveal-eager">
-        <a class="btn btn-primary" href="/projects">
-          View Projects
-          <Icon name="arrow-right" class="arrow" size={14} />
-        </a>
-        <a class="btn btn-ghost" href="/about">
-          My Story
-          <Icon name="arrow-right" class="arrow" size={14} />
-        </a>
-      </div>
-
-      <div class="hero-marquee reveal-eager">
-        <span>React</span><span class="star">✦</span>
-        <span>TypeScript</span><span class="star">✦</span>
-        <span>React Native</span><span class="star">✦</span>
-        <span>Next.js</span><span class="star">✦</span>
-        <span>Astro</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- Preview cards -->
-  <section class="section">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">The Site</span>
-        <h2>
-          Three doors. <span
-            class="serif"
-            style="font-style:italic;color:var(--color-gold);">One story.</span>
-        </h2>
-        <p class="muted" style="max-width:54ch;">
-          A portfolio is a conversation. Pick where you'd like to start.
+        <p class="hero-tag reveal-eager">
+          I build React, TypeScript, and React Native interfaces for product
+          teams that need clarity, speed, and frontend decisions that hold up in
+          production.
         </p>
-      </div>
 
-      <div class="preview-grid">
-        <a
-          href="/about"
-          class="lux-card preview-card reveal"
-          style="--reveal-delay:80ms;"
-        >
-          <div>
-            <div class="pc-num">— 01</div>
-            <h3>About <span class="it">me</span></h3>
-          </div>
-          <div>
-            <p class="pc-desc">
-              Who I am beyond the code — the books, the kilometres, the
-              long-term thesis.
-            </p>
-            <span class="pc-go">
-              Read more
-              <span class="arr">
-                <Icon name="arrow-right" size={12} />
-              </span>
-            </span>
-          </div>
-        </a>
-
-        <a
-          href="/experience"
-          class="lux-card preview-card reveal"
-          style="--reveal-delay:160ms;"
-        >
-          <div>
-            <div class="pc-num">— 02</div>
-            <h3>10+ years <span class="it">building</span> interfaces</h3>
-          </div>
-          <div>
-            <p class="pc-desc">
-              A chronological route through the products, teams and craft I've
-              shaped.
-            </p>
-            <span class="pc-go">
-              See timeline
-              <span class="arr">
-                <Icon name="arrow-right" size={12} />
-              </span>
-            </span>
-          </div>
-        </a>
-
-        <a
-          href="/projects"
-          class="lux-card preview-card reveal"
-          style="--reveal-delay:240ms;"
-        >
-          <div>
-            <div class="pc-num">— 03</div>
-            <h3>What I've <span class="it">shipped</span></h3>
-          </div>
-          <div>
-            <p class="pc-desc">
-              Open source, side bets, and the mobile work taking shape behind
-              the curtain.
-            </p>
-            <span class="pc-go">
-              Browse projects
-              <span class="arr">
-                <Icon name="arrow-right" size={12} />
-              </span>
-            </span>
-          </div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Personal snapshot -->
-  <section class="section" style="padding-top:0;">
-    <div class="container">
-      <div class="snapshot reveal">
-        <div class="snapshot-label">
-          <span class="eyebrow">Off the keyboard</span>
-          <div class="label-text">A life shaped by curiosity.</div>
+        <div class="hero-cta reveal-eager">
+          <a class="btn btn-primary" href="/projects">
+            View Projects
+            <Icon name="arrow-right" class="arrow" size={14} />
+          </a>
+          <a class="btn btn-ghost" href="/contact">
+            Contact Me
+            <Icon name="arrow-right" class="arrow" size={14} />
+          </a>
         </div>
-        <div class="snapshot-items">
-          <div class="snap-item">
-            <span class="sym">✈</span>
-            <span class="nm">Travel</span>
-            <span class="ds">New cities, slowly.</span>
-          </div>
-          <div class="snap-item">
-            <span class="sym">◈</span>
-            <span class="nm">Investing</span>
-            <span class="ds">Long-term horizon.</span>
-          </div>
-          <div class="snap-item">
-            <span class="sym">❦</span>
-            <span class="nm">Reading</span>
-            <span class="ds">Fantasy to finance.</span>
-          </div>
-          <div class="snap-item">
-            <span class="sym">⟁</span>
-            <span class="nm">Fitness</span>
-            <span class="ds">Weekly reset.</span>
-          </div>
+
+        <div class="hero-marquee reveal-eager">
+          <span>React</span><span class="star">✦</span>
+          <span>TypeScript</span><span class="star">✦</span>
+          <span>React Native</span><span class="star">✦</span>
+          <span>Next.js</span><span class="star">✦</span>
+          <span>Astro</span>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <!-- Guided overview -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">What I do</span>
+          <h2>
+            Product interfaces with a
+            <span class="it">clear shape.</span>
+          </h2>
+          <p class="muted section-copy">
+            I work where engineering taste meets product judgement: building
+            frontends that are fast to use, calm to maintain, and precise in the
+            moments users remember.
+          </p>
+        </div>
+
+        <div class="capability-grid">
+          {
+            capabilities.map((item, index) => (
+              <div
+                class={`capability reveal reveal-delay-${80 + index * 70}`}
+              >
+                <span class="capability-num">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <div>
+                  <h3>{item.label}</h3>
+                  <p>{item.text}</p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Selected work -->
+    <section class="section section-flush work-section">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Selected work</span>
+          <h2>
+            Proof before
+            <span class="it">promises.</span>
+          </h2>
+          <p class="muted section-copy">
+            A few current examples from the project archive. The full collection
+            keeps the technical trail visible.
+          </p>
+        </div>
+
+        <div class="work-grid">
+          {
+            projectEntries.map((project, index) => (
+              <a
+                href={project.data.repo}
+                class={`lux-card work-card reveal reveal-delay-${80 + index * 80}`}
+                target="_blank"
+                rel="noopener"
+              >
+                <div class="work-top">
+                  <span class="work-index">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span class="work-tags">
+                    {project.data.tags.slice(0, 2).join(" / ")}
+                  </span>
+                </div>
+                <h3>{project.data.name}</h3>
+                <p>{project.data.description}</p>
+                <span class="inline-link">
+                  View repository
+                  <Icon name="external-link" size={13} />
+                </span>
+              </a>
+            ))
+          }
+        </div>
+
+        <div class="section-action reveal">
+          <a class="btn btn-ghost" href="/projects">
+            View All Projects
+            <Icon name="arrow-right" class="arrow" size={14} />
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience snapshot -->
+    <section class="section section-flush">
+      <div class="container">
+        <div class="experience-snapshot reveal">
+          <div class="snapshot-copy">
+            <span class="eyebrow">Experience</span>
+            <h2>
+              Senior frontend work,
+              <span class="it">shipped over time.</span>
+            </h2>
+            <p>
+              Across product teams, agencies, and client environments, my work
+              has centered on turning ambiguous product needs into interfaces
+              people can understand, trust, and keep using.
+            </p>
+            <a class="btn btn-ghost" href="/experience">
+              See Experience
+              <Icon name="arrow-right" class="arrow" size={14} />
+            </a>
+          </div>
+
+          <div class="stat-stack" aria-label="Experience summary">
+            {
+              stats.map((stat) => (
+                <div class="stat-item">
+                  <span>{stat.value}</span>
+                  <p>{stat.label}</p>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Personal note and contact -->
+    <section class="section section-flush">
+      <div class="container">
+        <div class="personal-note reveal">
+          <span class="eyebrow">Beyond the work</span>
+          <p>
+            I am shaped by long-term thinking: travel, reading, investing,
+            fitness, and the habit of improving small things until they
+            compound. That same patience shows up in how I build software.
+          </p>
+        </div>
+
+        <div class="contact-band reveal">
+          <div>
+            <span class="eyebrow">Next step</span>
+            <h2>
+              Interested in building
+              <span class="it">something together?</span>
+            </h2>
+          </div>
+          <a class="btn btn-primary" href="/contact">
+            Contact Me
+            <Icon name="arrow-right" class="arrow" size={14} />
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
 </BaseLayout>

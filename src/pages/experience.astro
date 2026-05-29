@@ -3,6 +3,7 @@ import "../styles/experience.css";
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ExperienceCard from '../components/ExperienceCard.astro';
+import Icon from "../components/icons/Icon.astro";
 
 const entries = (await getCollection('experience')).sort(
   (a, b) => a.data.order - b.data.order,
@@ -15,10 +16,10 @@ const entries = (await getCollection('experience')).sort(
   path="/experience"
 >
 
-  <section class="exp-hero">
+  <section class="page-hero exp-hero">
     <div class="container">
       <span class="eyebrow reveal-eager">Experience</span>
-      <h1 class="reveal-eager" style="margin-top:1rem;">
+      <h1 class="reveal-eager">
         10+ years <span class="it">building</span> interfaces.
       </h1>
       <p class="lede reveal-eager">
@@ -28,7 +29,7 @@ const entries = (await getCollection('experience')).sort(
     </div>
   </section>
 
-  <section class="section" style="padding-top:0;">
+  <section class="section section-flush">
     <div class="container">
       <div class="timeline">
         {entries.map((entry, i) => <ExperienceCard entry={entry} index={i} />)}
@@ -37,12 +38,12 @@ const entries = (await getCollection('experience')).sort(
       <div class="skills">
         <div class="section-head reveal">
           <span class="eyebrow">Stack &amp; tools</span>
-          <h2>The instruments <span class="serif" style="font-style:italic;color:var(--color-gold);">I reach for.</span></h2>
-          <p class="muted" style="max-width:54ch;">Gold-tinted tags are the tools I'm closest to — the ones that pay rent every week.</p>
+          <h2>The instruments <span class="it">I reach for.</span></h2>
+          <p class="muted section-copy">Gold-tinted tags are the tools I'm closest to — the ones that pay rent every week.</p>
         </div>
 
         <div class="skills-grid">
-          <div class="lux-card skill-card reveal" style="--reveal-delay:60ms;">
+          <div class="lux-card skill-card reveal reveal-delay-60">
             <h3><span class="num">— 01</span> Frontend</h3>
             <div class="tags">
               <span class="tag primary">React</span>
@@ -56,7 +57,7 @@ const entries = (await getCollection('experience')).sort(
             </div>
           </div>
 
-          <div class="lux-card skill-card reveal" style="--reveal-delay:140ms;">
+          <div class="lux-card skill-card reveal reveal-delay-140">
             <h3><span class="num">— 02</span> Mobile</h3>
             <div class="tags">
               <span class="tag primary">React Native</span>
@@ -68,7 +69,7 @@ const entries = (await getCollection('experience')).sort(
             </div>
           </div>
 
-          <div class="lux-card skill-card reveal" style="--reveal-delay:220ms;">
+          <div class="lux-card skill-card reveal reveal-delay-220">
             <h3><span class="num">— 03</span> Tools &amp; Practice</h3>
             <div class="tags">
               <span class="tag">Figma</span>
@@ -82,6 +83,24 @@ const entries = (await getCollection('experience')).sort(
           </div>
         </div>
       </div>
+
+      <section class="journey-next reveal" aria-labelledby="experience-next">
+        <div>
+          <span class="eyebrow">Next step</span>
+          <h2 id="experience-next">
+            Get the human side
+            <span class="it">of the craft.</span>
+          </h2>
+          <p>
+            After the timeline, the about page gives the values and long-term
+            thinking behind how I build and collaborate.
+          </p>
+        </div>
+        <a class="btn btn-primary" href="/about">
+          Read About Me
+          <Icon name="arrow-right" class="arrow" size={14} />
+        </a>
+      </section>
     </div>
   </section>
 </BaseLayout>
