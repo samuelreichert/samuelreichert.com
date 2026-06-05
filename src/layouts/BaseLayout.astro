@@ -1,5 +1,6 @@
 ---
 import Analytics from "@vercel/analytics/astro";
+import SpeedInsights from "@vercel/speed-insights/astro";
 import { ClientRouter } from "astro:transitions";
 import "@fontsource/cormorant-garamond/400.css";
 import "@fontsource/cormorant-garamond/400-italic.css";
@@ -80,6 +81,7 @@ const jsonLd = {
     <!-- Page metadata and tracking. -->
     <SEO title={title} description={description} path={path} />
     <Analytics />
+    <SpeedInsights />
     <script
       is:inline
       type="application/ld+json"
