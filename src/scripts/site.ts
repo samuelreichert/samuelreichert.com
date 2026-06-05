@@ -216,7 +216,7 @@ function initSite() {
 
   // Eager reveals (above the fold)
   document.querySelectorAll(".reveal-eager").forEach((el, i) => {
-    (el as HTMLElement).style.setProperty("--reveal-delay", `${i * 90}ms`);
+    el.classList.add(`reveal-delay-${i * 90}`);
     requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add("is-in")));
   });
 

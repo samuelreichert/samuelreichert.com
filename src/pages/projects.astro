@@ -2,6 +2,7 @@
 import "../styles/projects.css";
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from "../components/icons/Icon.astro";
 import ProjectFilter from '../components/ProjectFilter';
 
 const entries = (await getCollection('projects')).sort(
@@ -9,15 +10,6 @@ const entries = (await getCollection('projects')).sort(
 );
 
 const allTags = [...new Set(entries.flatMap((e) => e.data.tags))];
-const langColors: Record<string, string> = {
-  TypeScript: '#3178c6',
-  JavaScript: '#f1e05a',
-  'React Native': '#61dafb',
-  CSS: '#C9A84C',
-  Astro: '#ff5d01',
-  'Next.js': '#ffffff',
-  React: '#61dafb',
-};
 const projects = entries.map((entry, index) => {
   const lang = entry.data.tags[0] ?? 'TypeScript';
 
@@ -29,7 +21,6 @@ const projects = entries.map((entry, index) => {
     demo: entry.data.demo,
     tags: entry.data.tags,
     lang,
-    dotColor: langColors[lang] ?? '#9A958A',
     delay: 60 + index * 60,
   };
 });
@@ -41,10 +32,10 @@ const projects = entries.map((entry, index) => {
   path="/projects"
 >
 
-  <section class="proj-hero">
+  <section class="page-hero proj-hero">
     <div class="container">
       <span class="eyebrow reveal-eager">Projects</span>
-      <h1 class="reveal-eager" style="margin-top:1rem;">
+      <h1 class="reveal-eager">
         What I've <span class="it">shipped.</span>
       </h1>
       <p class="lede reveal-eager">
@@ -56,12 +47,12 @@ const projects = entries.map((entry, index) => {
     </div>
   </section>
 
-  <section class="section" style="padding-top:0;">
+  <section class="section section-flush">
     <div class="container">
       <section class="rn-section">
         <div class="section-head reveal">
           <span class="eyebrow">React Native</span>
-          <h2>Mobile work, <span class="serif" style="font-style:italic;color:var(--color-gold);">behind the curtain.</span></h2>
+          <h2>Mobile work, <span class="it">behind the curtain.</span></h2>
         </div>
 
         <div class="rn-frame reveal">
@@ -90,6 +81,24 @@ const projects = entries.map((entry, index) => {
             </span>
           </div>
         </div>
+      </section>
+
+      <section class="journey-next reveal" aria-labelledby="projects-next">
+        <div>
+          <span class="eyebrow">Next step</span>
+          <h2 id="projects-next">
+            See the experience
+            <span class="it">behind the work.</span>
+          </h2>
+          <p>
+            Projects show the output. The timeline shows how that craft has
+            played out across teams, products, and senior engineering roles.
+          </p>
+        </div>
+        <a class="btn btn-primary" href="/experience">
+          View Experience
+          <Icon name="arrow-right" class="arrow" size={14} />
+        </a>
       </section>
     </div>
   </section>

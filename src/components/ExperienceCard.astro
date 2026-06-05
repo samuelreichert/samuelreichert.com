@@ -15,9 +15,10 @@ const endLabel = isCurrent ? 'Now' : endDate.split('-')[0];
 const period = `${startYear} — ${endLabel}`;
 const logo = company.charAt(0).toUpperCase();
 const delay = index * 80;
+const delayClass = `reveal-delay-${delay}`;
 ---
 
-<div class:list={['tl-item reveal', { 'is-current': isCurrent }]} style={`--reveal-delay:${delay}ms;`}>
+<div class:list={['tl-item reveal', delayClass, { 'is-current': isCurrent }]}>
   <span class="tl-dot"></span>
   <div class="lux-card tl-card">
     <div class="tl-logo">{logo}</div>
@@ -47,7 +48,7 @@ const delay = index * 80;
       )}
       {skills.length > 0 && (
         <div class="stack">
-          {skills.map((s) => <span>{s}</span>)}
+          {skills.map((s) => <span class="tag">{s}</span>)}
         </div>
       )}
     </div>

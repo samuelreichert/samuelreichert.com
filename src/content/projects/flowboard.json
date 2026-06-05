@@ -1,0 +1,7 @@
+{
+  "name": "Flowboard",
+  "description": "Kanban-style task board with drag-and-drop cards, editable descriptions, customizable backgrounds, and browser or local SQLite persistence.",
+  "repo": "https://github.com/samuelreichert/flowboard",
+  "tags": ["TypeScript", "React", "Vite", "SQLite"],
+  "order": 2
+}

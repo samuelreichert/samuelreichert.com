@@ -45,7 +45,9 @@ Luxury dark-gold aesthetic. All visual decisions flow from `src/styles/tokens.cs
 - **Cards**: `.lux-card` — grain overlay, gold shimmer border on hover, lift transform
 - **Reveals**: `.reveal` (IntersectionObserver, scroll-triggered) · `.reveal-eager` (above-fold, double-rAF)
 
-Never introduce external UI libraries, component frameworks, or utility CSS classes. All styles are co-located in the page/component or in `src/styles/`.
+Never introduce external UI libraries, component frameworks, or utility CSS classes.
+
+Additional style organization rules live in `.agents/rules/style-organization.md` and must be followed for all UI work.
 
 ## View Transitions
 
@@ -69,7 +71,7 @@ Schema defined in `src/content.config.ts`.
 - Pages: `src/pages/*.astro`
 - Layouts: `src/layouts/BaseLayout.astro` (single layout, wraps all pages)
 - Components: `src/components/` — `.astro` preferred, `.tsx` only for interactive islands
-- Styles: scoped `<style>` in components/pages; global-only in `src/styles/` or `<style is:global>` in BaseLayout
+- Styles: separate CSS files under `src/styles/`; do not use inline styles or `<style>` blocks in Astro pages/components
 - Scripts: `src/scripts/site.ts` — DOM event logic, re-runs on `astro:page-load`
 - Tests: `src/tests/` — Vitest + jsdom
 
@@ -77,6 +79,7 @@ Schema defined in `src/content.config.ts`.
 
 Follow [Conventional Commits 1.0.0](https://www.conventionalcommits.org/en/v1.0.0/) for all commit messages.
 
+- Always create commits in logical, small chunks that are readable and easy for human review. Do not stage everything into one broad commit and ship it.
 - Format: `<type>[optional scope]: <description>`
 - Use `feat:` for new features and `fix:` for bug fixes.
 - Use other clear types when appropriate, such as `docs:`, `style:`, `refactor:`, `perf:`, `test:`, `build:`, `ci:`, or `chore:`.

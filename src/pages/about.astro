@@ -1,6 +1,7 @@
 ---
 import "../styles/about.css";
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Icon from "../components/icons/Icon.astro";
 ---
 
 <BaseLayout
@@ -8,26 +9,25 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   description="Senior Frontend Engineer. React Native developer. Lover of travel, books, investing, and fitness."
   path="/about"
 >
-
-  <section class="about-hero">
+  <section class="page-hero about-hero">
     <div class="container">
       <span class="eyebrow reveal-eager">About</span>
-      <h1 class="reveal-eager" style="margin-top:1rem;">
-        A frontend engineer<br/>
+      <h1 class="reveal-eager">
+        A frontend engineer<br />
         <span class="it">with a long-term thesis.</span>
       </h1>
       <p class="lede reveal-eager">
-        I'm Samuel — a Senior Frontend Engineer based in Amsterdam. I build for the web,
-        love what React Native is becoming, and treat every interface as a small piece of
-        writing.
+        I'm Samuel — a Senior Frontend Engineer based in Rotterdam. I build for
+        the web, love what React Native is becoming, and treat every interface
+        as a small piece of writing.
       </p>
     </div>
   </section>
 
-  <section class="section" style="padding-top:0;">
+  <section class="section section-flush">
     <div class="container">
       <div class="about-split">
-        <figure class="portrait reveal" style="margin:0;">
+        <figure class="portrait reveal">
           <div class="frame-corner fc-tl"></div>
           <div class="frame-corner fc-tr"></div>
           <div class="frame-corner fc-bl"></div>
@@ -37,44 +37,46 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </figure>
 
         <div class="about-text">
-          <div class="reveal" style="--reveal-delay:80ms;">
+          <div class="reveal reveal-delay-80">
             <span class="eyebrow">The work</span>
-            <h2 style="margin-top:1rem;">
-              Crafting interfaces that<br/>
+            <h2>
+              Crafting interfaces that<br />
               <span class="it">feel inevitable.</span>
             </h2>
-            <p style="margin-top:1.25rem;">
-              For over a decade I've shipped products in React, TypeScript and the
-              half-dozen tools that orbit them. The titles changed — engineer, lead,
-              senior — but the obsession didn't: how a screen feels when you reach for it,
-              how typography breathes at every breakpoint, how a click can feel like a
-              decision instead of a step.
+            <p>
+              For over a decade I've shipped products in React, TypeScript and
+              the half-dozen tools that orbit them. The titles changed —
+              engineer, lead, senior — but the obsession didn't: how a screen
+              feels when you reach for it, how typography breathes at every
+              breakpoint, how a click can feel like a decision instead of a
+              step.
             </p>
-            <p style="margin-top:1rem;">
-              React Native pulled me back into the mobile world. There's something honest
-              about a phone in the hand — no clever pointer states, no excuses. Just
-              motion, weight, and intent.
+            <p>
+              React Native pulled me back into the mobile world. There's
+              something honest about a phone in the hand — no clever pointer
+              states, no excuses. Just motion, weight, and intent.
             </p>
           </div>
 
-          <div class="reveal" style="--reveal-delay:160ms;">
+          <div class="reveal reveal-delay-160">
             <p class="pull">
-              Good software, like good tailoring, hides its seams. The user shouldn't
-              notice the work — only feel that they're in capable hands.
+              Good software, like good tailoring, hides its seams. The user
+              shouldn't notice the work — only feel that they're in capable
+              hands.
             </p>
           </div>
 
-          <div class="reveal" style="--reveal-delay:200ms;">
+          <div class="reveal reveal-delay-200">
             <span class="eyebrow">The person</span>
-            <h2 style="margin-top:1rem;">
+            <h2>
               More than a <span class="it">developer.</span>
             </h2>
-            <p style="margin-top:1.25rem;">
-              Outside the editor I travel — slowly, when I can. I read across genres
-              (high fantasy on Sundays, Buffett's letters on Mondays). I treat investing
-              as a long game and the gym as my daily reset. The thread that ties it all
-              together is the same thing I look for in code: a pursuit of compounding
-              returns.
+            <p>
+              Outside the editor I travel — slowly, when I can. I read across
+              genres (high fantasy on Sundays, Buffett's letters on Mondays). I
+              treat investing as a long game and the gym as my daily reset. The
+              thread that ties it all together is the same thing I look for in
+              code: a pursuit of compounding returns.
             </p>
           </div>
         </div>
@@ -86,59 +88,89 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">Off the clock</span>
-        <h2>The four pillars <span class="serif" style="font-style:italic;color:var(--color-gold);">that keep me sharp.</span></h2>
+        <h2>The four pillars <span class="it">that keep me sharp.</span></h2>
       </div>
 
       <div class="interests-grid">
-        <div class="lux-card interest reveal" style="--reveal-delay:60ms;position:relative;">
+        <div class="lux-card interest reveal reveal-delay-60">
           <span class="num">— 01</span>
           <div class="ic">✈</div>
           <div>
             <h3>Travel</h3>
-            <p class="body">Explorer of the world — from canal cities to mountain villages, I collect places the way some collect books.</p>
+            <p class="body">
+              Explorer of the world — from canal cities to mountain villages, I
+              collect places the way some collect books.
+            </p>
           </div>
         </div>
 
-        <div class="lux-card interest reveal" style="--reveal-delay:140ms;position:relative;">
+        <div class="lux-card interest reveal reveal-delay-140">
           <span class="num">— 02</span>
           <div class="ic">◈</div>
           <div>
             <h3>Investing</h3>
-            <p class="body">Equities, FIIs, ETFs and Fixed Income — patiently building my own path to financial freedom.</p>
+            <p class="body">
+              Equities, FIIs, ETFs and Fixed Income — patiently building my own
+              path to financial freedom.
+            </p>
           </div>
         </div>
 
-        <div class="lux-card interest reveal" style="--reveal-delay:220ms;position:relative;">
+        <div class="lux-card interest reveal reveal-delay-220">
           <span class="num">— 03</span>
           <div class="ic">❦</div>
           <div>
             <h3>Reading</h3>
-            <p class="body">From fantasy to finance — always learning, always taking notes in the margins.</p>
+            <p class="body">
+              From fantasy to finance — always learning, always taking notes in
+              the margins.
+            </p>
           </div>
         </div>
 
-        <div class="lux-card interest reveal" style="--reveal-delay:300ms;position:relative;">
+        <div class="lux-card interest reveal reveal-delay-300">
           <span class="num">— 04</span>
           <div class="ic">⟁</div>
           <div>
             <h3>Fitness</h3>
-            <p class="body">The gym is my daily reset — discipline that quietly underwrites everything else.</p>
+            <p class="body">
+              The gym is my daily reset — discipline that quietly underwrites
+              everything else.
+            </p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section" style="padding-top:0;">
+  <section class="section section-flush">
     <div class="container">
       <div class="closing reveal">
         <div class="quote-mark">"</div>
         <div class="closing-text">
-          The aim is simple — <span class="gold">freedom</span>.<br/>
+          The aim is simple — <span class="gold">freedom</span>.<br />
           The means is patience, code, and compounding.
         </div>
         <div class="sig">— Long-term plan · Always shipping —</div>
       </div>
+
+      <section class="journey-next reveal" aria-labelledby="about-next">
+        <div>
+          <span class="eyebrow">Next step</span>
+          <h2 id="about-next">
+            Start the
+            <span class="it">conversation.</span>
+          </h2>
+          <p>
+            If the work, experience, and values line up with what you are
+            building, the contact page is the cleanest next move.
+          </p>
+        </div>
+        <a class="btn btn-primary" href="/contact">
+          Contact Me
+          <Icon name="arrow-right" class="arrow" size={14} />
+        </a>
+      </section>
     </div>
   </section>
 </BaseLayout>
