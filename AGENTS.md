@@ -79,6 +79,7 @@ Schema defined in `src/content.config.ts`.
 
 Follow [Conventional Commits 1.0.0](https://www.conventionalcommits.org/en/v1.0.0/) for all commit messages.
 
+- Always create commits in logical, small chunks that are readable and easy for human review. Do not stage everything into one broad commit and ship it.
 - Format: `<type>[optional scope]: <description>`
 - Use `feat:` for new features and `fix:` for bug fixes.
 - Use other clear types when appropriate, such as `docs:`, `style:`, `refactor:`, `perf:`, `test:`, `build:`, `ci:`, or `chore:`.
