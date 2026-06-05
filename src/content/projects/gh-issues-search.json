@@ -3,5 +3,5 @@
   "description": "Search GitHub issues across repositories using the GitHub API.",
   "repo": "https://github.com/samuelreichert/gh-issues-search",
   "tags": ["TypeScript", "React"],
-  "order": 6
+  "order": 5
 }
