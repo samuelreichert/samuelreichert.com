@@ -13,8 +13,8 @@
   --color-rule:         rgba(255, 255, 255, 0.08);
 
   --color-text:         #F5F2EA;
-  --color-text-muted:   #9A958A;
-  --color-text-faint:   #5C584F;
+  --color-text-muted:   #B9B1A1;
+  --color-text-faint:   #837A6A;
 
   --color-gold:         #C9A84C;
   --color-gold-soft:    #E2C97A;
@@ -90,8 +90,8 @@ html.light-mode {
   --color-rule:         rgba(20, 16, 8, 0.10);
 
   --color-text:         #14110A;
-  --color-text-muted:   #5C5648;
-  --color-text-faint:   #9A9382;
+  --color-text-muted:   #4D4638;
+  --color-text-faint:   #766E5F;
 
   --color-gold:         #8E7430;
   --color-gold-soft:    #C9A84C;

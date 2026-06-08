@@ -98,6 +98,12 @@ function onDocumentClick(event: MouseEvent) {
   const target = event.target;
   if (!(target instanceof Element)) return;
 
+  const copyEmailButton = target.closest<HTMLButtonElement>("[data-copy-email]");
+  if (copyEmailButton) {
+    void copyEmailToClipboard(copyEmailButton);
+    return;
+  }
+
   const themeToggle = target.closest(".theme-toggle");
   if (themeToggle) {
     const next = getNextTheme(getStoredTheme());
@@ -116,6 +122,64 @@ function onDocumentClick(event: MouseEvent) {
 
   if (target.closest(".nav-links a")) {
     setMobileNavOpen(false);
+  }
+}
+
+async function copyEmailToClipboard(button: HTMLButtonElement) {
+  const email = button.dataset.copyEmail;
+  if (!email) return;
+
+  const feedback = button.querySelector<HTMLElement>("[data-copy-feedback]");
+  const originalLabel = button.getAttribute("aria-label") ?? "Copy email address";
+
+  try {
+    await copyText(email);
+    button.classList.add("is-copied");
+    button.setAttribute("aria-label", "Email address copied");
+    if (feedback) feedback.textContent = "Email copied";
+
+    window.setTimeout(() => {
+      button.classList.remove("is-copied");
+      button.setAttribute("aria-label", originalLabel);
+      if (feedback) feedback.textContent = "";
+    }, 2200);
+  } catch {
+    button.classList.add("is-copy-error");
+    if (feedback) feedback.textContent = "Copy unavailable";
+
+    window.setTimeout(() => {
+      button.classList.remove("is-copy-error");
+      if (feedback) feedback.textContent = "";
+    }, 2200);
+  }
+}
+
+async function copyText(text: string) {
+  if (navigator.clipboard?.writeText) {
+    try {
+      await navigator.clipboard.writeText(text);
+      return;
+    } catch {
+      // Fall back to a temporary selection for browsers with strict clipboard permissions.
+    }
+  }
+
+  const textarea = document.createElement("textarea");
+  textarea.value = text;
+  textarea.setAttribute("readonly", "");
+  textarea.className = "clipboard-fallback";
+  document.body.append(textarea);
+  textarea.select();
+
+  const legacyDocument = document as unknown as Record<
+    "execCommand",
+    (commandId: string) => boolean
+  >;
+  const copied = legacyDocument["execCommand"]("copy");
+  textarea.remove();
+
+  if (!copied) {
+    throw new Error("Clipboard copy failed");
   }
 }
 

@@ -238,11 +238,12 @@ a {
 .brand {
   font-family: var(--font-display);
   font-size: 1.55rem;
-  font-weight: 500;
-  letter-spacing: -0.01em;
+  font-weight: 600;
+  letter-spacing: 0.04em;
   display: inline-flex;
   align-items: baseline;
   gap: 0.45rem;
+  color: var(--color-gold);
 }
 .nav-links {
   list-style: none;
@@ -387,14 +388,15 @@ html[data-theme="system"] .theme-toggle .icon-system {
 }
 
 .btn-ghost {
-  border-color: var(--color-border);
+  border-color: color-mix(in oklab, var(--color-gold) 45%, var(--color-border));
   color: var(--color-text);
-  background: transparent;
+  background: color-mix(in oklab, var(--color-gold) 7%, transparent);
 }
 .btn-ghost:hover {
   border-color: var(--color-gold);
-  color: var(--color-gold);
-  background: color-mix(in oklab, var(--color-gold) 6%, transparent);
+  color: var(--color-text);
+  background: color-mix(in oklab, var(--color-gold) 14%, transparent);
+  box-shadow: 0 10px 28px rgba(201, 168, 76, 0.16);
 }
 
 .btn .arrow {
@@ -429,6 +431,16 @@ html[data-theme="system"] .theme-toggle .icon-system {
 }
 .arrow-out:hover svg {
   transform: var(--arrow-out-hover-transform, translateX(3px));
+}
+
+.clipboard-fallback {
+  position: fixed;
+  top: 0;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .tag {

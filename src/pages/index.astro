@@ -1,5 +1,4 @@
 ---
-import "../styles/home.css";
 import { getCollection } from "astro:content";
 import Icon from "../components/icons/Icon.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
@@ -189,8 +188,8 @@ const stats = [
         </div>
 
         <div class="section-action reveal">
-          <a class="btn btn-ghost" href="/projects">
-            View All Projects
+          <a class="btn btn-primary" href="/projects">
+            View More
             <Icon name="arrow-right" class="arrow" size={14} />
           </a>
         </div>
@@ -212,7 +211,7 @@ const stats = [
               has centered on turning ambiguous product needs into interfaces
               people can understand, trust, and keep using.
             </p>
-            <a class="btn btn-ghost" href="/experience">
+            <a class="btn btn-primary" href="/experience">
               See Experience
               <Icon name="arrow-right" class="arrow" size={14} />
             </a>

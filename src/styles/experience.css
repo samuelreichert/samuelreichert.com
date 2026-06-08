@@ -2,6 +2,9 @@
   position: relative;
   margin-top: 2rem;
 }
+.timeline .reveal {
+  transition-delay: min(var(--reveal-delay, 0ms), 240ms);
+}
 .timeline::before {
   content: "";
   position: absolute;

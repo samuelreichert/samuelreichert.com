@@ -2,7 +2,6 @@
 import Icon from "../components/icons/Icon.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { siteConfig } from "../data/site";
-import "../styles/contact.css";
 ---
 
 <BaseLayout
@@ -69,17 +68,20 @@ import "../styles/contact.css";
           </div>
         </a>
 
-        <a
-          class="lux-card link-card reveal reveal-delay-220"
-          href={`mailto:${siteConfig.email}`}
+        <button
+          class="lux-card link-card copy-email-card reveal reveal-delay-220"
+          type="button"
+          data-copy-email={siteConfig.email}
+          aria-label={`Copy email address ${siteConfig.email}`}
         >
           <div class="top">
             <div class="ic">
               <Icon name="mail" size={22} />
             </div>
-            <span class="arrow-out"
-              ><Icon name="external-link" size={14} /></span
-            >
+            <span class="arrow-out copy-state-icon">
+              <Icon name="copy" class="copy-icon" size={14} />
+              <Icon name="check" class="check-icon" size={14} />
+            </span>
           </div>
           <div>
             <span class="label">Direct</span>
@@ -89,8 +91,9 @@ import "../styles/contact.css";
             <div class="handle">
               {siteConfig.email}
             </div>
+            <div class="copy-feedback" aria-live="polite" data-copy-feedback></div>
           </div>
-        </a>
+        </button>
 
         <a
           class="lux-card link-card reveal reveal-delay-300"
@@ -116,30 +119,37 @@ import "../styles/contact.css";
         </a>
       </div>
 
-      <div class="location reveal">
-        <div class="loc-block">
-          <div class="loc-ic">
-            <Icon name="pin" size={20} />
-          </div>
-          <div class="loc-text">
-            <div class="label">Based in</div>
-            <div class="value">Rotterdam, NL</div>
-          </div>
+      <div class="contact-context reveal">
+        <div class="availability-note">
+          <span class="eyebrow">Availability</span>
+          <p>Open to remote opportunities and distributed teams.</p>
         </div>
 
-        <div class="loc-block">
-          <div class="loc-ic">
-            <Icon name="clock" size={20} />
+        <div class="location">
+          <div class="loc-block">
+            <div class="loc-ic">
+              <Icon name="pin" size={20} />
+            </div>
+            <div class="loc-text">
+              <div class="label">Based in</div>
+              <div class="value">Netherlands</div>
+            </div>
           </div>
-          <div class="loc-text">
-            <div class="label">Working on</div>
-            <div class="value">CET · Central European Time</div>
-          </div>
-        </div>
 
-        <div class="clock">
-          <span class="dot"></span>
-          <span id="local-time">--:--</span>
+          <div class="loc-block">
+            <div class="loc-ic">
+              <Icon name="clock" size={20} />
+            </div>
+            <div class="loc-text">
+              <div class="label">Working on</div>
+              <div class="value">CET · Central European Time</div>
+            </div>
+          </div>
+
+          <div class="clock">
+            <span class="dot"></span>
+            <span id="local-time">--:--</span>
+          </div>
         </div>
       </div>
     </div>
