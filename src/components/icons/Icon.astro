@@ -2,7 +2,9 @@
 interface Props {
   name:
     | 'arrow-right'
+    | 'check'
     | 'clock'
+    | 'copy'
     | 'external-link'
     | 'file'
     | 'github'
@@ -24,8 +26,14 @@ const pixelSize = size ?? (name === 'menu' ? 18 : 24);
 {name === 'arrow-right' && (
   <svg class={className} width={pixelSize} height={pixelSize} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"></path></svg>
 )}
+{name === 'check' && (
+  <svg class={className} width={pixelSize} height={pixelSize} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+)}
 {name === 'clock' && (
   <svg class={className} width={pixelSize} height={pixelSize} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
+)}
+{name === 'copy' && (
+  <svg class={className} width={pixelSize} height={pixelSize} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="8" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"></path></svg>
 )}
 {name === 'external-link' && (
   <svg class={className} width={pixelSize} height={pixelSize} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"></path></svg>
