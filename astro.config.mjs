@@ -11,4 +11,7 @@ export default defineConfig({
   output: 'static',
   adapter: vercel(),
   trailingSlash: 'never',
+  build: {
+    inlineStylesheets: 'always',
+  },
 });
