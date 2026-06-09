@@ -27,5 +27,6 @@
 }
 .not-found .back {
   margin-top: 2.5rem;
-  display: inline-flex;
+  display: flex;
+  justify-content: center;
 }

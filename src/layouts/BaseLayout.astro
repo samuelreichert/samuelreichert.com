@@ -98,8 +98,9 @@ const jsonLd = {
     <ClientRouter />
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
     <Header transition:persist />
-    <main>
+    <main id="main-content">
       <slot />
     </main>
     <Footer />

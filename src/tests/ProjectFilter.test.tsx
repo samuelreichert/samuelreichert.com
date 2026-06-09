@@ -46,6 +46,15 @@ describe('ProjectFilter', () => {
     expect(screen.getByText('TypeScript Project')).toBeVisible();
     expect(screen.getByText('JavaScript Project')).toBeVisible();
     expect(screen.getByText('Astro Project')).not.toBeVisible();
+    expect(
+      screen
+        .getAllByText('React')
+        .filter((node) => node.classList.contains('project-tag')),
+    ).toHaveLength(2);
+    screen
+      .getAllByText('React')
+      .filter((node) => node.classList.contains('project-tag'))
+      .forEach((node) => expect(node).toHaveClass('is-active'));
   });
 
   it('restores all projects when All is selected', () => {

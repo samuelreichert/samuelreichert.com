@@ -21,7 +21,11 @@
   letter-spacing: 0.08em;
   border-radius: 999px;
   cursor: pointer;
-  transition: all .25s var(--ease-out);
+  touch-action: manipulation;
+  transition:
+    background-color 0.25s var(--ease-out),
+    border-color 0.25s var(--ease-out),
+    color 0.25s var(--ease-out);
 }
 .pill:hover { color: var(--color-text); border-color: var(--color-border); }
 .pill.active { background: var(--gold-gradient); color: #0A0A0A; border-color: transparent; font-weight: 600; }
@@ -58,38 +62,29 @@
 .repo-card .name svg { color: var(--color-gold); }
 .repo-card .desc { color: var(--color-text-muted); font-size: 0.95rem; line-height: 1.55; flex: 1; }
 .repo-card .tag-list {
-  display: grid;
-  gap: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0;
   padding-top: 1rem;
   border-top: 1px solid var(--color-rule);
 }
-.repo-card .tag-list[data-count="1"] {
-  grid-template-columns: 1fr;
-}
-.repo-card .tag-list[data-count="2"] {
-  grid-template-columns: repeat(2, 1fr);
-}
-.repo-card .tag-list[data-count="3"] {
-  grid-template-columns: repeat(3, 1fr);
-}
-.repo-card .tag-list[data-count="4"] {
-  grid-template-columns: repeat(2, 1fr);
-}
 .repo-card .project-tag {
-  min-width: 0;
-  padding: 0.42rem 0.65rem;
-  border: 1px solid var(--color-border-soft);
-  border-radius: var(--r-pill);
   color: var(--color-text-muted);
-  background: color-mix(in oklab, var(--color-bg-elev) 50%, transparent);
   font-size: 0.72rem;
   letter-spacing: 0.08em;
-  line-height: 1;
-  text-align: center;
+  line-height: 1.5;
   text-transform: uppercase;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+}
+.repo-card .project-tag + .project-tag::before {
+  content: "*";
+  margin: 0 0.55rem;
+  color: var(--color-gold);
+  font-weight: 400;
+}
+.repo-card .project-tag.is-active {
+  color: var(--color-text);
+  font-weight: 700;
 }
 .repo-card .card-links {
   display: flex;
@@ -220,7 +215,19 @@ html.light-mode .phone {
 @media (max-width: 640px) {
   .repo-grid { grid-template-columns: 1fr; }
   .filters {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     border-radius: var(--r-lg);
     padding: 0.85rem 1rem;
+  }
+  .filters .label {
+    grid-column: 1 / -1;
+    margin-right: 0;
+  }
+  .pill {
+    width: 100%;
+    min-height: 42px;
+    padding: 0.55rem 0.7rem;
+    text-align: center;
   }
 }

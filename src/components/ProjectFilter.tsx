@@ -144,7 +144,10 @@ export default function ProjectFilter({ tags, projects }: ProjectFilterProps) {
                 aria-label={`${project.name} tags`}
               >
                 {project.tags.map((tag) => (
-                  <span className="project-tag" key={tag}>
+                  <span
+                    className={`project-tag${activeTag === tag ? ' is-active' : ''}`}
+                    key={tag}
+                  >
                     {tag}
                   </span>
                 ))}

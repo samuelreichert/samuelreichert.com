@@ -37,7 +37,11 @@
   align-items: center;
   justify-content: center;
   color: var(--color-gold);
-  transition: all 0.35s var(--ease-out);
+  transition:
+    background-color 0.35s var(--ease-out),
+    border-color 0.35s var(--ease-out),
+    color 0.35s var(--ease-out),
+    transform 0.35s var(--ease-out);
 }
 .link-card .ic:hover {
   background: var(--gold-gradient);
