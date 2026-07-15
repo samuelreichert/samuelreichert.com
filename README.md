@@ -21,12 +21,19 @@ pnpm astro check  # typecheck + collection schema
 pnpm build        # static + Vercel output
 ```
 
+## Environment
+
+Copy `.env.example` to `.env.local` for local overrides. On Vercel, configure these in Project Settings → Environment Variables:
+
+- `PUBLIC_RESUME_URL`: URL used by the CV button on the contact page.
+- `PUBLIC_SITE_URL`: canonical production URL used by SEO metadata and sitemap generation.
+
 ## Editing content
 
 - Experience entries: `src/content/experience/*.json`
 - Project entries: `src/content/projects/*.json`
 - Site metadata + nav: `src/data/site.ts`
-- Resume PDF: served live from Google Docs via `siteConfig.resumeUrl` — update the doc, the link always serves the latest export
+- Resume PDF: defaults to the Google Docs export URL in `siteConfig.resumeUrl`, and can be overridden with `PUBLIC_RESUME_URL`
 
 ## Deploy
 
