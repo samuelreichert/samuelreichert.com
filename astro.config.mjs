@@ -4,7 +4,7 @@ import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import vercel from '@astrojs/vercel';
 
-const siteUrl = process.env.PUBLIC_SITE_URL?.trim() || 'https://samuelreichert.com';
+const siteUrl = process.env.PUBLIC_SITE_URL?.trim() || 'https://samuelreichert.dev';
 
 // https://astro.build/config
 export default defineConfig({

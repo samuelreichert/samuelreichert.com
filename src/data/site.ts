@@ -1,4 +1,4 @@
-const fallbackSiteUrl = 'https://samuelreichert.com';
+const fallbackSiteUrl = 'https://samuelreichert.dev';
 const fallbackResumeUrl =
   'https://docs.google.com/document/d/1hEMCGXnCpBwDHi2ZeiyWFHiCd9eKm7nkOpoBeCLR94E/export?format=pdf';
 
