@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://samuelreichert.com/sitemap-index.xml
+Sitemap: https://samuelreichert.dev/sitemap-index.xml
