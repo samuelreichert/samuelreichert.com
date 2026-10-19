@@ -1,0 +1,119 @@
+.visual-poupai {
+  background: var(--finance-bg);
+}
+.visual-poupai .visual-caption {
+  color: #b0c0ad;
+}
+.poupai-wordmark {
+  position: absolute;
+  left: 6cqw;
+  top: 8cqw;
+  font-size: 7cqw;
+  letter-spacing: -0.055em;
+  font-weight: 550;
+  color: #edf1d4;
+  z-index: 2;
+}
+.poupai-wordmark > span {
+  color: #bfca85;
+  font-weight: 350;
+}
+.finance-scene {
+  background: #f5f5e9;
+  width: 45%;
+  padding: 4cqw;
+  border-radius: 13px;
+  transform: rotate(7deg) translate(29%, 6%);
+  color: #303b2c;
+  box-shadow: 0 16px 45px #101b1840;
+  z-index: 2;
+  transition: transform 0.4s var(--ease-out);
+}
+.project-visual-link:hover .finance-scene {
+  transform: rotate(4deg) translate(29%, 3%);
+}
+.finance-header {
+  display: flex;
+  justify-content: space-between;
+  color: #576348;
+  font-size: 1.8cqw;
+}
+.finance-scene > strong {
+  display: block;
+  font-size: 2.75cqw;
+  font-weight: 500;
+  margin-top: 1cqw;
+  letter-spacing: -0.035em;
+}
+.finance-chart {
+  width: 27cqw;
+  height: 27cqw;
+  margin: 4cqw auto;
+  padding: 2.6cqw;
+  border-radius: 50%;
+  background: conic-gradient(#7a8f4c 0% 64%, #e0e3d5 64% 100%);
+  transform: rotate(-35deg);
+}
+.finance-chart > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  border-radius: 50%;
+  background: #f5f5e9;
+  transform: rotate(35deg);
+  line-height: 1.2;
+}
+.finance-chart small {
+  font-size: 1.7cqw;
+  color: #59684a;
+}
+.finance-chart b {
+  font-size: 7cqw;
+  letter-spacing: -0.07em;
+  font-weight: 450;
+}
+.finance-chart b > span {
+  font-size: 3cqw;
+}
+.allocation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.7cqw;
+  border-top: 1px solid #e0e4d8;
+  padding: 1.5cqw 0;
+}
+.allocation b {
+  font-weight: 500;
+}
+.allocation span {
+  display: flex;
+  align-items: center;
+  gap: 1.3cqw;
+}
+.allocation i {
+  width: 1.2cqw;
+  height: 1.2cqw;
+  background: #83945b;
+  border-radius: 50%;
+}
+.allocation:nth-last-child(2) i {
+  background: #bdc991;
+}
+.allocation:last-child i {
+  background: #d9dfc4;
+}
+.finance-orbit {
+  position: absolute;
+  width: 90cqw;
+  height: 90cqw;
+  border: 1px solid #53634b;
+  border-radius: 50%;
+  left: -27cqw;
+  bottom: -54cqw;
+  box-shadow:
+    0 0 0 9cqw #293a31,
+    0 0 0 calc(9cqw + 1px) #53634b;
+}

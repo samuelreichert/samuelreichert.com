@@ -1,5 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="6" fill="#111"/>
-  <text x="50%" y="55%" text-anchor="middle" dominant-baseline="middle"
-    font-family="system-ui,sans-serif" font-size="16" fill="#fff">SR</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#0c0c0b"/><path d="M16 23h14v5H19v4h7c4 0 6 2 6 6s-3 7-7 7H13v-5h13v-4h-7c-4 0-6-2-6-6s1-7 3-7zm21 0h5v4c2-3 5-4 9-4v6c-5 0-9 3-9 8v8h-5z" fill="#f6f3eb"/><circle cx="51" cy="43" r="3" fill="#c9a84c"/></svg>

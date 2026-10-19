@@ -1,0 +1,95 @@
+---
+import { copy, localizedPath, type Locale } from "../../i18n";
+import { Image } from "astro:assets";
+import portrait from "../../assets/samuel.jpg";
+import { siteConfig } from "../../data/site";
+import { expertiseGroups } from "../../data/portfolio";
+import Icon from "../icons/Icon.astro";
+import "../../styles/about.css";
+interface Props {
+  locale: Locale;
+  standalone?: boolean;
+}
+const { locale, standalone = false } = Astro.props;
+const t = copy[locale];
+const Heading = standalone ? "h1" : "h2";
+---
+
+<section
+  class:list={[
+    "section container about-section",
+    { "page-section": standalone },
+  ]}
+  id="about"
+  aria-labelledby="about-title"
+>
+  <div class="section-label">
+    <span>03 /</span>
+    {t.about}
+  </div>
+  <div class="about-grid">
+    <div class="about-heading">
+      <Heading id="about-title" class:list={[{ "page-title": standalone }]}>
+        {t.aboutTitle}
+      </Heading>
+      {standalone && (
+        <Image
+          class="about-photo"
+          src={portrait}
+          alt={t.portrait}
+          widths={[320, 460]}
+          sizes="(min-width: 800px) 400px, 90vw"
+          width={460}
+          height={613}
+          format="webp"
+          loading="eager"
+        />
+      )}
+      {!standalone && (
+        <a class="text-link" href={localizedPath(locale, "about")}>
+          {t.moreAbout}
+          <Icon name="arrow-right" size={18} />
+        </a>
+      )}
+    </div>
+    <div class="about-copy">
+      <p class="about-lead">{t.aboutLead}</p>
+      <p>{t.aboutBody}</p>
+      {standalone && (
+        <>
+          <p>{t.aboutWork}</p>
+          <p>{t.aboutPersonal}</p>
+          <a
+            class="button button-outline"
+            href={siteConfig.resumeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {t.resume}
+            <Icon name="external-link" size={18} />
+            <span class="resume-note">{t.resumeNote}</span>
+          </a>
+        </>
+      )}
+    </div>
+  </div>
+  <div class="expertise-section">
+    <h2>{t.expertise}</h2>
+    <div class="expertise-grid">
+      {expertiseGroups.map((group, i) => (
+        <div>
+          <h3>
+            <span>0{i + 1}</span>
+            {t.expertiseGroups[group.key]}
+          </h3>
+          <ul class="tags">
+            {group.skills.map((skill) => (
+              <li>{skill}</li>
+            ))}
+            {group.key === "quality" && <li>{t.accessibility}</li>}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

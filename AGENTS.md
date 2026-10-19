@@ -26,24 +26,26 @@ pnpm test          # run tests
 | Layer | Tool |
 |---|---|
 | Framework | Astro 6 (static output, Vercel adapter) |
-| UI components | React 19 (islands only — sparingly) |
+| UI components | Astro components; no client UI framework |
 | Language | TypeScript (strict mode) |
 | Styling | Vanilla CSS — design tokens, no Tailwind, no CSS-in-JS |
 | Content | Astro Content Collections (JSON files in `src/content/`) |
-| Testing | Vitest + Testing Library |
+| Testing | Vitest + Playwright + axe-core |
 | Deployment | Vercel (static) |
 | Node | 24 (see `.nvmrc`) |
 
 ## Design System
 
-Luxury dark-gold aesthetic. All visual decisions flow from `src/styles/tokens.css`.
+Immersive dark-and-gold editorial aesthetic, designed for mobile first. All visual decisions flow from `src/styles/tokens.css`.
 
 - **Fonts**: `Cormorant Garamond` (display/serif), `Jost` (sans) — both from Google Fonts
-- **Colors**: Black base (`#000`), gold accent (`#C9A84C`), warm off-white text (`#F5F2EA`)
+- **Colors**: Near-black (`#0C0C0B`), warm off-white (`#F6F3EB`), and gold (`#C9A84C`); use `--accent-text` for accessible gold text
 - **Dark/light mode**: toggled via `html.light-mode` class + `data-theme` attribute
 - **Easing**: `--ease-out: cubic-bezier(.2,.7,.2,1)` · `--ease-in-out: cubic-bezier(.65,.05,.25,1)`
-- **Cards**: `.lux-card` — grain overlay, gold shimmer border on hover, lift transform
-- **Reveals**: `.reveal` (IntersectionObserver, scroll-triggered) · `.reveal-eager` (above-fold, double-rAF)
+- **Default theme**: Dark; light, dark, and system preferences persist in `sr-theme`
+- **Projects**: Static illustrated previews, explicitly labeled as illustrations; keep decorative effects separate from readable content
+- **Motion**: Subtle entrance and scroll-driven decorative transforms only; no scroll hijacking or autoplay loops. Content must remain visible without JavaScript and with reduced motion
+- **Contrast**: Keep body text at WCAG AA contrast or better. Use solid text colors; light effects belong behind decorative elements, never behind paragraphs
 
 Never introduce external UI libraries, component frameworks, or utility CSS classes.
 
@@ -55,9 +57,17 @@ Site uses Astro `ClientRouter` (client-side navigation). Key rules:
 
 - `<Header transition:persist />` — header persists across navigations, never re-renders
 - `site.ts` re-initialises via `astro:page-load` (fires on initial load + every navigation)
-- One-time setup (theme toggle, scroll handler, mobile nav) guarded by `siteInitialized` flag
-- Per-navigation: reset mobile nav state, update `aria-current` on nav links, re-attach IntersectionObserver
-- `revealObserver` is a module-level ref — always disconnect before re-creating on navigation
+- One-time setup (theme toggle, mobile nav) guarded by `siteInitialized` flag
+- Per-navigation: reset the mobile menu and clipboard feedback; synchronize active links, locale controls, and theme
+- Keep each browser behavior in `src/scripts/features/`; `site.ts` only coordinates lifecycle setup
+- Language switches use full navigations to refresh the persisted header in the new locale
+
+## Languages
+
+- Complete English and Brazilian Portuguese pages live under `/en` and `/pt`.
+- Unprefixed routes choose saved `sr-language`, then the first supported browser language, then English.
+- Explicit locale URLs always keep their requested language; switching language preserves the page, query, and fragment.
+- Keep both translations in content JSON and `src/i18n/messages/{en,pt}.ts`; do not mix languages in visible interface text.
 
 ## Content Collections
 
@@ -68,12 +78,14 @@ Schema defined in `src/content.config.ts`.
 
 ## File Conventions
 
-- Pages: `src/pages/*.astro`
+- Pages: `src/pages/[locale]/[...page].astro`; original unprefixed pages remain as language-negotiating entry points
 - Layouts: `src/layouts/BaseLayout.astro` (single layout, wraps all pages)
-- Components: `src/components/` — `.astro` preferred, `.tsx` only for interactive islands
+- Views: `src/views/` — compose sections; keep route generation in `src/pages/`
+- Components: `src/components/` — `.astro`; do not add a client framework for simple interactions
 - Styles: separate CSS files under `src/styles/`; do not use inline styles or `<style>` blocks in Astro pages/components
-- Scripts: `src/scripts/site.ts` — DOM event logic, re-runs on `astro:page-load`
-- Tests: `src/tests/` — Vitest + jsdom
+- Scripts: `src/scripts/site.ts` — lifecycle coordinator; browser behaviors live in `src/scripts/features/`
+- Bootstrap: `src/scripts/preferences.js` — standalone, inline language/theme selection before first paint
+- Tests: `src/tests/` — Vitest + jsdom; `tests/e2e/` — Playwright against the production preview
 
 ## Git & Commits
 

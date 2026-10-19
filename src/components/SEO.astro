@@ -1,34 +1,64 @@
 ---
-import { siteConfig } from '../data/site';
-
+import { siteConfig } from "../data/site";
+import { copy, localizedPath, type Locale, type Page } from "../i18n";
 interface Props {
+  locale: Locale;
+  page: Page;
   title?: string;
   description?: string;
-  path?: string;
+  noindex?: boolean;
 }
-
-const { title, description, path = '' } = Astro.props;
-const pageTitle = title ?? siteConfig.title;
-const pageDescription = description ?? siteConfig.description;
-const canonical = new URL(path, siteConfig.url).toString();
-const ogImage = new URL('/og-image.svg', siteConfig.url).toString();
+const { locale, page, title, description, noindex } = Astro.props;
+const t = copy[locale];
+const pageTitle =
+  title ?? (page ? `${t.nav[page]} — Samuel Reichert` : t.title);
+const pageDescription = description ?? t.description;
+const canonical = new URL(localizedPath(locale, page), siteConfig.url).href;
+const ogImage = new URL("/og-image.png", siteConfig.url).href;
 ---
 
 <title>{pageTitle}</title>
 <meta name="description" content={pageDescription} />
-<link rel="canonical" href={canonical} />
-<meta name="theme-color" content="#0A0A0A" media="(prefers-color-scheme: dark)" />
-<meta name="theme-color" content="#F5F0E8" media="(prefers-color-scheme: light)" />
-
+{noindex ? (
+  <meta name="robots" content="noindex, follow" />
+) : (
+  <>
+    <link rel="canonical" href={canonical} />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href={new URL(localizedPath("en", page), siteConfig.url).href}
+    />
+    <link
+      rel="alternate"
+      hreflang="pt-BR"
+      href={new URL(localizedPath("pt", page), siteConfig.url).href}
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href={new URL(page ? `/${page}` : "/", siteConfig.url).href}
+    />
+  </>
+)}
+<meta name="theme-color" content="#0c0c0b" />
 <meta property="og:type" content="website" />
 <meta property="og:title" content={pageTitle} />
 <meta property="og:description" content={pageDescription} />
 <meta property="og:url" content={canonical} />
 <meta property="og:site_name" content={siteConfig.name} />
+<meta property="og:locale" content={locale === "pt" ? "pt_BR" : "en_GB"} />
+<meta
+  property="og:locale:alternate"
+  content={locale === "pt" ? "en_GB" : "pt_BR"}
+/>
 <meta property="og:image" content={ogImage} />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-
+<meta
+  property="og:image:alt"
+  content="Samuel Reichert — Frontend. Web & mobile."
+/>
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={pageTitle} />
 <meta name="twitter:description" content={pageDescription} />

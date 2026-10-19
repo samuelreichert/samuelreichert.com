@@ -1,0 +1,16 @@
+{
+  "name": "Pocket Clone",
+  "visual": "pocket",
+  "category": {
+    "en": "Reading · Mobile prototype",
+    "pt": "Leitura · Protótipo mobile"
+  },
+  "description": {
+    "en": "A Pocket-inspired reading app prototype with RSS article feeds. An exploration of content discovery and mobile layouts with React Native and Expo.",
+    "pt": "Protótipo de aplicativo de leitura inspirado no Pocket, com feeds de artigos via RSS. Uma exploração de descoberta de conteúdo e interfaces mobile com React Native e Expo."
+  },
+  "tags": ["React Native", "Expo", "RSS"],
+  "inDevelopment": true,
+  "order": 3,
+  "repo": "https://github.com/samuelreichert/pocket-clone"
+}

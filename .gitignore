@@ -6,6 +6,7 @@ dist/
 
 # dependencies
 node_modules/
+.pnpm-store/
 package-lock.json
 yarn.lock
 
@@ -28,3 +29,7 @@ pnpm-debug.log*
 
 # git worktrees
 .worktrees/
+
+# browser verification artifacts
+playwright-report/
+test-results/

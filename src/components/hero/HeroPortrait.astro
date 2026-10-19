@@ -1,0 +1,48 @@
+---
+import { Image } from "astro:assets";
+import portrait from "../../assets/samuel.jpg";
+import { copy, type Locale } from "../../i18n";
+import Icon from "../icons/Icon.astro";
+import "../../styles/hero-portrait.css";
+interface Props {
+  locale: Locale;
+}
+const t = copy[Astro.props.locale];
+---
+
+<aside class="hero-profile">
+  <div class="portrait-scene">
+    <div class="portrait-orbits" aria-hidden="true">
+      <span>SR</span>
+    </div>
+    <div class="portrait-window">
+      <Image
+        src={portrait}
+        alt={t.portrait}
+        widths={[320, 460, 720]}
+        sizes="(min-width: 1000px) 400px, (min-width: 700px) 35vw, 85vw"
+        width={460}
+        height={613}
+        format="webp"
+        loading="eager"
+        fetchpriority="high"
+      />
+    </div>
+  </div>
+  <a
+    class="current-company"
+    href="https://www.mendix.com"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <span class="company-symbol" aria-hidden="true">
+      ↗
+    </span>
+    <span class="current-company-copy">
+      <span>{t.currently}</span>
+      <strong>Mendix</strong>
+      <small>{t.companyOwner}</small>
+    </span>
+    <Icon name="external-link" size={18} />
+  </a>
+</aside>

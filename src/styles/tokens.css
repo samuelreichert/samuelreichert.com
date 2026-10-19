@@ -1,107 +1,78 @@
-/* ============================================================
-   Luxury Digital — Design Tokens
-   ============================================================ */
-
 :root {
-  /* ---------- Color (Dark — default) ---------- */
-  --color-bg:           #000000;
-  --color-bg-elev:      #0A0A0A;
-  --color-card:         #111111;
-  --color-card-hover:   #1A1A1A;
-  --color-border:       rgba(201, 168, 76, 0.18);
-  --color-border-soft:  rgba(255, 255, 255, 0.06);
-  --color-rule:         rgba(255, 255, 255, 0.08);
-
-  --color-text:         #F5F2EA;
-  --color-text-muted:   #B9B1A1;
-  --color-text-faint:   #837A6A;
-
-  --color-gold:         #C9A84C;
-  --color-gold-soft:    #E2C97A;
-  --color-gold-deep:    #8E7430;
-  --gold-gradient:      linear-gradient(135deg, #8E7430 0%, #C9A84C 35%, #F2DC95 55%, #C9A84C 75%, #8E7430 100%);
-
-  --noise-opacity:      0.05;
-  --grain-blend:        soft-light;
-
-  /* ---------- Type ---------- */
-  --font-display:  "Cormorant Garamond", Georgia, serif;
-  --font-serif:    "Cormorant Garamond", Georgia, serif;
-  --font-sans:     "Jost", "DM Sans", "Sora", -apple-system, sans-serif;
-  --font-mono:     "JetBrains Mono", ui-monospace, monospace;
-
-  --fs-hero:       clamp(3.5rem, 9vw, 8.5rem);
-  --fs-display:    clamp(2.75rem, 6vw, 5.25rem);
-  --fs-h1:         clamp(2.65rem, 5.2vw, 4.75rem);
-  --fs-h2:         clamp(2rem, 3.6vw, 3.25rem);
-  --fs-h3:         clamp(1.35rem, 1.8vw, 1.75rem);
-  --fs-body:       1.0625rem;
-  --fs-small:      0.9375rem;
-  --fs-eyebrow:    0.75rem;
-
-  --lh-tight:      1.02;
-  --lh-snug:       1.18;
-  --lh-body:       1.65;
-
-  --tracking-display:  -0.02em;
-  --tracking-eyebrow:  0.32em;
-  --tracking-nav:      0.14em;
-
-  /* ---------- Space / radius / shadow ---------- */
-  --r-sm: 10px;
-  --r-md: 14px;
-  --r-lg: 20px;
-  --r-xl: 28px;
-  --r-pill: 999px;
-
-  --space-1: 0.5rem;
-  --space-2: 0.875rem;
-  --space-3: 1.25rem;
-  --space-4: 1.75rem;
-  --space-5: 2.5rem;
-  --space-6: 3.5rem;
-  --space-7: 5rem;
-  --space-8: 7rem;
-  --space-9: 10rem;
-
-  --shadow-sm: 0 1px 2px rgba(0,0,0,0.4);
-  --shadow-md: 0 8px 24px rgba(0,0,0,0.45), 0 2px 6px rgba(0,0,0,0.3);
-  --shadow-lg: 0 24px 60px rgba(0,0,0,0.55), 0 4px 12px rgba(0,0,0,0.35);
-  --shadow-gold: 0 14px 40px rgba(201,168,76,0.18), 0 0 0 1px rgba(201,168,76,0.28);
-
-  --container-w: 1240px;
-  --container-px: clamp(1.25rem, 4vw, 2.5rem);
-
-  /* Breakpoints: use literal @media values, because CSS variables do not work in media queries.
-     Layout shifts at 980px; phone-specific tightening at 640px. */
-
-  --ease-out: cubic-bezier(.2,.7,.2,1);
-  --ease-in-out: cubic-bezier(.65,.05,.25,1);
+  --font-sans: "Jost Variable", "Jost", sans-serif;
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --bg: #0c0c0b;
+  --surface: #151512;
+  --surface-raised: #1e1e19;
+  --text: #f6f3eb;
+  --muted: #bcb9ae;
+  --line: #34352d;
+  --control-line: #777467;
+  --accent: #c9a84c;
+  --accent-text: #e1c778;
+  --accent-soft: #c9a84c14;
+  --button-bg: #e1c778;
+  --button-text: #18170f;
+  --header-bg: #0c0c0bf5;
+  --selection: #e1c778;
+  --selection-text: #18170f;
+  --inverse-bg: #14140f;
+  --inverse-text: #f6f3eb;
+  --inverse-muted: #c3beae;
+  --inverse-line: #68634f;
+  --inverse-accent: #e1c778;
+  --inverse-glow: #c9a84c1f;
+  --inverse-hover: #36352a;
+  --portrait-overlay: #0c0c0bef;
+  --portrait-rim: #f5e6b512;
+  --hero-bg: #11120f;
+  --hero-light: #c9a84c1f;
+  --hero-frame: #a38a48;
+  --frame-shadow: #00000080;
+  --radius: 8px;
+  --radius-pill: 999px;
+  --display-size: clamp(42px, 5.3vw, 72px);
+  --display-line: 1.04;
+  --portrait-mat: #d8cbb2;
+  --container: 1280px;
+  --gutter: 22px;
+  --section-space: 88px;
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.65, 0.05, 0.25, 1);
+  --flow-bg: #e8ddbc;
+  --finance-bg: #293a31;
+  --reading-bg: #eedbcf;
+  --music-bg: #dce3d5;
+  color-scheme: dark;
 }
-
-/* ---------- Light Mode ---------- */
-html.light-mode {
-  --color-bg:           #F8F7F4;
-  --color-bg-elev:      #F1EFEA;
-  --color-card:         #FFFFFF;
-  --color-card-hover:   #FBF9F4;
-  --color-border:       rgba(142, 116, 48, 0.22);
-  --color-border-soft:  rgba(20, 16, 8, 0.07);
-  --color-rule:         rgba(20, 16, 8, 0.10);
-
-  --color-text:         #14110A;
-  --color-text-muted:   #4D4638;
-  --color-text-faint:   #766E5F;
-
-  --color-gold:         #8E7430;
-  --color-gold-soft:    #C9A84C;
-  --color-gold-deep:    #6A561F;
-
-  --noise-opacity:      0.045;
-  --grain-blend:        multiply;
-
-  --shadow-sm: 0 1px 2px rgba(20,16,8,0.06);
-  --shadow-md: 0 10px 30px rgba(20,16,8,0.08), 0 2px 6px rgba(20,16,8,0.04);
-  --shadow-lg: 0 24px 60px rgba(20,16,8,0.10), 0 4px 12px rgba(20,16,8,0.06);
-  --shadow-gold: 0 14px 40px rgba(142,116,48,0.16), 0 0 0 1px rgba(142,116,48,0.25);
+:root.light-mode {
+  --bg: #f5f2ea;
+  --surface: #ebe7db;
+  --surface-raised: #fffdf7;
+  --text: #25251e;
+  --muted: #58594d;
+  --line: #cfccbe;
+  --control-line: #858273;
+  --accent-text: #725719;
+  --accent-soft: #c9a84c1a;
+  --button-bg: #29291e;
+  --button-text: #fff7dd;
+  --header-bg: #f5f2eaf5;
+  --hero-bg: #ece8dc;
+  --hero-light: #c9a84c26;
+  --hero-frame: #94722e;
+  --frame-shadow: #4d3e2926;
+  color-scheme: light;
+}
+@media (min-width: 700px) {
+  :root {
+    --gutter: 36px;
+    --section-space: 104px;
+  }
+}
+@media (min-width: 1200px) {
+  :root {
+    --gutter: 64px;
+    --section-space: 124px;
+  }
 }

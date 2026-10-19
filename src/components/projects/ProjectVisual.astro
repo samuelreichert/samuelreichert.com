@@ -1,0 +1,27 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { copy, type Locale } from "../../i18n";
+import FlowboardVisual from "./visuals/FlowboardVisual.astro";
+import PoupaiVisual from "./visuals/PoupaiVisual.astro";
+import PocketVisual from "./visuals/PocketVisual.astro";
+import SpotifyVisual from "./visuals/SpotifyVisual.astro";
+import "../../styles/project-visuals.css";
+
+interface Props {
+  visual: CollectionEntry<"projects">["data"]["visual"];
+  locale: Locale;
+}
+const { visual, locale } = Astro.props;
+const illustrations = {
+  flowboard: FlowboardVisual,
+  poupai: PoupaiVisual,
+  pocket: PocketVisual,
+  spotify: SpotifyVisual,
+};
+const Illustration = illustrations[visual];
+---
+
+<div class:list={["project-visual", `visual-${visual}`]} aria-hidden="true">
+  <Illustration locale={locale} />
+  <span class="visual-caption">{copy[locale].visual}</span>
+</div>

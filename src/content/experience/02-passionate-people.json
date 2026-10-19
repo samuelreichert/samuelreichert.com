@@ -1,14 +1,24 @@
 {
   "company": "Passionate People",
   "companyUrl": "https://passionatepeople.io/",
-  "title": "Software Engineer",
+  "title": {
+    "en": "Software Engineer",
+    "pt": "Engenheiro de Software"
+  },
   "startDate": "2022-11",
   "endDate": "2023-03",
   "order": 2,
-  "description": "JavaScript-focused consultancy. Embedded with client teams across multiple industries, delivering React-based features and improving frontend architecture.",
-  "bullets": [
-    "Worked as a JavaScript consultant embedded with client teams across multiple industries, delivering React-based features and improving frontend architecture.",
-    "Collaborated within cross-functional, internationally distributed engineering teams following agile methodologies."
-  ],
+  "description": {
+    "en": "Worked as a JavaScript consultant, joining client teams to deliver React features and improve frontend architecture.",
+    "pt": "Atuei como consultor JavaScript junto às equipes dos clientes, desenvolvendo funcionalidades em React e melhorando a arquitetura frontend."
+  },
+  "bullets": {
+    "en": [
+      "Collaborated with designers and engineers in international, distributed teams."
+    ],
+    "pt": [
+      "Colaborei com designers e engenheiros em equipes internacionais e distribuídas."
+    ]
+  },
   "skills": ["React", "TypeScript", "JavaScript", "Node.js"]
 }

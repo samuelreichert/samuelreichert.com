@@ -1,7 +1,15 @@
 {
-  "name": "Spotify Playlists App",
-  "description": "React app for showing playlists and tracks from the Spotify API.",
-  "repo": "https://github.com/samuelreichert/spotify-playlists-app",
-  "tags": ["TypeScript", "React", "Vite", "Playwright"],
-  "order": 1
+  "name": "Spotify Playlists",
+  "visual": "spotify",
+  "category": {
+    "en": "Music · Web app",
+    "pt": "Música · Aplicação web"
+  },
+  "description": {
+    "en": "A React app for browsing playlists and tracks through the Spotify API. Built with TypeScript and Vite, with automated tests using Playwright.",
+    "pt": "Aplicação React para explorar playlists e faixas pela API do Spotify. Feita com TypeScript e Vite, com testes automatizados usando Playwright."
+  },
+  "tags": ["React", "TypeScript", "Spotify API"],
+  "order": 4,
+  "repo": "https://github.com/samuelreichert/spotify-playlists-app"
 }

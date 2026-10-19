@@ -1,15 +1,35 @@
 {
   "company": "87 Labs",
   "companyUrl": "https://www.87labs.com/",
-  "title": "Frontend Developer",
+  "title": {
+    "en": "Frontend Developer",
+    "pt": "Desenvolvedor Frontend"
+  },
   "startDate": "2017-04",
   "endDate": "2020-12",
   "order": 6,
-  "description": "Consultancy embedded with clients across multiple industries. Key client engagements include Leroy Merlin, GoDaddy, and Consulta Remédios.",
-  "bullets": [
-    "Leroy Merlin (Apr 2019 – Dec 2020): Delivered the critical cart flow redesign in React with hooks and Styled Components, significantly improving load time. Added unit test coverage to React components and contributed to the company's hybrid React Native app.",
-    "GoDaddy (Jun – Nov 2018): Developed API integrations and new blog post status workflows for the GoDaddy Blog Editor using React, Redux, and Redux-Saga. Integrated the editor with the broader website builder platform.",
-    "Consulta Remédios (Dec 2018 – Mar 2019): Implemented marketplace launch features including a full-screen responsive search in Vue.js, improving search UX for mobile and desktop users."
-  ],
-  "skills": ["React", "Redux", "Vue.js", "Node.js", "Styled Components", "React Native"]
+  "description": {
+    "en": "Delivered web and mobile projects for clients including Leroy Merlin, GoDaddy, and Consulta Remédios.",
+    "pt": "Desenvolvi projetos web e mobile para clientes como Leroy Merlin, GoDaddy e Consulta Remédios."
+  },
+  "bullets": {
+    "en": [
+      "Leroy Merlin: redesigned the shopping cart in React, added component tests, and contributed to the React Native app.",
+      "GoDaddy: built API integrations and publishing workflows for the Blog Editor, connecting it to the website builder.",
+      "Consulta Remédios: built marketplace features, including responsive full-screen search with Vue.js."
+    ],
+    "pt": [
+      "Leroy Merlin: reformulei o carrinho de compras em React, adicionei testes de componentes e contribuí para o aplicativo React Native.",
+      "GoDaddy: desenvolvi integrações de APIs e fluxos de publicação para o Blog Editor, conectando-o ao construtor de sites.",
+      "Consulta Remédios: desenvolvi funcionalidades do marketplace, incluindo uma busca responsiva em tela cheia com Vue.js."
+    ]
+  },
+  "skills": [
+    "React",
+    "Redux",
+    "Vue.js",
+    "Node.js",
+    "Styled Components",
+    "React Native"
+  ]
 }

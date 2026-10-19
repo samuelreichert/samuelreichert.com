@@ -1,0 +1,103 @@
+.visual-pocket {
+  background: var(--reading-bg);
+}
+.reading-sheet {
+  width: 49%;
+  background: #fcf8f0;
+  padding: 4cqw;
+  transform: rotate(-7deg) translate(-7%, 9%);
+  z-index: 2;
+  box-shadow: 0 14px 30px #7e4d2925;
+  transition: transform 0.4s var(--ease-out);
+}
+.sheet-back {
+  position: absolute;
+  width: 49%;
+  height: 73%;
+  background: #ba6549;
+  transform: rotate(9deg) translate(11%, 5%);
+}
+.project-visual-link:hover .reading-sheet:not(.sheet-back) {
+  transform: rotate(-3deg) translate(-7%, 6%);
+}
+.reading-brand {
+  font-size: 2.6cqw;
+  font-weight: 500;
+  letter-spacing: -0.045em;
+  color: #25241e;
+  display: flex;
+  align-items: center;
+  gap: 1.5cqw;
+}
+.pocket-symbol {
+  display: grid;
+  place-items: center;
+  background: #bd6247;
+  color: #fff;
+  width: 4.3cqw;
+  height: 4.1cqw;
+  border-radius: 0 0 45% 45%;
+  font-size: 4cqw;
+  line-height: 0.8;
+  padding-bottom: 1cqw;
+}
+.reading-divider {
+  margin: 2.5cqw 0;
+  height: 1px;
+  background: #e6ddd2;
+}
+.reading-kicker {
+  font-size: 1.4cqw;
+  letter-spacing: 0.12em;
+  color: #6d6255;
+}
+.reading-art {
+  height: 18cqw;
+  margin-top: 2cqw;
+  background: #dfba99;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+.reading-art span {
+  width: 22cqw;
+  height: 28cqw;
+  border: 1.8cqw solid #8e4c34;
+  border-radius: 50% 50% 0 0;
+  position: absolute;
+  bottom: -12cqw;
+  transform: rotate(28deg);
+}
+.reading-art span:nth-child(2) {
+  width: 14cqw;
+  height: 20cqw;
+}
+.reading-art span:nth-child(3) {
+  width: 6cqw;
+  height: 12cqw;
+  background: #8e4c34;
+}
+.reading-sheet > b {
+  display: block;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  color: #302d25;
+  font-size: 5cqw;
+  line-height: 1;
+  margin: 2.8cqw 0;
+}
+.reading-meta {
+  font-size: 1.4cqw;
+  color: #6d6255;
+  display: flex;
+  gap: 1cqw;
+}
+.reading-lines {
+  margin-top: 2cqw;
+}
+.reading-lines i:last-child {
+  width: 65%;
+}

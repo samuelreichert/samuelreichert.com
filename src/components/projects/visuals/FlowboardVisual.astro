@@ -1,0 +1,52 @@
+---
+import "../../../styles/projects/flowboard.css";
+import { copy, type Locale } from "../../../i18n";
+interface Props {
+  locale: Locale;
+}
+const t = copy[Astro.props.locale].illustrations.board;
+---
+
+<div class="board-scene">
+  <div class="board-bar">
+    <span class="board-logo">
+      ▦<b>flowboard</b>
+    </span>
+    <span class="board-avatar">S</span>
+  </div>
+  <div class="board-heading">
+    <span>{t.workspace}</span>
+    <span>···</span>
+  </div>
+  <div class="board-columns">
+    {t.columns.map((column, index) => (
+      <div class="board-column">
+        <div class="column-label">
+          <i></i>
+          {column.label}
+          <span>{index === 0 ? "3" : "2"}</span>
+        </div>
+        <div class="task-card">
+          <span class:list={["task-tag", `task-tag-${index}`]}>
+            {column.tag}
+          </span>
+          <b>{column.title}</b>
+          <div class="task-lines">
+            <i></i>
+            <i></i>
+          </div>
+          <div class="task-foot">
+            <span>☰ 2</span>
+            <span class="tiny-avatar">S</span>
+          </div>
+        </div>
+        <div class="task-card task-card-small">
+          <b>{column.secondary}</b>
+          <div class="task-lines">
+            <i></i>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
