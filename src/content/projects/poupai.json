@@ -1,0 +1,16 @@
+{
+  "name": "Poupai",
+  "visual": "poupai",
+  "category": {
+    "en": "Personal finance · Mobile app",
+    "pt": "Finanças pessoais · Aplicativo mobile"
+  },
+  "description": {
+    "en": "A mobile app in development for planning investment goals and tracking portfolio allocation. Built with React Native and Expo.",
+    "pt": "Aplicativo mobile em desenvolvimento para planejar metas de investimento e acompanhar a alocação da carteira. Feito com React Native e Expo."
+  },
+  "tags": ["React Native", "Expo", "TypeScript"],
+  "inDevelopment": true,
+  "order": 2,
+  "repo": "https://github.com/samuelreichert/poupai"
+}

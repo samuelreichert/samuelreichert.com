@@ -1,13 +1,24 @@
 {
   "company": "Avenue Code",
   "companyUrl": "https://www.avenuecode.com",
-  "title": "Frontend Developer",
+  "title": {
+    "en": "Frontend Developer",
+    "pt": "Desenvolvedor Frontend"
+  },
   "startDate": "2020-12",
   "endDate": "2021-04",
   "order": 5,
-  "description": "Software consultancy with American and European clients. Allocated to Good Eggs, building a fresh-grocery delivery app for the SF area.",
-  "bullets": [
-    "Built new app settings page and product item component for Good Eggs' grocery delivery platform using TypeScript, React Native, Node.js, and GraphQL."
-  ],
+  "description": {
+    "en": "Worked with Good Eggs, a grocery delivery service in the San Francisco Bay Area, through Avenue Code.",
+    "pt": "Atuei pela Avenue Code na Good Eggs, um serviço de entrega de alimentos na região de São Francisco."
+  },
+  "bullets": {
+    "en": [
+      "Built the app settings screen and product components using React Native, TypeScript, Node.js, and GraphQL."
+    ],
+    "pt": [
+      "Desenvolvi a tela de configurações do aplicativo e componentes de produtos com React Native, TypeScript, Node.js e GraphQL."
+    ]
+  },
   "skills": ["TypeScript", "React Native", "Node.js", "GraphQL"]
 }

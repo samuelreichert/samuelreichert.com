@@ -1,21 +1,9 @@
 export const siteConfig = {
-  name: 'Samuel Reichert',
-  title: 'Samuel Reichert — Frontend Engineer',
-  description:
-    'Frontend engineer focused on React, React Native, and Node.js with 10+ years of experience.',
-  url: 'https://samuelreichert.com',
-  email: 'samuelreichertt@gmail.com',
-  github: 'https://github.com/samuelreichert',
-  linkedin: 'https://www.linkedin.com/in/samuelreichert',
+  name: "Samuel Reichert",
+  url: "https://samuelreichert.com",
+  email: "samuelreichertt@gmail.com",
+  github: "https://github.com/samuelreichert",
+  linkedin: "https://www.linkedin.com/in/samuelreichert",
   resumeUrl:
-    'https://docs.google.com/document/d/1hEMCGXnCpBwDHi2ZeiyWFHiCd9eKm7nkOpoBeCLR94E/export?format=pdf',
-  nav: [
-    { href: '/', label: 'Home' },
-    { href: '/projects', label: 'Projects' },
-    { href: '/experience', label: 'Experience' },
-    { href: '/about', label: 'About' },
-    { href: '/contact', label: 'Contact' },
-  ],
+    "https://docs.google.com/document/d/1hEMCGXnCpBwDHi2ZeiyWFHiCd9eKm7nkOpoBeCLR94E/export?format=pdf",
 } as const;
-
-export type NavItem = (typeof siteConfig.nav)[number];

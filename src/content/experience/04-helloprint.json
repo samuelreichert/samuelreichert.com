@@ -1,14 +1,26 @@
 {
   "company": "Helloprint",
   "companyUrl": "https://www.helloprint.com/jobs/",
-  "title": "Frontend Developer",
+  "title": {
+    "en": "Frontend Developer",
+    "pt": "Desenvolvedor Frontend"
+  },
   "startDate": "2021-04",
   "endDate": "2022-02",
   "order": 4,
-  "description": "Contributed to Helloprint's next-generation e-commerce platform using Vue.js, Nuxt.js, and Node.js, focused on modularity and performance.",
-  "bullets": [
-    "Joined the SEO team to drive Lighthouse score improvements and fix widespread layout bugs, measurably increasing page performance across the platform.",
-    "Contributed to building a more modular and dynamic next-generation storefront."
-  ],
+  "description": {
+    "en": "Contributed to a new e-commerce platform built with Vue.js, Nuxt.js, and Node.js.",
+    "pt": "Contribuí para uma nova plataforma de e-commerce com Vue.js, Nuxt.js e Node.js."
+  },
+  "bullets": {
+    "en": [
+      "Worked with the SEO team to improve Lighthouse scores and fix layout issues.",
+      "Helped build a modular storefront with a focus on performance."
+    ],
+    "pt": [
+      "Trabalhei com a equipe de SEO para melhorar as pontuações do Lighthouse e corrigir problemas de layout.",
+      "Ajudei a desenvolver uma loja virtual modular com foco em performance."
+    ]
+  },
   "skills": ["Vue.js", "Nuxt.js", "Node.js"]
 }

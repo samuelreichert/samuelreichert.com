@@ -1,14 +1,24 @@
 {
   "company": "Lets Events",
   "companyUrl": "https://lets.events/en/",
-  "title": "Full-Stack Developer",
+  "title": {
+    "en": "Full-Stack Developer",
+    "pt": "Desenvolvedor Full Stack"
+  },
   "startDate": "2016-08",
   "endDate": "2017-03",
   "order": 7,
-  "description": "Event ticketing platform. Worked fully remotely across frontend and backend.",
-  "bullets": [
-    "Implemented GraphQL on both frontend and backend, significantly reducing load times on a critical product page.",
-    "Stack: Ruby on Rails, Backbone.js, GraphQL, Docker. Worked fully remote."
-  ],
+  "description": {
+    "en": "Worked remotely on the frontend and backend of an event ticketing platform.",
+    "pt": "Trabalhei remotamente no frontend e no backend de uma plataforma de venda de ingressos."
+  },
+  "bullets": {
+    "en": [
+      "Implemented GraphQL on the client and server to improve loading times on a key product page."
+    ],
+    "pt": [
+      "Implementei GraphQL no cliente e no servidor para melhorar o tempo de carregamento de uma página central do produto."
+    ]
+  },
   "skills": ["Ruby on Rails", "Backbone.js", "GraphQL", "Docker"]
 }

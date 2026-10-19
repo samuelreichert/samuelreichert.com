@@ -1,7 +1,15 @@
 {
   "name": "Flowboard",
-  "description": "Kanban-style task board with drag-and-drop cards, editable descriptions, customizable backgrounds, and browser or local SQLite persistence.",
-  "repo": "https://github.com/samuelreichert/flowboard",
-  "tags": ["TypeScript", "React", "Vite", "SQLite"],
-  "order": 2
+  "visual": "flowboard",
+  "category": {
+    "en": "Productivity · Web app",
+    "pt": "Produtividade · Aplicação web"
+  },
+  "description": {
+    "en": "A workflow board with draggable cards, rich text notes, priorities, and work-cycle history. Built with React and TypeScript, with structured database persistence.",
+    "pt": "Um quadro de tarefas com cartões arrastáveis, notas com formatação, prioridades e histórico de ciclos de trabalho. Feito com React e TypeScript, com persistência em banco de dados."
+  },
+  "tags": ["React", "TypeScript", "Prisma"],
+  "order": 1,
+  "repo": "https://github.com/samuelreichert/flowboard"
 }
