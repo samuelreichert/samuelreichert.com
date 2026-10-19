@@ -2,108 +2,94 @@
 import Analytics from "@vercel/analytics/astro";
 import SpeedInsights from "@vercel/speed-insights/astro";
 import { ClientRouter } from "astro:transitions";
-import "@fontsource/cormorant-garamond/400.css";
-import "@fontsource/cormorant-garamond/400-italic.css";
-import "@fontsource/cormorant-garamond/500.css";
-import "@fontsource/cormorant-garamond/500-italic.css";
-import "@fontsource/cormorant-garamond/600.css";
-import "@fontsource/cormorant-garamond/600-italic.css";
-import "@fontsource/cormorant-garamond/700.css";
 import "@fontsource-variable/jost/wght.css";
+import "@fontsource/cormorant-garamond/latin-400-italic.css";
 import "../styles/tokens.css";
 import "../styles/base.css";
-import "../styles/home.css";
-import "../styles/projects.css";
-import "../styles/experience.css";
-import "../styles/about.css";
-import "../styles/contact.css";
-import "../styles/not-found.css";
+import "../styles/header.css";
+import "../styles/footer.css";
 import SEO from "../components/SEO.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { siteConfig } from "../data/site";
-
+import { copy, type Locale, type Page } from "../i18n";
+import preferenceScript from "../scripts/preferences.js?raw";
+import jostFont from "@fontsource-variable/jost/files/jost-latin-wght-normal.woff2?url";
+import displayFont from "@fontsource/cormorant-garamond/files/cormorant-garamond-latin-400-italic.woff2?url";
 interface Props {
+  locale?: Locale;
+  page?: Page;
   title?: string;
   description?: string;
-  path?: string;
+  noindex?: boolean;
 }
-
-const { title, description, path } = Astro.props;
-
+const {
+  locale = "en",
+  page = "",
+  title,
+  description,
+  noindex = false,
+} = Astro.props;
+const t = copy[locale];
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: siteConfig.name,
   url: siteConfig.url,
-  jobTitle: "Senior Frontend Engineer",
-  description: siteConfig.description,
+  jobTitle: t.role,
+  description: t.description,
   sameAs: [siteConfig.github, siteConfig.linkedin],
 };
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={t.locale} data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-
-    <!-- Apply the stored theme before the first paint. -->
-    <script is:inline>
-      (function () {
-        var theme = "system";
-
-        try {
-          var storedTheme = localStorage.getItem("sr-theme");
-          if (
-            storedTheme === "dark" ||
-            storedTheme === "light" ||
-            storedTheme === "system"
-          ) {
-            theme = storedTheme;
-          }
-        } catch (error) {
-          theme = "system";
-        }
-
-        document.documentElement.setAttribute("data-theme", theme);
-
-        if (theme === "light") {
-          document.documentElement.classList.add("light-mode");
-        } else if (
-          theme === "system" &&
-          window.matchMedia &&
-          window.matchMedia("(prefers-color-scheme: light)").matches
-        ) {
-          document.documentElement.classList.add("light-mode");
-        } else {
-          document.documentElement.classList.remove("light-mode");
-        }
-      })();
-    </script>
-
-    <!-- Page metadata and tracking. -->
-    <SEO title={title} description={description} path={path} />
-    <Analytics />
-    <SpeedInsights />
+    <link
+      rel="preload"
+      href={jostFont}
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    {page === "" && (
+      <link
+        rel="preload"
+        href={displayFont}
+        as="font"
+        type="font/woff2"
+        crossorigin
+      />
+    )}
+    <script is:inline set:html={preferenceScript}></script>
+    <SEO
+      locale={locale}
+      page={page}
+      title={title}
+      description={description}
+      noindex={noindex}
+    />
     <script
       is:inline
       type="application/ld+json"
       set:html={JSON.stringify(jsonLd)}
-    />
-
-    <!-- Client navigation. -->
+    ></script>
     <ClientRouter />
+    <Analytics />
+    <SpeedInsights />
   </head>
-  <body>
-    <a class="skip-link" href="#main-content">Skip to content</a>
-    <Header transition:persist />
-    <main id="main-content">
+  <body id="top">
+    <a class="skip-link" href="#main-content">
+      {t.skip}
+    </a>
+    <Header locale={locale} page={page} transition:persist />
+    <main id="main-content" tabindex="-1">
       <slot />
     </main>
-    <Footer />
+    <Footer locale={locale} />
     <script>
       import "../scripts/site.ts";
     </script>

@@ -1,0 +1,33 @@
+---
+import HomePage from "../../views/HomePage.astro";
+import ProjectsPage from "../../views/ProjectsPage.astro";
+import ExperiencePage from "../../views/ExperiencePage.astro";
+import AboutPage from "../../views/AboutPage.astro";
+import ContactPage from "../../views/ContactPage.astro";
+import { locales, pages, type Locale, type Page } from "../../i18n";
+
+export function getStaticPaths() {
+  return locales.flatMap((locale) =>
+    pages.map((page) => ({
+      params: { locale, page: page || undefined },
+      props: { locale, page },
+    })),
+  );
+}
+
+interface Props {
+  locale: Locale;
+  page: Page;
+}
+const { locale, page } = Astro.props;
+const views = {
+  "": HomePage,
+  projects: ProjectsPage,
+  experience: ExperiencePage,
+  about: AboutPage,
+  contact: ContactPage,
+};
+const PageView = views[page];
+---
+
+<PageView locale={locale} />

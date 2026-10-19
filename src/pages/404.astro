@@ -1,21 +1,15 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/not-found.css";
 ---
 
-<BaseLayout
-  title="404 — Samuel Reichert"
-  description="Page not found."
-  path="/404"
->
-
-  <section class="not-found">
-    <div class="container">
-      <div class="code reveal-eager">404</div>
-      <h1 class="reveal-eager">Page not found.</h1>
-      <p class="reveal-eager">That page doesn't exist or was moved.</p>
-      <div class="back reveal-eager">
-        <a class="btn btn-ghost" href="/">← Back home</a>
-      </div>
-    </div>
+<BaseLayout title="404 — Samuel Reichert" noindex>
+  <section class="container not-found">
+    <span class="section-label">404</span>
+    <h1 data-not-found-title>Page not found.</h1>
+    <p data-not-found-body>This address doesn’t match a page on the site.</p>
+    <a class="button button-primary" href="/en" data-not-found-home>
+      Back to home
+    </a>
   </section>
 </BaseLayout>
