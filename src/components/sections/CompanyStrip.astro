@@ -1,0 +1,28 @@
+---
+import { copy, type Locale } from "../../i18n";
+import "../../styles/home.css";
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = copy[locale];
+---
+
+<section class="company-strip" aria-label={t.companyNote}>
+  <div class="container">
+    <p>{t.companyNote}</p>
+    <div class="company-names">
+      <span class="company-mendix">
+        mendix<span>│</span>
+      </span>
+      <span class="company-frank">
+        frank<span>energie</span>
+      </span>
+      <span class="company-hello">
+        helloprint<span>®</span>
+      </span>
+      <span class="company-godaddy">GoDaddy</span>
+      <span class="company-leroy">LEROY MERLIN</span>
+    </div>
+  </div>
+</section>

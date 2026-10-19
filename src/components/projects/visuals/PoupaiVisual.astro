@@ -1,0 +1,42 @@
+---
+import "../../../styles/projects/poupai.css";
+import { copy, type Locale } from "../../../i18n";
+interface Props {
+  locale: Locale;
+}
+const t = copy[Astro.props.locale].illustrations.finance;
+const allocations = [
+  { label: t.fixedIncome, percentage: "40%" },
+  { label: t.equities, percentage: "35%" },
+  { label: "ETFs", percentage: "25%" },
+];
+---
+
+<span class="poupai-wordmark">
+  poupai<span>↗</span>
+</span>
+<div class="finance-scene">
+  <div class="finance-header">
+    <span>{t.nextGoal}</span>
+    <span>↗</span>
+  </div>
+  <strong>{t.goal}</strong>
+  <div class="finance-chart">
+    <div>
+      <small>{t.progress}</small>
+      <b>
+        64<span>%</span>
+      </b>
+    </div>
+  </div>
+  {allocations.map((allocation) => (
+    <div class="allocation">
+      <span>
+        <i></i>
+        {allocation.label}
+      </span>
+      <b>{allocation.percentage}</b>
+    </div>
+  ))}
+</div>
+<span class="finance-orbit"></span>

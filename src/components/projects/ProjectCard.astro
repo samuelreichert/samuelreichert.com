@@ -1,0 +1,76 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { copy, type Locale } from "../../i18n";
+import Icon from "../icons/Icon.astro";
+import ProjectVisual from "./ProjectVisual.astro";
+interface Props {
+  entry: CollectionEntry<"projects">;
+  locale: Locale;
+  heading?: "h2" | "h3";
+}
+const { entry, locale } = Astro.props;
+const project = entry.data;
+const t = copy[locale];
+const Heading = Astro.props.heading ?? "h3";
+---
+
+<article class="project-card" data-project={project.visual}>
+  <a
+    class="project-visual-link"
+    href={project.repo}
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label={`${project.name} — ${t.repository}`}
+  >
+    <ProjectVisual visual={project.visual} locale={locale} />
+    <span class="project-open">
+      <Icon name="external-link" size={23} />
+    </span>
+  </a>
+  <div class="project-content">
+    <div class="project-meta">
+      <span>{project.category[locale]}</span>
+      <span class="project-number">0{project.order}</span>
+    </div>
+    <div class="project-title-row">
+      <Heading>
+        <a href={project.repo} target="_blank" rel="noopener noreferrer">
+          {project.name}
+        </a>
+      </Heading>
+      {project.inDevelopment && <span class="status-tag">{t.development}</span>}
+    </div>
+    <p>{project.description[locale]}</p>
+    <div class="project-bottom">
+      <ul class="tags" aria-label={t.technologies}>
+        {project.tags.map((tag) => (
+          <li>{tag}</li>
+        ))}
+      </ul>
+    </div>
+    <div class="project-actions">
+      <a
+        href={project.repo}
+        class="text-link"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`${project.name} — ${t.repository}`}
+      >
+        {t.repository}
+        <Icon name="arrow-right" size={18} />
+      </a>
+      {project.demo && (
+        <a
+          href={project.demo}
+          class="text-link"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`${project.name} — ${t.demo}`}
+        >
+          {t.demo}
+          <Icon name="external-link" size={18} />
+        </a>
+      )}
+    </div>
+  </div>
+</article>

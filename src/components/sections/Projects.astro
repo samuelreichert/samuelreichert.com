@@ -1,0 +1,66 @@
+---
+import { copy, localizedPath, type Locale } from "../../i18n";
+import { getProjects } from "../../data/portfolio";
+import { siteConfig } from "../../data/site";
+import ProjectCard from "../projects/ProjectCard.astro";
+import Icon from "../icons/Icon.astro";
+import "../../styles/projects.css";
+interface Props {
+  locale: Locale;
+  standalone?: boolean;
+}
+const { locale, standalone = false } = Astro.props;
+const t = copy[locale];
+const Heading = standalone ? "h1" : "h2";
+const projects = await getProjects();
+---
+
+<section
+  class:list={[
+    "section container projects-section",
+    { "page-section": standalone },
+  ]}
+  id="projects"
+  aria-labelledby="projects-title"
+>
+  <div class="section-heading">
+    <div>
+      <div class="section-label">
+        <span>01 /</span>
+        {t.selected}
+      </div>
+      <Heading id="projects-title" class:list={[{ "page-title": standalone }]}>
+        {t.projectTitle}
+      </Heading>
+    </div>
+    {!standalone && (
+      <a class="text-link" href={localizedPath(locale, "projects")}>
+        {t.allProjects}
+        <Icon name="arrow-right" size={18} />
+      </a>
+    )}
+  </div>
+  <p class="page-intro">{t.projectIntro}</p>
+  <div class="projects-grid">
+    {projects.map((entry) => (
+      <ProjectCard
+        entry={entry}
+        locale={locale}
+        heading={standalone ? "h2" : "h3"}
+      />
+    ))}
+  </div>
+  {standalone && (
+    <div class="section-end">
+      <a
+        class="text-link"
+        href={`${siteConfig.github}?tab=repositories`}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {t.githubMore}
+        <Icon name="external-link" size={20} />
+      </a>
+    </div>
+  )}
+</section>

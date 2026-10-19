@@ -1,0 +1,57 @@
+---
+import { copy, localizedPath, type Locale } from "../../i18n";
+import { getExperience } from "../../data/portfolio";
+import { siteConfig } from "../../data/site";
+import ExperienceCard from "../experience/ExperienceCard.astro";
+import Icon from "../icons/Icon.astro";
+import "../../styles/experience.css";
+interface Props {
+  locale: Locale;
+  standalone?: boolean;
+}
+const { locale, standalone = false } = Astro.props;
+const t = copy[locale];
+const Heading = standalone ? "h1" : "h2";
+const experience = await getExperience();
+---
+
+<section
+  class:list={["experience-section section", { "page-section": standalone }]}
+  id="experience"
+  aria-labelledby="experience-title"
+>
+  <div class="container experience-layout">
+    <div class="experience-intro">
+      <div class="section-label">
+        <span>02 /</span>
+        {t.experience}
+      </div>
+      <Heading
+        id="experience-title"
+        class:list={[{ "page-title": standalone }]}
+      >
+        {t.experienceTitle}
+      </Heading>
+      <p>{t.experienceIntro}</p>
+      <a
+        class="text-link"
+        href={
+          !standalone
+            ? localizedPath(locale, "experience")
+            : siteConfig.resumeUrl
+        }
+        target={!standalone ? undefined : "_blank"}
+        rel={!standalone ? undefined : "noopener noreferrer"}
+      >
+        {!standalone ? t.fullExperience : t.resume}
+        <Icon name="arrow-right" size={18} />
+      </a>
+      {standalone && <span class="resume-note">{t.resumeNote}</span>}
+    </div>
+    <div class="experience-list">
+      {(!standalone ? experience.slice(0, 4) : experience).map((entry) => (
+        <ExperienceCard entry={entry} locale={locale} compact={!standalone} />
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,119 @@
+.hero-profile {
+  min-width: 0;
+}
+.portrait-scene {
+  width: 100%;
+  max-width: 420px;
+  margin-inline: auto;
+  position: relative;
+  padding: 18px 18px 0 0;
+  isolation: isolate;
+}
+.portrait-orbits {
+  position: absolute;
+  inset: 0 0 18px 18px;
+  z-index: -1;
+  border: 1px solid var(--hero-frame);
+  overflow: hidden;
+  pointer-events: none;
+}
+.portrait-orbits > span {
+  position: absolute;
+  right: 3px;
+  bottom: 0;
+  color: var(--accent-text);
+  font-size: 12px;
+  writing-mode: vertical-rl;
+  letter-spacing: 0.12em;
+}
+.portrait-window {
+  background: var(--portrait-mat);
+  aspect-ratio: 1 / 1.1;
+  overflow: hidden;
+}
+.portrait-window img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 25%;
+  filter: saturate(0.55);
+}
+.current-company {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  max-width: 420px;
+  margin: 18px auto 0;
+  padding-block: 14px;
+  border-bottom: 1px solid var(--line);
+  transition: border-color 180ms;
+}
+.current-company:hover {
+  border-color: var(--accent-text);
+}
+.company-symbol {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--accent-text);
+  font-size: 25px;
+}
+.current-company-copy {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.current-company-copy > span,
+.current-company-copy small {
+  font-size: 11px;
+  color: var(--muted);
+}
+.current-company-copy strong {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.3;
+}
+.current-company > svg {
+  margin-left: auto;
+  color: var(--accent-text);
+}
+@media (min-width: 700px) {
+  .hero-profile {
+    padding-left: 8px;
+  }
+  .portrait-window {
+    aspect-ratio: 1 / 1.2;
+  }
+}
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) and (min-width: 700px) {
+    .portrait-orbits {
+      animation: portrait-scroll linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0px 750px;
+    }
+    @keyframes portrait-scroll {
+      from {
+        transform: translateY(0);
+      }
+      to {
+        transform: translateY(-12px);
+      }
+    }
+  }
+}
+
+@media (min-width: 1000px) {
+  .portrait-scene,
+  .current-company {
+    max-width: 360px;
+    margin-left: auto;
+    margin-right: 0;
+  }
+  .portrait-window {
+    aspect-ratio: 1 / 1.08;
+  }
+}

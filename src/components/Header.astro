@@ -1,47 +1,90 @@
 ---
+import { copy, localizedPath, type Locale, type Page } from "../i18n";
 import Icon from "./icons/Icon.astro";
-import { siteConfig } from "../data/site";
-
-const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
+interface Props {
+  locale: Locale;
+  page: Page;
+}
+const { locale, page } = Astro.props;
+const t = copy[locale];
+const navPages = ["projects", "experience", "about", "contact"] as const;
 ---
 
 <header class="site-header">
-  <div class="container">
-    <nav class="nav" aria-label="Primary">
-      <a href="/" class="brand" aria-label="Samuel Reichert home">SR</a>
-      <ul class="nav-links">
-        {
-          siteConfig.nav.map((item) => (
-            <li>
-              <a
-                href={item.href}
-                aria-current={currentPath === item.href ? "page" : undefined}
-              >
-                {item.label}
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-      <div class="nav-right">
-        <button
-          class="theme-toggle"
-          aria-label="Switch to light mode"
-          type="button"
+  <div class="container header-inner">
+    <a
+      class="brand"
+      href={localizedPath(locale)}
+      aria-label={`Samuel Reichert · ${t.nav[""]}`}
+    >
+      <span class="brand-mark" aria-hidden="true">
+        sr<span>.</span>
+      </span>
+      <span class="brand-name">
+        Samuel Reichert<span>{t.role}</span>
+      </span>
+    </a>
+    <nav class="nav" id="site-navigation" aria-label={t.navigation}>
+      {navPages.map((key) => (
+        <a
+          href={localizedPath(locale, key)}
+          aria-current={page === key ? "page" : undefined}
         >
-          <Icon name="moon" class="icon-moon" />
-          <Icon name="sun" class="icon-sun" />
-          <Icon name="system" class="icon-system" />
-        </button>
-        <button
-          class="nav-toggle"
-          aria-label="Open menu"
-          aria-expanded="false"
-          type="button"
-        >
-          <Icon name="menu" />
-        </button>
-      </div>
+          {t.nav[key]}
+        </a>
+      ))}
     </nav>
+    <div class="header-controls">
+      <div class="language-switch" role="group" aria-label={t.language}>
+        <a
+          href={localizedPath("en", page)}
+          data-language="en"
+          data-astro-reload
+          lang="en"
+          hreflang="en"
+          aria-label="English"
+          aria-current={locale === "en" ? "true" : undefined}
+        >
+          EN
+        </a>
+        <a
+          href={localizedPath("pt", page)}
+          data-language="pt"
+          data-astro-reload
+          lang="pt-BR"
+          hreflang="pt-BR"
+          aria-label="Português do Brasil"
+          aria-current={locale === "pt" ? "true" : undefined}
+        >
+          PT
+        </a>
+      </div>
+      <button
+        class="icon-button theme-toggle"
+        type="button"
+        aria-label={t.theme}
+        title={t.theme}
+      >
+        <span class="theme-light">
+          <Icon name="sun" size={18} />
+        </span>
+        <span class="theme-dark">
+          <Icon name="moon" size={18} />
+        </span>
+        <span class="theme-system">
+          <Icon name="system" size={18} />
+        </span>
+      </button>
+      <button
+        class="icon-button nav-toggle"
+        type="button"
+        aria-controls="site-navigation"
+        aria-expanded="false"
+        aria-label={t.menu}
+      >
+        <span></span>
+        <span></span>
+      </button>
+    </div>
   </div>
 </header>

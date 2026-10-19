@@ -1,235 +1,149 @@
-.ct-hero {
-  --page-hero-padding: clamp(4rem, 12vh, 8rem) 0 clamp(2rem, 6vh, 4rem);
-  --page-hero-title-width: 21ch;
-  --page-hero-lede-width: 50ch;
+.contact-section {
+  color: var(--inverse-text);
+  background: var(--inverse-bg);
+  border-top: 1px solid var(--hero-frame);
+  padding-block: 64px;
 }
-
-.links {
-  margin-top: 4rem;
+.contact-inner {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.25rem;
+  gap: 16px;
 }
-.link-card {
-  appearance: none;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-  min-height: 240px;
-  text-align: left;
-  color: inherit;
-  font: inherit;
-  cursor: pointer;
+.contact-section .section-label {
+  color: var(--inverse-text);
 }
-.link-card .top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.contact-section .section-label > span {
+  color: var(--inverse-accent);
 }
-.link-card .ic {
-  width: 52px;
-  height: 52px;
-  border-radius: 14px;
-  border: 1px solid var(--color-border);
-  background: color-mix(in oklab, var(--color-gold) 6%, transparent);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-gold);
-  transition:
-    background-color 0.35s var(--ease-out),
-    border-color 0.35s var(--ease-out),
-    color 0.35s var(--ease-out),
-    transform 0.35s var(--ease-out);
+.contact-main {
+  min-width: 0;
 }
-.link-card .ic:hover {
-  background: var(--gold-gradient);
-  color: #0a0a0a;
-  border-color: transparent;
-  transform: rotate(-4deg) scale(1.05);
-}
-.link-card .arrow-out {
-  --arrow-out-hover-transform: translate(2px, -2px);
-}
-.link-card .label {
-  font-size: 0.7rem;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-}
-.link-card .name {
-  margin-top: 0.5rem;
+.contact-main :is(h1, h2) {
   font-family: var(--font-display);
-  font-size: 2rem;
-  font-weight: 500;
+  font-style: italic;
+  font-size: clamp(54px, 9vw, 128px);
+  font-weight: 400;
+  letter-spacing: -0.045em;
+  display: flex;
+  align-items: center;
+  gap: 20px;
   line-height: 1;
-  letter-spacing: -0.02em;
 }
-.link-card .name .it {
-  color: inherit;
+.contact-arrow {
+  font-family: var(--font-sans);
   font-style: normal;
+  font-size: 0.6em;
+  font-weight: 300;
+  color: var(--inverse-accent);
 }
-.link-card .handle {
-  margin-top: 0.5rem;
-  color: var(--color-text-muted);
-  font-size: 0.95rem;
+.contact-main > p {
+  max-width: 490px;
+  color: var(--inverse-muted);
+  font-size: 16px;
+  margin-top: 24px;
 }
-
-.copy-email-card {
-  width: 100%;
-}
-.copy-state-icon {
-  position: relative;
-}
-.copy-state-icon .check-icon {
-  display: none;
-}
-.copy-email-card.is-copied {
-  border-color: color-mix(in oklab, var(--color-gold) 75%, transparent);
-  box-shadow: var(--shadow-gold);
-}
-.copy-email-card.is-copied .copy-icon {
-  display: none;
-}
-.copy-email-card.is-copied .check-icon {
-  display: block;
-}
-.copy-email-card.is-copied .copy-state-icon {
-  color: #0a0a0a;
-  border-color: transparent;
-  background: var(--gold-gradient);
-}
-.copy-email-card.is-copy-error .copy-feedback {
-  color: var(--color-text-muted);
-}
-.copy-feedback {
-  min-height: 1.35rem;
-  margin-top: 0.75rem;
-  color: var(--color-gold);
-  font-size: 0.76rem;
-  font-weight: 500;
-  letter-spacing: 0.16em;
-  line-height: 1.35;
-  text-transform: uppercase;
-  opacity: 0;
-  transform: translateY(6px);
-  transition:
-    opacity 0.25s var(--ease-out),
-    transform 0.25s var(--ease-out);
-}
-.copy-email-card.is-copied .copy-feedback,
-.copy-email-card.is-copy-error .copy-feedback {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.contact-context {
-  margin-top: 4rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--color-border);
-  display: grid;
-  grid-template-columns: minmax(240px, 0.9fr) minmax(0, 1.4fr);
-  align-items: end;
-  gap: 2rem;
-}
-.availability-note p {
-  margin-top: 0.9rem;
-  max-width: 34ch;
-  color: var(--color-text-muted);
-  font-family: var(--font-display);
-  font-size: clamp(1.25rem, 2.2vw, 1.8rem);
-  font-style: italic;
-  line-height: 1.25;
-}
-.location {
+.email-row {
   display: flex;
-  align-items: end;
-  justify-content: space-between;
-  gap: 2rem;
+  align-items: center;
+  gap: 12px;
+  margin-top: 32px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--inverse-line);
+}
+.email-link {
+  font-size: clamp(16px, 2.6vw, 34px);
+  letter-spacing: -0.02em;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.email-link:hover {
+  text-decoration: underline;
+}
+.copy-email {
+  display: none;
+  margin-left: auto;
+  border: 1px solid var(--inverse-line);
+}
+.has-js .copy-email {
+  display: inline-flex;
+}
+.copy-email:hover {
+  background: var(--inverse-hover);
+}
+.copy-email.is-copied {
+  color: var(--inverse-accent);
+}
+.contact-main > .copy-feedback {
+  font-size: 14px;
+  min-height: 24px;
+  margin-top: 10px;
+}
+.contact-links {
+  display: flex;
   flex-wrap: wrap;
+  gap: 12px 32px;
+  margin-top: 10px;
 }
-.loc-block {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-.loc-ic {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  background: color-mix(in oklab, var(--color-gold) 10%, transparent);
-  border: 1px solid color-mix(in oklab, var(--color-gold) 40%, transparent);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-gold);
-}
-.loc-text .label {
-  font-size: 0.68rem;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-}
-.loc-text .value {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 1.4rem;
-  color: var(--color-text);
-  line-height: 1.1;
-  margin-top: 0.2rem;
-}
-.clock {
+.contact-links a {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  color: var(--color-text-muted);
-  font-size: 0.85rem;
-  letter-spacing: 0.06em;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 14px;
+  min-height: 44px;
 }
-.clock .dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 999px;
-  background: var(--color-gold);
-  animation: pulse 2s var(--ease-in-out) infinite;
+.contact-links a:hover {
+  text-decoration: underline;
 }
-@keyframes pulse {
-  0%,
-  100% {
-    opacity: 1;
-    transform: scale(1);
+.contact-links .resume-note {
+  color: var(--inverse-muted);
+  font-size: 11px;
+}
+.contact-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 30px;
+  margin-top: 36px;
+  color: var(--inverse-muted);
+  font-size: 12px;
+}
+.contact-details > span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.contact-section :is(a, button):focus-visible {
+  outline-color: var(--inverse-accent);
+}
+.contact-standalone {
+  min-height: 75vh;
+  display: flex;
+  align-items: center;
+}
+@media (min-width: 1000px) {
+  .contact-section {
+    padding-block: 104px;
   }
-  50% {
-    opacity: 0.4;
-    transform: scale(0.7);
+  .contact-inner {
+    grid-template-columns: minmax(0, 0.45fr) minmax(0, 1fr);
+    gap: 40px;
+  }
+  .contact-inner > .section-label {
+    align-self: start;
+    margin-top: 18px;
+  }
+  .contact-main > p {
+    font-size: 17px;
+  }
+  .contact-details {
+    margin-top: 44px;
   }
 }
-
-.flourish {
-  margin-top: 5rem;
-  text-align: center;
-  color: var(--color-text-faint);
-  font-size: 0.7rem;
-  letter-spacing: 0.4em;
-  text-transform: uppercase;
-}
-.flourish .ornament {
-  display: inline-block;
-  color: var(--color-gold);
-  margin: 0 0.75rem;
-}
-
-@media (max-width: 640px) {
-  .links {
-    grid-template-columns: 1fr;
+@media (max-width: 360px) {
+  .contact-main :is(h1, h2) {
+    font-size: 48px;
+    gap: 12px;
   }
-  .contact-context {
-    grid-template-columns: 1fr;
-    align-items: start;
-  }
-  .location {
-    flex-direction: column;
-    align-items: flex-start;
+  .email-row {
+    gap: 8px;
   }
 }

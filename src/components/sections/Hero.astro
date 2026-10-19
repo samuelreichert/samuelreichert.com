@@ -1,0 +1,61 @@
+---
+import { copy, localizedPath, type Locale } from "../../i18n";
+import HeroPortrait from "../hero/HeroPortrait.astro";
+import Icon from "../icons/Icon.astro";
+import "../../styles/home.css";
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = copy[locale];
+---
+
+<section class="hero" aria-labelledby="hero-title">
+  <div class="container">
+    <div class="hero-topline">
+      <span class="eyebrow">{t.role}</span>
+      <span class="location-label">
+        <span class="location-dot" aria-hidden="true"></span>
+        {t.location}
+      </span>
+    </div>
+    <div class="hero-stage">
+      <div class="hero-copy">
+        <p class="hero-specialty">
+          {t.heroFirst}
+          <span aria-hidden="true">/</span>
+          {t.heroSecond}
+        </p>
+        <h1 id="hero-title" class="hero-title" translate="no">
+          Samuel
+          <br />
+          <em>Reichert.</em>
+        </h1>
+        <p class="hero-intro">{t.intro}</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#projects">
+            {t.viewWork}
+            <Icon name="arrow-right" size={20} />
+          </a>
+          <a class="text-link" href={localizedPath(locale, "contact")}>
+            {t.getInTouch}
+            <Icon name="external-link" size={18} />
+          </a>
+        </div>
+      </div>
+      <HeroPortrait locale={locale} />
+      <div class="hero-bottom">
+        <span class="hero-note">
+          <span aria-hidden="true">↳</span>
+          {t.since}
+        </span>
+        <span class="hero-stack" translate="no">
+          React<i>/</i>TypeScript<i>/</i>React Native
+        </span>
+        <a href="#projects" aria-label={t.viewWork}>
+          <span aria-hidden="true">↓</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

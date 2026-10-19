@@ -1,0 +1,140 @@
+.visual-flowboard {
+  background: var(--flow-bg);
+}
+.board-scene {
+  width: 86%;
+  background: #fbfbf7;
+  border: 1px solid #ffffffa6;
+  padding: 4cqw;
+  border-radius: 6px;
+  box-shadow: 0 15px 35px #73623423;
+  transform: rotate(-3deg) translateY(4%);
+  color: #303329;
+  transition: transform 0.4s var(--ease-out);
+}
+.project-visual-link:hover .board-scene {
+  transform: rotate(-1deg) translateY(1%);
+}
+.board-bar,
+.board-heading,
+.column-label,
+.task-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.board-bar {
+  font-size: 2.8cqw;
+  padding-bottom: 2.3cqw;
+  border-bottom: 1px solid #e8e8df;
+}
+.board-logo {
+  display: flex;
+  gap: 1.2cqw;
+  align-items: center;
+}
+.board-logo b {
+  font-weight: 550;
+  letter-spacing: -0.06em;
+  font-size: 3.3cqw;
+}
+.board-avatar,
+.tiny-avatar {
+  border-radius: 50%;
+  background: #e0decf;
+  display: grid;
+  place-items: center;
+}
+.board-avatar {
+  width: 4.5cqw;
+  height: 4.5cqw;
+  font-size: 1.7cqw;
+}
+.board-heading {
+  font-size: 2.5cqw;
+  font-weight: 500;
+  padding: 3.1cqw 0 2.4cqw;
+}
+.board-columns {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2cqw;
+}
+.board-column {
+  min-width: 0;
+}
+.column-label {
+  gap: 1cqw;
+  font-size: 1.55cqw;
+  color: #64695b;
+  margin-bottom: 1.8cqw;
+  white-space: nowrap;
+}
+.column-label > span {
+  margin-left: auto;
+}
+.column-label i {
+  width: 1cqw;
+  height: 1cqw;
+  border-radius: 50%;
+  background: #b1b4a8;
+}
+.board-column:nth-child(2) .column-label i {
+  background: #b89a44;
+}
+.board-column:nth-child(3) .column-label i {
+  background: #738c70;
+}
+.task-card {
+  padding: 2cqw;
+  border: 1px solid #e6e6dd;
+  border-radius: 4px;
+  background: #fff;
+  margin-top: 1.5cqw;
+  min-height: 18cqw;
+}
+.task-tag {
+  font-size: 1.3cqw;
+  padding: 0.5cqw 1cqw;
+  background: #eee5d2;
+  border-radius: 2px;
+  color: #735c32;
+}
+.task-tag-1 {
+  background: #dde5e9;
+  color: #4d6873;
+}
+.task-tag-2 {
+  background: #e1e8d9;
+  color: #596b3e;
+}
+.task-card b {
+  display: block;
+  font-size: 1.85cqw;
+  font-weight: 500;
+  line-height: 1.35;
+  margin: 1.7cqw 0;
+}
+.task-lines i,
+.reading-lines i {
+  display: block;
+  height: 2px;
+  width: 90%;
+  margin-top: 4px;
+  background: #e4e5de;
+}
+.task-lines i:last-child {
+  width: 64%;
+}
+.task-foot {
+  color: #626858;
+  font-size: 1.4cqw;
+  margin-top: 2cqw;
+}
+.tiny-avatar {
+  width: 3cqw;
+  height: 3cqw;
+}
+.task-card-small {
+  min-height: 10cqw;
+}

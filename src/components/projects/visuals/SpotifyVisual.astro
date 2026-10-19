@@ -1,0 +1,33 @@
+---
+import "../../../styles/projects/spotify.css";
+import { copy, type Locale } from "../../../i18n";
+interface Props {
+  locale: Locale;
+}
+const t = copy[Astro.props.locale].illustrations.music;
+---
+
+<div class="record">
+  <div class="record-label">
+    {t.side}
+    <span>33⅓ RPM</span>
+  </div>
+</div>
+<div class="album-sleeve">
+  <span class="album-kicker">{t.kicker}</span>
+  <b>
+    {t.titleFirst}
+    <br />
+    {t.titleSecond}
+    <span>.</span>
+  </b>
+  <div class="album-waves">
+    {Array.from({ length: 9 }, () => (
+      <i></i>
+    ))}
+  </div>
+  <div class="album-footer">
+    <span>Spotify Playlists</span>
+    <span>↗</span>
+  </div>
+</div>

@@ -1,0 +1,62 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { copy, formatDate, type Locale } from "../../i18n";
+import Icon from "../icons/Icon.astro";
+interface Props {
+  entry: CollectionEntry<"experience">;
+  locale: Locale;
+  compact?: boolean;
+}
+const { entry, locale, compact = false } = Astro.props;
+const experience = entry.data;
+const t = copy[locale];
+const Heading = compact ? "h3" : "h2";
+---
+
+<article class:list={["experience-entry", { "experience-compact": compact }]}>
+  <div class="experience-period">
+    <time datetime={experience.startDate}>
+      {formatDate(experience.startDate, locale)}
+    </time>
+    <span>—</span>
+    {experience.endDate === "Present" ? (
+      <span class="current-period">{t.present}</span>
+    ) : (
+      <time datetime={experience.endDate}>
+        {formatDate(experience.endDate, locale)}
+      </time>
+    )}
+  </div>
+  <div class="experience-body">
+    <Heading>
+      {experience.companyUrl ? (
+        <a
+          href={experience.companyUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {experience.company}
+          <Icon name="external-link" size={20} />
+        </a>
+      ) : (
+        experience.company
+      )}
+    </Heading>
+    <p class="experience-role">{experience.title[locale]}</p>
+    <p>{experience.description[locale]}</p>
+    {!compact && (
+      <>
+        <ul class="experience-bullets">
+          {experience.bullets[locale].map((bullet) => (
+            <li>{bullet}</li>
+          ))}
+        </ul>
+        <ul class="tags">
+          {experience.skills.map((skill) => (
+            <li>{skill}</li>
+          ))}
+        </ul>
+      </>
+    )}
+  </div>
+</article>

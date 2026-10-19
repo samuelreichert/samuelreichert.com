@@ -1,16 +1,40 @@
 ---
-const year = new Date().getFullYear();
+import { siteConfig } from "../data/site";
+import { copy, localizedPath, type Locale } from "../i18n";
+import Icon from "./icons/Icon.astro";
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = copy[locale];
 ---
 
 <footer class="site-footer">
   <div class="container footer-inner">
-    <div class="brand footer-brand" aria-label="Samuel Reichert">SR</div>
-    <div class="footer-meta">
-      <span>© {year} Samuel Reichert</span>
-      <span class="sep footer-care"></span>
-      <span class="footer-care">Crafted with care</span>
-      <span class="sep"></span>
-      <span>Netherlands</span>
+    <div>
+      <a href="#top" class="footer-name">
+        Samuel Reichert<span>.</span>
+      </a>
+      <p>{t.footerNote}</p>
     </div>
+    <div class="footer-links">
+      <a href={localizedPath(locale, "projects")}>{t.nav.projects}</a>
+      <a href={localizedPath(locale, "contact")}>{t.nav.contact}</a>
+      <a href={siteConfig.github} target="_blank" rel="noopener noreferrer">
+        GitHub
+        <Icon name="external-link" size={16} />
+      </a>
+      <a href={siteConfig.linkedin} target="_blank" rel="noopener noreferrer">
+        LinkedIn
+        <Icon name="external-link" size={16} />
+      </a>
+      <a href="#top" aria-label={t.backTop} class="back-top">
+        <Icon name="arrow-right" size={20} />
+      </a>
+    </div>
+    <small>
+      {`© ${new Date().getFullYear()} Samuel Reichert`}
+      <span>{t.contactLocation}</span>
+    </small>
   </div>
 </footer>
