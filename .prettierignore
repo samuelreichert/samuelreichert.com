@@ -1,0 +1,13 @@
+dist/
+.astro/
+.vercel/
+.pnpm-store/
+node_modules/
+playwright-report/
+test-results/
+pnpm-lock.yaml
+.agents/
+.codex/
+AGENTS.md
+CLAUDE.md
+public/

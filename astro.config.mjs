@@ -1,17 +1,21 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
-import react from '@astrojs/react';
-import sitemap from '@astrojs/sitemap';
-import vercel from '@astrojs/vercel';
+import { defineConfig } from "astro/config";
+import sitemap from "@astrojs/sitemap";
+import vercel from "@astrojs/vercel";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://samuelreichert.com',
-  integrations: [react(), sitemap()],
-  output: 'static',
+  site: "https://samuelreichert.com",
+  integrations: [
+    sitemap({
+      filter: (page) => /\/(en|pt)(\/|$)/.test(new URL(page).pathname),
+      i18n: { defaultLocale: "en", locales: { en: "en", pt: "pt-BR" } },
+    }),
+  ],
+  output: "static",
   adapter: vercel(),
-  trailingSlash: 'never',
+  trailingSlash: "never",
   build: {
-    inlineStylesheets: 'always',
+    inlineStylesheets: "auto",
   },
 });
